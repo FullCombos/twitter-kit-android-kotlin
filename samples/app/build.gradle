@@ -8,12 +8,13 @@ buildscript {
 Properties props = new Properties()
 try {
     props.load(file('twitter.properties').newDataInputStream())
-} catch (Exception ex) {
+} catch (Exception ignored) {
     throw new GradleException("Missing twitter.properties, check the twitter.properties.sample file.")
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'spoon'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion

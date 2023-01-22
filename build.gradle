@@ -27,6 +27,7 @@ subprojects { Project subproject ->
 
         dependencies {
             classpath dependency.androidGradlePlugin
+            classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21'
         }
     }
 
