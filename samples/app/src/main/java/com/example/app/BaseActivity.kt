@@ -14,32 +14,28 @@
  * limitations under the License.
  *
  */
+package com.example.app
 
-package com.example.app;
-
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 /**
  * BaseActivity is an AppCompatActivity which sets up a Toolbar if present in the layout.
  */
-public class BaseActivity extends AppCompatActivity {
+open class BaseActivity : AppCompatActivity() {
 
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-        setupToolbar();
+    override fun setContentView(layoutResID: Int) {
+        super.setContentView(layoutResID)
+        setupToolbar()
     }
 
     /**
      * Finds and sets the Toolbar as the support ActionBar if it is non-null. Returns the Toolbar.
      * @return The Toolbar view or null if not found.
      */
-    protected Toolbar setupToolbar() {
-        final Toolbar toolbar = findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-        }
-        return toolbar;
+    protected fun setupToolbar(): Toolbar? {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar?.let { setSupportActionBar(it) }
+        return toolbar
     }
 }

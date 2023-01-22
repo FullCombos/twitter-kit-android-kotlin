@@ -53,17 +53,6 @@ public class CommonUtils {
         }
     }
 
-    public static void closeQuietly(Closeable closeable) {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (RuntimeException rethrown) {
-                throw rethrown;
-            } catch (Exception ignored) {
-            }
-        }
-    }
-
     /**
      * Closes a {@link Closeable}, ignoring any {@link IOException}s raised in the process.
      * Does nothing if the {@link Closeable} is <code>null</code>.

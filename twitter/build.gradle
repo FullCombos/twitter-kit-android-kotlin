@@ -63,7 +63,7 @@ ext.projectDependencies = [
 ]
 
 dependencies {
-    implementation project(':twitter-core')
-    implementation project(':tweet-composer')
-    implementation project(':tweet-ui')
+    api project(':twitter-core')
+    api project(':tweet-composer')
+    api project(':tweet-ui')
 }

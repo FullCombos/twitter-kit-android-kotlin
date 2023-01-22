@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swipe_layout"
     android:layout_width="match_parent"
@@ -12,7 +12,7 @@
 
         <include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar"/>
+            layout="@layout/toolbar" />
 
         <ListView
             android:id="@id/android:list"
@@ -20,7 +20,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:divider="@color/divider_gray"
-            android:dividerHeight="@dimen/divider_height"/>
+            android:dividerHeight="@dimen/divider_height" />
 
         <ScrollView
             android:id="@id/android:empty"
@@ -30,11 +30,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/timeline_empty"
-                android:layout_gravity="center_horizontal|center_vertical"/>
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="@string/timeline_empty" />
 
         </ScrollView>
 
     </LinearLayout>
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

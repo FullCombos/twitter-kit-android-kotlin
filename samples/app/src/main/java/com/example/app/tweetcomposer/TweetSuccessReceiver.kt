@@ -14,19 +14,22 @@
  * limitations under the License.
  *
  */
+package com.example.app.tweetcomposer
 
-package com.example.app.tweetcomposer;
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.widget.Toast
+import com.twitter.sdk.android.tweetcomposer.TweetUploadService
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-
-public class TweetCancelReceiver extends BroadcastReceiver {
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Log.d("TweetCancelReceiver", "User cancelled compose tweet");
+class TweetSuccessReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        intent.extras?.apply {
+            val tweetId = getLong(TweetUploadService.EXTRA_TWEET_ID)
+            Toast.makeText(
+                context, "Success TweetId $tweetId",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }
-

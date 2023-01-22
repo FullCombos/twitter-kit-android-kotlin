@@ -18,36 +18,36 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="twitter_app_name"
-        tools:ignore="UnusedResources">Twitter Sample</string>
-    <string name="kit_twittercore">Twitter Core</string>
-    <string name="kit_tweetcomposer">Tweet Composer</string>
-    <string name="kit_tweetui">Tweet Ui</string>
+        tools:ignore="UnusedResources" translatable="false">Twitter Sample</string>
+    <string name="kit_twittercore" translatable="false">Twitter Core</string>
+    <string name="kit_tweetcomposer" translatable="false">Tweet Composer</string>
+    <string name="kit_tweetui" translatable="false">Tweet Ui</string>
 
     <!-- TweetComposer strings -->
-    <string name="twitter_composer">Twitter Composer</string>
-    <string name="twitter_kit_composer">TwitterKit Composer</string>
+    <string name="twitter_composer" translatable="false">Twitter Composer</string>
+    <string name="twitter_kit_composer" translatable="false">TwitterKit Composer</string>
 
     <!-- TweetUi strings -->
-    <string name="preview_tweet">Preview</string>
-    <string name="xml_tweets_activity">XML Tweets</string>
-    <string name="tweets_activity">Single Tweets</string>
-    <string name="unqiue_tweets">Unique Tweets</string>
-    <string name="button_timelines_activity">Timelines</string>
-    <string name="search_timeline_title">Search Timeline</string>
-    <string name="user_timeline_title">User Timeline</string>
-    <string name="user_recycler_view_timeline_title">User RecyclerView Timeline</string>
-    <string name="collection_timeline_title">Collection Timeline</string>
-    <string name="list_timeline_title">List Timeline</string>
-    <string name="fixed_timeline">Fixed Timeline</string>
-    <string name="rtl_timeline">RTL Timeline</string>
-    <string name="refresh_timeline">Refresh Timeline</string>
-    <string name="refresh_timeline_title">Search: #twitter</string>
-    <string name="button_show_light">Light</string>
-    <string name="button_show_dark">Dark</string>
-    <string name="selector_input_hint">Tweet id</string>
-    <string name="tweet_load_error">Failed to load Tweet</string>
-    <string name="multi_tweet_view_error">Failed to load tweets</string>
-    <string name="timeline_empty">No tweets :(</string>
-    <string name="tweet_pojo">Tweet Pojo</string>
+    <string name="preview_tweet" translatable="false">Preview</string>
+    <string name="xml_tweets_activity" translatable="false">XML Tweets</string>
+    <string name="tweets_activity" translatable="false">Single Tweets</string>
+    <string name="unqiue_tweets" translatable="false">Unique Tweets</string>
+    <string name="button_timelines_activity" translatable="false">Timelines</string>
+    <string name="search_timeline_title" translatable="false">Search Timeline</string>
+    <string name="user_timeline_title" translatable="false">User Timeline</string>
+    <string name="user_recycler_view_timeline_title" translatable="false">User RecyclerView Timeline</string>
+    <string name="collection_timeline_title" translatable="false">Collection Timeline</string>
+    <string name="list_timeline_title" translatable="false">List Timeline</string>
+    <string name="fixed_timeline" translatable="false">Fixed Timeline</string>
+    <string name="rtl_timeline" translatable="false">RTL Timeline</string>
+    <string name="refresh_timeline" translatable="false">Refresh Timeline</string>
+    <string name="refresh_timeline_title" translatable="false">Search: #twitter</string>
+    <string name="button_show_light" translatable="false">Light</string>
+    <string name="button_show_dark" translatable="false">Dark</string>
+    <string name="selector_input_hint" translatable="false">Tweet id</string>
+    <string name="tweet_load_error" translatable="false">Failed to load Tweet</string>
+    <string name="multi_tweet_view_error" translatable="false">Failed to load tweets</string>
+    <string name="timeline_empty" translatable="false">No tweets :(</string>
+    <string name="tweet_pojo" translatable="false">Tweet Pojo</string>
 
 </resources>

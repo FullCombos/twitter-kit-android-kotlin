@@ -66,14 +66,19 @@ android {
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation project(':twitter')
     implementation project(':twitter-mopub')
     implementation dependency.appCompat
-    implementation dependency.design
+    implementation dependency.material
     implementation dependency.okHttpInterceptor
+    implementation dependency.swipeRefreshLayout
 
     debugImplementation dependency.leakCanary
     releaseImplementation dependency.leakCanaryNoOp
