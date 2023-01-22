@@ -70,7 +70,7 @@ dependencies {
     api project(':twitter-core')
 
     implementation dependency.picasso
-    implementation dependency.supportCoreV4
-    implementation dependency.supportCompatV4
+    implementation dependency.legacyCoreUi
+    implementation dependency.core
     implementation dependency.recyclerview
 }
