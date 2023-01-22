@@ -17,6 +17,7 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -55,11 +56,17 @@ android {
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     api dependency.retrofit
-    implementation dependency.retrofitGsonConverter
     api dependency.gson
     api dependency.okHttp
+
+    implementation dependency.retrofitGsonConverter
+    implementation dependency.coreKt
 }

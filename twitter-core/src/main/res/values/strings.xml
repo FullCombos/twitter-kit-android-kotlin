@@ -19,5 +19,5 @@
 <resources>
     <!-- Button text to log in with Twitter -->
     <!--suppress MissingTranslation -->
-    <string name="tw__login_btn_txt">Log in with Twitter</string>
+    <string name="twitter_login_btn_txt">Log in with Twitter</string>
 </resources>

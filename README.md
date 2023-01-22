@@ -13,3 +13,5 @@ TODO:
 
 1. Remove picasso dependency
 2. Use JobIntentService for TweetUploadService
+3. Convert java to kotlin for tweet-ui
+4. Support registerForActivityResult

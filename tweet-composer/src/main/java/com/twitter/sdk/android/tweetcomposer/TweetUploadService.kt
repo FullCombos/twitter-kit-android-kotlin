@@ -85,7 +85,7 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
             .enqueue(object : Callback<Tweet>() {
 
                 override fun success(result: Result<Tweet>) {
-                    sendSuccessBroadcast(result.data.getId())
+                    sendSuccessBroadcast(result.data.id)
                     stopSelf()
                 }
 

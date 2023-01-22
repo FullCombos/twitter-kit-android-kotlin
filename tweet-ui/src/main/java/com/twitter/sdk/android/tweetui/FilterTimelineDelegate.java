@@ -29,7 +29,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Tweet;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 
 /**
  * FilterTimelineDelegate manages and filters timeline data items and loads items from a Timeline.
@@ -87,13 +87,13 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
         final DefaultCallback callback;
         final TimelineFilter timelineFilter;
         final Handler handler;
-        final ExecutorService executorService;
+        final Executor executor;
 
         TimelineFilterCallback(DefaultCallback callback, TimelineFilter timelineFilter) {
             this.callback = callback;
             this.timelineFilter = timelineFilter;
             this.handler = new Handler(Looper.getMainLooper());
-            this.executorService = Twitter.getInstance().getExecutorService();
+            this.executor = Twitter.getInstance().getExecutor();
         }
 
         @Override
@@ -106,7 +106,7 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
                 handler.post(() -> callback.success(new Result<>(filteredTimelineResult, result.response)));
             };
 
-            executorService.execute(timelineFilterRunnable);
+            executor.execute(timelineFilterRunnable);
         }
 
         @Override

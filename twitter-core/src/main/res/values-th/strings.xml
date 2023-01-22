@@ -18,5 +18,5 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__login_btn_txt">เข้าสู่ระบบด้วยทวิตเตอร์</string>
+    <string name="twitter_login_btn_txt">เข้าสู่ระบบด้วยทวิตเตอร์</string>
 </resources>

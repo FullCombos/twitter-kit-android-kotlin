@@ -51,7 +51,7 @@ import java.util.Date;
 import java.util.List;
 
 
-abstract class AbstractTweetView extends RelativeLayout{
+abstract class AbstractTweetView extends RelativeLayout {
     static final String TAG = TweetUi.LOGTAG;
     static final int DEFAULT_STYLE = R.style.tw__TweetLightStyle;
     static final String EMPTY_STRING = "";
@@ -98,15 +98,16 @@ abstract class AbstractTweetView extends RelativeLayout{
     /**
      * Performs inflation from XML and apply a class-specific base style with the given dependency
      * provider.
-     * @param context the context of the view
-     * @param attrs the attributes of the XML tag that is inflating the TweetView
-     * @param defStyle An attribute in the current theme that contains a reference to a style
-     *                 resource to apply to this view. If 0, no default style will be applied.
+     *
+     * @param context            the context of the view
+     * @param attrs              the attributes of the XML tag that is inflating the TweetView
+     * @param defStyle           An attribute in the current theme that contains a reference to a style
+     *                           resource to apply to this view. If 0, no default style will be applied.
      * @param dependencyProvider the dependency provider
      * @throws IllegalArgumentException if the Tweet id is invalid.
      */
     AbstractTweetView(Context context, AttributeSet attrs, int defStyle,
-                  DependencyProvider dependencyProvider) {
+                      DependencyProvider dependencyProvider) {
         super(context, attrs, defStyle);
 
         this.dependencyProvider = dependencyProvider;
@@ -116,6 +117,7 @@ abstract class AbstractTweetView extends RelativeLayout{
 
     /**
      * Inflate the TweetView using the layout that has been set.
+     *
      * @param context The Context the view is running in.
      */
     private void inflateView(Context context) {
@@ -124,6 +126,7 @@ abstract class AbstractTweetView extends RelativeLayout{
 
     /**
      * Checks whether the TweetUi kit is setup and the instance is available.
+     *
      * @return true if the instance is available and view creation can continue
      * or false otherwise
      */
@@ -167,13 +170,14 @@ abstract class AbstractTweetView extends RelativeLayout{
         if (tweet == null) {
             return INVALID_ID;
         }
-        return tweet.id;
+        return tweet.getId();
     }
 
     /**
      * Set the Tweet to be displayed and update the subviews. For any data that is missing from
      * the Tweet, invalidate the subview value (e.g. text views set to empty string) for view
      * recycling. Cannot be called before inflation has completed.
+     *
      * @param tweet Tweet data
      */
     public void setTweet(Tweet tweet) {
@@ -190,6 +194,7 @@ abstract class AbstractTweetView extends RelativeLayout{
 
     /**
      * Override the default action when media is clicked.
+     *
      * @param tweetMediaClickListener called when media is clicked.
      */
     public void setTweetMediaClickListener(TweetMediaClickListener tweetMediaClickListener) {
@@ -199,6 +204,7 @@ abstract class AbstractTweetView extends RelativeLayout{
 
     /**
      * Override the default action when any link or entity is clicked.
+     *
      * @param tweetLinkClickListener called when any link or entity is clicked.
      */
     public void setTweetLinkClickListener(TweetLinkClickListener tweetLinkClickListener) {
