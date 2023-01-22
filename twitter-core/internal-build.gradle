@@ -78,18 +78,6 @@ dependencies {
     implementation dependency.retrofitGsonConverter
     api dependency.gson
     api dependency.okHttp
-
-    androidTestCompile dependency.mockito
-    androidTestCompile dependency.dexmakerMockito
-
-    testCompile dependency.mockito
-    testCompile dependency.junit
-    testCompile dependency.retrofitMock
-    testCompile(dependency.robolectric) {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
-    testCompile dependency.equalsVerifier
 }
 
 apply from: rootProject.deployScript

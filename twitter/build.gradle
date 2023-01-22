@@ -62,14 +62,7 @@ ext.projectDependencies = [
 ]
 
 dependencies {
-    compile project(':twitter-core')
-    compile project(':tweet-composer')
-    compile project(':tweet-ui')
-
-    testCompile dependency.mockito
-    testCompile dependency.junit
-    testCompile(dependency.robolectric) {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
+    implementation project(':twitter-core')
+    implementation project(':tweet-composer')
+    implementation project(':tweet-ui')
 }

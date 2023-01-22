@@ -71,11 +71,4 @@ dependencies {
     api (dependency.mopub) {
         transitive = true
     }
-
-    testCompile dependency.mockito
-    testCompile dependency.junit
-    testCompile(dependency.robolectric) {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
 }

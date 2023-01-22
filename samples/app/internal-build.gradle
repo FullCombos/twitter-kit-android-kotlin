@@ -85,8 +85,4 @@ dependencies {
 
     debugImplementation dependency.leakCanary
     releaseImplementation dependency.leakCanaryNoOp
-
-    androidTestCompile dependency.spoon
-    androidTestCompile dependency.espresso
-    androidTestCompile dependency.androidTestingSupport
 }
