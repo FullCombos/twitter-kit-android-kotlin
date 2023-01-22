@@ -59,6 +59,10 @@ android {
         unitTests.returnDefaultValues = true
         unitTests.includeAndroidResources true
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -66,4 +70,5 @@ dependencies {
 
     implementation dependency.picasso
     implementation dependency.tweetText
+    implementation dependency.coreKt
 }

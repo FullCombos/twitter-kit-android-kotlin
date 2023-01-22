@@ -25,7 +25,7 @@ ext {
 
             // Other
             picasso              : 'com.squareup.picasso:picasso:2.5.2',
-            core                 : 'androidx.core:core:1.9.0',
+            coreKt               : 'androidx.core:core-ktx:1.8.0',
             legacyCoreUi         : 'androidx.legacy:legacy-support-core-ui:1.0.0',
             retrofit             : 'com.squareup.retrofit2:retrofit:2.9.0',
             retrofitMock         : 'com.squareup.retrofit2:retrofit-mock:2.9.0',

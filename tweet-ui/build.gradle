@@ -72,6 +72,6 @@ dependencies {
 
     implementation dependency.picasso
     implementation dependency.legacyCoreUi
-    implementation dependency.core
+    implementation dependency.coreKt
     implementation dependency.recyclerview
 }

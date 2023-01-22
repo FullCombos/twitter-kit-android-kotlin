@@ -19,26 +19,26 @@
     <item android:state_pressed="true"
           android:state_enabled="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/tw__composer_blue_text" />
-            <corners android:radius="@dimen/tw__composer_tweet_btn_radius" />
-            <padding android:left="@dimen/tw__composer_spacing_medium"
-                     android:right="@dimen/tw__composer_spacing_medium" />
+            <solid android:color="@color/twitter_composer_blue_text" />
+            <corners android:radius="@dimen/twitter_composer_tweet_btn_radius" />
+            <padding android:left="@dimen/twitter_composer_spacing_medium"
+                     android:right="@dimen/twitter_composer_spacing_medium" />
         </shape>
     </item>
     <item android:state_enabled="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/tw__composer_blue" />
-            <corners android:radius="@dimen/tw__composer_tweet_btn_radius" />
-            <padding android:left="@dimen/tw__composer_spacing_medium"
-                     android:right="@dimen/tw__composer_spacing_medium" />
+            <solid android:color="@color/twitter_composer_blue" />
+            <corners android:radius="@dimen/twitter_composer_tweet_btn_radius" />
+            <padding android:left="@dimen/twitter_composer_spacing_medium"
+                     android:right="@dimen/twitter_composer_spacing_medium" />
         </shape>
     </item>
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <solid android:color="@color/tw__composer_light_gray" />
-            <corners android:radius="@dimen/tw__composer_tweet_btn_radius" />
-            <padding android:left="@dimen/tw__composer_spacing_medium"
-                     android:right="@dimen/tw__composer_spacing_medium" />
+            <solid android:color="@color/twitter_composer_light_gray" />
+            <corners android:radius="@dimen/twitter_composer_tweet_btn_radius" />
+            <padding android:left="@dimen/twitter_composer_spacing_medium"
+                     android:right="@dimen/twitter_composer_spacing_medium" />
         </shape>
     </item>
 </selector>

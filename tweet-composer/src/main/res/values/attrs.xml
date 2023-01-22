@@ -16,5 +16,5 @@
   -->
 
 <resources>
-    <attr name="tw__twitter_logo" format="reference"/>
+    <attr name="twitter_logo" format="reference"/>
 </resources>

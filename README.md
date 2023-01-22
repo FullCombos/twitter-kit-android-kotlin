@@ -8,3 +8,8 @@ And:
 4. Migrate deprecated android api
 5. Improve system compatibility
 6. Add video upload function
+
+TODO:
+
+1. Remove picasso dependency
+2. Use JobIntentService for TweetUploadService

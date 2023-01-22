@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <string name="tw__composer_hint">What\'s Happening?</string>
-    <string name="tw__post_tweet">Tweet</string>
-    <string name="tw__max_tweet_chars">140</string>
+    <string name="twitter_composer_hint">What\'s Happening?</string>
+    <string name="twitter_post_tweet">Tweet</string>
+    <string name="twitter_max_tweet_chars">140</string>
 </resources>

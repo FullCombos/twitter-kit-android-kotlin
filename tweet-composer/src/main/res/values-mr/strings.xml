@@ -18,7 +18,7 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__composer_hint">काय चालू आहे?</string>
-    <string name="tw__max_tweet_chars">140</string>
-    <string name="tw__post_tweet">ट्विट</string>
+    <string name="twitter_composer_hint">काय चालू आहे?</string>
+    <string name="twitter_max_tweet_chars">140</string>
+    <string name="twitter_post_tweet">ट्विट</string>
 </resources>

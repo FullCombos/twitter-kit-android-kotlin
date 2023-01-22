@@ -18,7 +18,7 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__composer_hint">[[141545]] What\'s Happening?</string>
-    <string name="tw__max_tweet_chars">[[141547]] 140</string>
-    <string name="tw__post_tweet">[[141546]] Tweet</string>
+    <string name="twitter_composer_hint">[[141545]] What\'s Happening?</string>
+    <string name="twitter_max_tweet_chars">[[141547]] 140</string>
+    <string name="twitter_post_tweet">[[141546]] Tweet</string>
 </resources>

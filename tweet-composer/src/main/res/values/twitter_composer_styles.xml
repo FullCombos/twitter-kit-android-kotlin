@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 Twitter, Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="NewApi">
+
+    <style name="twitter_ComposerClose">
+        <item name="android:layout_width">@dimen/twitter_composer_close_size</item>
+        <item name="android:layout_height">@dimen/twitter_composer_close_size</item>
+        <item name="android:padding">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:src">@drawable/twitter_composer_close</item>
+        <item name="android:background">@null</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="twitter_ComposerAvatar">
+        <item name="android:layout_width">@dimen/twitter_composer_avatar_size</item>
+        <item name="android:layout_height">@dimen/twitter_composer_avatar_size</item>
+        <item name="android:layout_marginRight">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:layout_marginTop">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:layout_marginBottom">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:background">@color/twitter_composer_light_gray</item>
+    </style>
+
+    <style name="twitter_EditTweet">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/twitter_composer_spacing_small</item>
+        <item name="android:layout_marginBottom">@dimen/twitter_composer_spacing_small</item>
+        <item name="android:paddingLeft">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:paddingRight">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:textColor">?android:attr/textColor</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:hint">@string/twitter_composer_hint</item>
+        <item name="android:textColorHint">?android:attr/textColorHint</item>
+        <item name="android:imeOptions">actionSend</item>
+        <item name="android:imeActionLabel">@string/twitter_post_tweet</item>
+    </style>
+
+    <style name="twitter_ComposerDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/twitter_composer_divider_height</item>
+        <item name="android:background">@color/twitter_composer_light_gray</item>
+    </style>
+
+    <style name="twitter_ComposerToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/twitter_composer_spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/twitter_composer_spacing_medium</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="twitter_ComposerCharCount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/twitter_composer_char_count_height</item>
+        <item name="android:layout_marginRight">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/twitter_composer_deep_gray</item>
+        <item name="android:text">@string/twitter_max_tweet_chars</item>
+        <item name="android:textSize">@dimen/twitter_composer_font_size_small</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="twitter_ComposerTweetButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/twitter_composer_tweet_btn_height</item>
+        <item name="android:layout_marginRight">@dimen/twitter_composer_spacing_large</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/twitter_composer_white</item>
+        <item name="android:background">@drawable/twitter_btn_composer_tweet</item>
+        <item name="android:text">@string/twitter_post_tweet</item>
+        <item name="android:textSize">@dimen/twitter_composer_font_size_small</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="twitter_ComposerCharCountOverflow" parent="twitter_ComposerCharCount">
+        <item name="android:textColor">@color/twitter_composer_red</item>
+    </style>
+
+</resources>
