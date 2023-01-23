@@ -65,11 +65,17 @@ android {
         unitTests.returnDefaultValues = true
         unitTests.includeAndroidResources true
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
-    api (dependency.mopub) {
+    implementation dependency.coreKt
+
+    api(dependency.mopub) {
         transitive = true
     }
 }

@@ -16,6 +16,6 @@
   -->
 
 <resources>
-  <string name="tw__sponsored">This is a sponsored ad</string>
-  <string name="tw__privacy_icon_content_desc">Privacy Icon</string>
+  <string name="twitter_sponsored">This is a sponsored ad</string>
+  <string name="twitter_privacy_icon_content_desc">Privacy Icon</string>
 </resources>

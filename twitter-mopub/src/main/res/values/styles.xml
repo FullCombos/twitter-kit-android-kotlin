@@ -17,19 +17,36 @@
   -->
 
 <resources>
-    <style name="tw_ad_BaseStyle">
-        <item name="tw__ad_cta_button_color">@color/tw__ad_cta_default</item>
+    <style name="twitter_ad_BaseStyle">
+        <item name="twitter_ad_cta_button_color">@color/twitter_ad_cta_default</item>
     </style>
 
-    <style name="tw__ad_LightStyle" parent="tw_ad_BaseStyle">
-        <item name="tw__ad_container_bg_color">@color/tw__ad_light_container_bg_color</item>
-        <item name="tw__ad_card_bg_color">@color/tw__ad_light_card_bg_color</item>
-        <item name="tw__ad_text_primary_color">@color/tw__ad_light_text_primary_color</item>
+    <style name="twitter_ad_LightStyle" parent="twitter_ad_BaseStyle">
+        <item name="twitter_ad_container_bg_color">@color/twitter_ad_light_container_bg_color</item>
+        <item name="twitter_ad_card_bg_color">@color/twitter_ad_light_card_bg_color</item>
+        <item name="twitter_ad_text_primary_color">@color/twitter_ad_light_text_primary_color</item>
     </style>
 
-    <style name="tw__ad_DarkStyle" parent="tw_ad_BaseStyle">
-        <item name="tw__ad_container_bg_color">@color/tw__ad_dark_container_bg_color</item>
-        <item name="tw__ad_card_bg_color">@color/tw__ad_dark_card_bg_color</item>
-        <item name="tw__ad_text_primary_color">@color/tw__ad_dark_text_primary_color</item>
+    <style name="twitter_ad_DarkStyle" parent="twitter_ad_BaseStyle">
+        <item name="twitter_ad_container_bg_color">@color/twitter_ad_dark_container_bg_color</item>
+        <item name="twitter_ad_card_bg_color">@color/twitter_ad_dark_card_bg_color</item>
+        <item name="twitter_ad_text_primary_color">@color/twitter_ad_dark_text_primary_color</item>
+    </style>
+
+    <style name="twitter_ad_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/twitter_ad_layout_padding</item>
+        <item name="android:paddingLeft">@dimen/twitter_ad_layout_padding</item>
+        <item name="android:paddingRight">@dimen/twitter_ad_layout_padding</item>
+        <item name="android:paddingBottom">@dimen/twitter_ad_layout_padding_bottom</item>
+    </style>
+
+    <style name="twitter_ad_cta_button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/twitter_ad_text_size_medium</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

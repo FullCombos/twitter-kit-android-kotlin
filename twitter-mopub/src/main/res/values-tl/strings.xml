@@ -18,6 +18,6 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__privacy_icon_content_desc">Icon ng Pagkapribado</string>
-    <string name="tw__sponsored">Ito ay isang sponsored ad</string>
+    <string name="twitter_privacy_icon_content_desc">Icon ng Pagkapribado</string>
+    <string name="twitter_sponsored">Ito ay isang sponsored ad</string>
 </resources>

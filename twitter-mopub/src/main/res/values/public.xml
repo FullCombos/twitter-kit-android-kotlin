@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--suppress UnusedResources -->
-    <public type="style" name="tw__ad_LightStyle"/>
+    <public name="twitter_ad_LightStyle" type="style" />
     <!--suppress UnusedResources -->
-    <public type="style" name="tw__ad_DarkStyle"/>
+    <public name="twitter_ad_DarkStyle" type="style" />
 </resources>

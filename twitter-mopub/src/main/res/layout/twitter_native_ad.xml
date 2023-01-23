@@ -15,88 +15,95 @@
   ~
   -->
 
-<LinearLayout
-    android:id="@+id/tw__ad_mopub_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/tw__ad_container">
+    android:id="@+id/twitter_ad_mopub_layout"
+    style="@style/twitter_ad_container">
 
     <com.twitter.sdk.android.mopub.internal.RoundedImageView
         android:id="@+id/native_ad_main_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:id="@+id/native_ad_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/tw__ad_space_padding">
+        android:padding="@dimen/twitter_ad_space_padding">
 
         <ImageView
             android:id="@+id/native_ad_icon_image"
-            android:layout_width="@dimen/tw__ad_icon_size"
-            android:layout_height="@dimen/tw__ad_icon_size"
+            android:layout_width="@dimen/twitter_ad_icon_size"
+            android:layout_height="@dimen/twitter_ad_icon_size"
+            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/tw__ad_icon_margin_left"
-            android:layout_marginRight="@dimen/tw__ad_icon_margin_right"
-            tools:ignore="ContentDescription"/>
+            android:layout_marginStart="@dimen/twitter_ad_icon_margin_left"
+            android:layout_marginLeft="@dimen/twitter_ad_icon_margin_left"
+            android:layout_marginEnd="@dimen/twitter_ad_icon_margin_right"
+            android:layout_marginRight="@dimen/twitter_ad_icon_margin_right"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/native_ad_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twitter_ad_title_margin_left"
+            android:layout_marginLeft="@dimen/twitter_ad_title_margin_left"
+            android:layout_toEndOf="@id/native_ad_icon_image"
             android:layout_toRightOf="@id/native_ad_icon_image"
-            android:layout_marginLeft="@dimen/tw__ad_title_margin_left"
             android:focusable="false"
-            android:textColor="@color/tw__ad_light_text_primary_color"
-            android:textSize="@dimen/tw__ad_text_size_large"
+            android:textColor="@color/twitter_ad_light_text_primary_color"
+            android:textSize="@dimen/twitter_ad_text_size_large"
             android:textStyle="bold"
-            tools:text="MoPub Native Ad"/>
+            tools:text="MoPub Native Ad" />
 
         <TextView
             android:id="@+id/native_ad_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/native_ad_title"
+            android:layout_alignStart="@id/native_ad_title"
             android:layout_alignLeft="@id/native_ad_title"
-            android:textColor="@color/tw__ad_light_text_primary_color"
-            android:textSize="@dimen/tw__ad_text_size_medium"
+            android:textColor="@color/twitter_ad_light_text_primary_color"
+            android:textSize="@dimen/twitter_ad_text_size_medium"
             tools:text="Welcome to Native MoPub Ads. Native ads blend seamlessly into your
-            content."/>
+            content." />
     </RelativeLayout>
 
     <Button
         android:id="@+id/native_ad_cta"
-        android:textAllCaps="false"
+        style="@style/twitter_ad_cta_button"
         android:stateListAnimator="@null"
-        tools:text="Buy now"
+        android:textAllCaps="false"
         tools:ignore="UnusedAttribute"
-        style="@style/tw__ad_cta_button"/>
+        tools:text="Buy now" />
 
     <RelativeLayout
         android:id="@+id/native_ad_privacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/tw__ad_privacy_margin_left">
+        android:layout_marginStart="@dimen/twitter_ad_privacy_margin_left"
+        android:layout_marginLeft="@dimen/twitter_ad_privacy_margin_left">
 
         <ImageView
             android:id="@+id/native_ad_privacy_info_icon_image"
-            android:layout_width="@dimen/tw__ad_privacy_icon_size"
-            android:layout_height="@dimen/tw__ad_privacy_icon_size"
+            android:layout_width="@dimen/twitter_ad_privacy_icon_size"
+            android:layout_height="@dimen/twitter_ad_privacy_icon_size"
             android:background="@null"
-            android:padding="@dimen/tw__ad_privacy_icon_padding"
-            android:contentDescription="@string/tw__privacy_icon_content_desc"/>
+            android:contentDescription="@string/twitter_privacy_icon_content_desc"
+            android:padding="@dimen/twitter_ad_privacy_icon_padding" />
 
         <TextView
             android:id="@+id/native_ad_privacy_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/twitter_ad_privacy_text_margin_left"
+            android:layout_marginLeft="@dimen/twitter_ad_privacy_text_margin_left"
             android:layout_toEndOf="@id/native_ad_privacy_info_icon_image"
-            android:layout_marginLeft="@dimen/tw__ad_privacy_text_margin_left"
-            android:text="@string/tw__sponsored"
-            android:textSize="@dimen/tw__ad_text_size_small"/>
+            android:text="@string/twitter_sponsored"
+            android:textSize="@dimen/twitter_ad_text_size_small" />
     </RelativeLayout>
 </LinearLayout>

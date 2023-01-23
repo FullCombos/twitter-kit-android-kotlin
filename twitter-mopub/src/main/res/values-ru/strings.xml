@@ -18,6 +18,6 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__privacy_icon_content_desc">Значок конфиденциальности</string>
-    <string name="tw__sponsored">Это рекламное объявление</string>
+    <string name="twitter_privacy_icon_content_desc">Значок конфиденциальности</string>
+    <string name="twitter_sponsored">Это рекламное объявление</string>
 </resources>

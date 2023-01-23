@@ -18,6 +18,6 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__privacy_icon_content_desc">ಗೌಪ್ಯತೆ ಐಕಾನ್</string>
-    <string name="tw__sponsored">ಇಉ ಒಂದು ಪ್ರಾಯೋಜಿತ ಜಾಹೀರಾತು</string>
+    <string name="twitter_privacy_icon_content_desc">ಗೌಪ್ಯತೆ ಐಕಾನ್</string>
+    <string name="twitter_sponsored">ಇಉ ಒಂದು ಪ್ರಾಯೋಜಿತ ಜಾಹೀರಾತು</string>
 </resources>

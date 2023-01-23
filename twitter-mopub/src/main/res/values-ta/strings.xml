@@ -18,6 +18,6 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__privacy_icon_content_desc">தனியுரிமைப் படவுரு</string>
-    <string name="tw__sponsored">இது ஸ்பான்சர் செய்யப்பட்ட விளம்பரம்</string>
+    <string name="twitter_privacy_icon_content_desc">தனியுரிமைப் படவுரு</string>
+    <string name="twitter_sponsored">இது ஸ்பான்சர் செய்யப்பட்ட விளம்பரம்</string>
 </resources>
