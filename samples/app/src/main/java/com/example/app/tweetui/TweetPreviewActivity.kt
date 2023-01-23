@@ -51,7 +51,7 @@ class TweetPreviewActivity : TweetUiActivity() {
      * Fragment showing a Tweet id input field, light/dark buttons, and a scrollable region which
      * renders light/dark previews of the requested Tweet for quick manual validation.
      */
-    private class TweetPreviewFragment : Fragment() {
+    class TweetPreviewFragment : Fragment() {
 
         private var _binding: TweetuiFragmentTweetPreviewBinding? = null
         private val binding get() = _binding!!
@@ -66,7 +66,7 @@ class TweetPreviewActivity : TweetUiActivity() {
             val tweetRegion = binding.tweetRegion
             val selectorInput = binding.selectorInputTweetId
             binding.buttonShowLight.setOnClickListener {
-                val tweetId = selectorInput.text.toString().toLong()
+                val tweetId = selectorInput.text.toString()
                 tweetRegion.removeAllViews()
                 loadTweet(
                     tweetId,
@@ -75,7 +75,7 @@ class TweetPreviewActivity : TweetUiActivity() {
                 )
             }
             binding.buttonShowDark.setOnClickListener {
-                val tweetId = selectorInput.text.toString().toLong()
+                val tweetId = selectorInput.text.toString()
                 tweetRegion.removeAllViews()
                 loadTweet(
                     tweetId,
@@ -95,7 +95,7 @@ class TweetPreviewActivity : TweetUiActivity() {
          * loadTweet wraps TweetUtils.loadTweet with a callback that ensures a compact and default
          * view with the correct style and spacing are inserted.
          */
-        private fun loadTweet(tweetId: Long, container: ViewGroup, style: Int) {
+        private fun loadTweet(tweetIdStr: String, container: ViewGroup, style: Int) {
             val singleTweetCallback: Callback<Tweet> = object : Callback<Tweet>() {
 
                 override fun success(result: Result<Tweet>) {
@@ -117,13 +117,17 @@ class TweetPreviewActivity : TweetUiActivity() {
                 override fun failure(exception: TwitterException) {
                     val activity = activity
                     if (activity != null && !activity.isFinishing) {
-                        Toast.makeText(
-                            activity, R.string.tweet_load_error,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(activity, R.string.tweet_load_error, Toast.LENGTH_SHORT)
+                            .show()
                     }
                     Log.e(TAG, "loadTweet failure", exception)
                 }
+            }
+
+            val tweetId = if (tweetIdStr.isEmpty()) {
+                0
+            } else {
+                tweetIdStr.toLong()
             }
             TweetUtils.loadTweet(tweetId, singleTweetCallback)
         }

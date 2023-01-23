@@ -29,7 +29,7 @@ abstract class AuthToken protected constructor(
      * time may be 0 if the token is deserialized from data missing the field.
      */
     @SerializedName("created_at")
-    open val createdAt: Long
+    val createdAt: Long
 ) {
     /**
      * Determines whether a token is known to have expired.

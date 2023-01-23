@@ -109,10 +109,7 @@ class TimelineActivity : BaseActivity() {
                         isRefreshing = false
                         val activity: Activity? = activityRef.get()
                         if (activity != null && !activity.isFinishing) {
-                            Toast.makeText(
-                                activity, exception.message,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(activity, exception.message, Toast.LENGTH_SHORT).show()
                         }
                     }
                 })

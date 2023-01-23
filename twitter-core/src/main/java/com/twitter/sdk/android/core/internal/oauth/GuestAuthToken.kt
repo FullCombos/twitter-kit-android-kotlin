@@ -23,16 +23,17 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class GuestAuthToken(
-    override val tokenType: String,
 
-    override val accessToken: String,
+    val _tokenType: String,
+
+    val _accessToken: String,
 
     @SerializedName("guest_token")
     val guestToken: String,
 
-    override val createdAt: Long = System.currentTimeMillis()
+    override val _createdAt: Long = System.currentTimeMillis()
 
-) : OAuth2Token(tokenType, accessToken, createdAt) {
+) : OAuth2Token(_tokenType, _accessToken, _createdAt) {
 
     companion object {
         /*

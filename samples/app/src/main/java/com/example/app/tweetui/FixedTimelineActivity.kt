@@ -79,7 +79,8 @@ class FixedTimelineActivity : TweetUiActivity() {
                     val activity = activity
                     if (activity != null && !activity.isFinishing) {
                         Toast.makeText(
-                            activity, R.string.multi_tweet_view_error,
+                            activity,
+                            R.string.multi_tweet_view_error,
                             Toast.LENGTH_SHORT
                         ).show()
                     }

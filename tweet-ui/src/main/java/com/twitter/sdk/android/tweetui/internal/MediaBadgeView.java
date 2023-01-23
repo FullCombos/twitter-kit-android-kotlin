@@ -54,8 +54,8 @@ public class MediaBadgeView extends FrameLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = inflater.inflate(R.layout.twitter_media_badge, this, true);
 
-        videoDuration = view.findViewById(R.id.tw__video_duration);
-        badge = view.findViewById(R.id.tw__gif_badge);
+        videoDuration = view.findViewById(R.id.twitter_video_duration);
+        badge = view.findViewById(R.id.twitter_gif_badge);
     }
 
     public void setMediaEntity(MediaEntity entity) {

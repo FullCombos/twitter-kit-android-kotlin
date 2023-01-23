@@ -87,10 +87,10 @@ public class VideoControlView extends FrameLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.twitter_video_control, this);
 
-        stateControl = findViewById(R.id.tw__state_control);
-        currentTime = findViewById(R.id.tw__current_time);
-        duration = findViewById(R.id.tw__duration);
-        seekBar = findViewById(R.id.tw__progress);
+        stateControl = findViewById(R.id.twitter_state_control);
+        currentTime = findViewById(R.id.twitter_current_time);
+        duration = findViewById(R.id.twitter_duration);
+        seekBar = findViewById(R.id.twitter_progress);
 
         seekBar.setMax((int) PROGRESS_BAR_TICKS);
         seekBar.setOnSeekBarChangeListener(createProgressChangeListener());

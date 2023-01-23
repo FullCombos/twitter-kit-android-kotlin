@@ -21,7 +21,7 @@
     tools:parentTag="RelativeLayout">
 
     <com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout
-        android:id="@+id/tw__aspect_ratio_media_container"
+        android:id="@+id/twitter_aspect_ratio_media_container"
         style="@style/twitter_TweetMediaContainer">
 
         <com.twitter.sdk.android.tweetui.internal.TweetMediaView
@@ -29,64 +29,64 @@
             style="@style/twitter_TweetMedia" />
 
         <com.twitter.sdk.android.tweetui.internal.MediaBadgeView
-            android:id="@+id/tw__tweet_media_badge"
+            android:id="@+id/twitter_tweet_media_badge"
             style="@style/twitter_TweetBadge" />
     </com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout>
 
     <TextView
-        android:id="@+id/tw__tweet_retweeted_by"
+        android:id="@+id/twitter_tweet_retweeted_by"
         style="@style/twitter_TweetRetweetedBy"
-        android:layout_below="@id/tw__aspect_ratio_media_container"
+        android:layout_below="@id/twitter_aspect_ratio_media_container"
         tools:text="Retweeted by Jack"
         tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/tw__tweet_author_avatar"
+        android:id="@+id/twitter_tweet_author_avatar"
         style="@style/twitter_TweetAvatar"
-        android:layout_below="@id/tw__tweet_retweeted_by"
+        android:layout_below="@id/twitter_tweet_retweeted_by"
         tools:ignore="ContentDescription"
         tools:src="#CCCCCC" />
 
     <TextView
-        android:id="@+id/tw__tweet_author_full_name"
+        android:id="@+id/twitter_tweet_author_full_name"
         style="@style/twitter_TweetFullName"
-        android:layout_below="@id/tw__tweet_retweeted_by"
-        android:layout_toEndOf="@id/tw__tweet_author_avatar"
-        android:layout_toRightOf="@id/tw__tweet_author_avatar"
+        android:layout_below="@id/twitter_tweet_retweeted_by"
+        android:layout_toEndOf="@id/twitter_tweet_author_avatar"
+        android:layout_toRightOf="@id/twitter_tweet_author_avatar"
         tools:drawableEnd="@drawable/twitter_ic_tweet_verified"
         tools:drawableRight="@drawable/twitter_ic_tweet_verified"
         tools:text="Jack" />
 
     <ImageView
-        android:id="@+id/tw__twitter_logo"
+        android:id="@+id/twitter_twitter_logo"
         style="@style/twitter_TwitterLogo"
-        android:layout_below="@id/tw__tweet_retweeted_by"
+        android:layout_below="@id/twitter_tweet_retweeted_by"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/tw__tweet_author_screen_name"
+        android:id="@+id/twitter_tweet_author_screen_name"
         style="@style/twitter_TweetScreenName"
-        android:layout_below="@id/tw__tweet_author_full_name"
-        android:layout_alignBottom="@id/tw__tweet_author_avatar"
-        android:layout_toEndOf="@id/tw__tweet_author_avatar"
-        android:layout_toRightOf="@id/tw__tweet_author_avatar"
+        android:layout_below="@id/twitter_tweet_author_full_name"
+        android:layout_alignBottom="@id/twitter_tweet_author_avatar"
+        android:layout_toEndOf="@id/twitter_tweet_author_avatar"
+        android:layout_toRightOf="@id/twitter_tweet_author_avatar"
         tools:text="\@jack" />
 
     <TextView
-        android:id="@+id/tw__tweet_timestamp"
+        android:id="@+id/twitter_tweet_timestamp"
         style="@style/twitter_TweetTimestamp"
-        android:layout_below="@id/tw__tweet_author_full_name"
-        android:layout_alignBottom="@id/tw__tweet_author_screen_name"
-        android:layout_toEndOf="@id/tw__tweet_author_screen_name"
-        android:layout_toRightOf="@id/tw__tweet_author_screen_name"
+        android:layout_below="@id/twitter_tweet_author_full_name"
+        android:layout_alignBottom="@id/twitter_tweet_author_screen_name"
+        android:layout_toEndOf="@id/twitter_tweet_author_screen_name"
+        android:layout_toRightOf="@id/twitter_tweet_author_screen_name"
         tools:text="• 03/21/2006" />
 
     <TextView
-        android:id="@+id/tw__tweet_text"
+        android:id="@+id/twitter_tweet_text"
         style="@style/twitter_TweetText"
-        android:layout_below="@id/tw__tweet_author_avatar"
+        android:layout_below="@id/twitter_tweet_author_avatar"
         android:visibility="gone"
         tools:text="just setting up my twttr"
         tools:visibility="visible" />
@@ -94,7 +94,7 @@
     <FrameLayout
         android:id="@+id/quote_tweet_holder"
         style="@style/twitter_QuoteTweetContainer"
-        android:layout_below="@id/tw__tweet_text" />
+        android:layout_below="@id/twitter_tweet_text" />
 
     <include
         style="@style/twitter_TweetActionButtonBar"

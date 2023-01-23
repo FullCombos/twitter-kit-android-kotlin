@@ -32,14 +32,14 @@ import com.twitter.sdk.android.core.internal.persistence.SerializationStrategy
  */
 data class TwitterSession(
 
-    override val authToken: TwitterAuthToken,
+    val _authToken: TwitterAuthToken,
 
     val userId: Long,
 
     @SerializedName("user_name")
     val userName: String
 
-) : Session<TwitterAuthToken>(authToken, userId) {
+) : Session<TwitterAuthToken>(_authToken, userId) {
 
     internal class Serializer : SerializationStrategy<TwitterSession> {
 

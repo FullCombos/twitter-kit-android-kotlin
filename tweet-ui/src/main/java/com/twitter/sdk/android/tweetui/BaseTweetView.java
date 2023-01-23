@@ -291,11 +291,11 @@ public abstract class BaseTweetView extends AbstractTweetView {
     void findSubviews() {
         super.findSubviews();
 
-        avatarView = findViewById(R.id.tw__tweet_author_avatar);
-        timestampView = findViewById(R.id.tw__tweet_timestamp);
-        twitterLogoView = findViewById(R.id.tw__twitter_logo);
-        retweetedByView = findViewById(R.id.tw__tweet_retweeted_by);
-        tweetActionBarView = findViewById(R.id.tw__tweet_action_bar);
+        avatarView = findViewById(R.id.twitter_tweet_author_avatar);
+        timestampView = findViewById(R.id.twitter_tweet_timestamp);
+        twitterLogoView = findViewById(R.id.twitter_twitter_logo);
+        retweetedByView = findViewById(R.id.twitter_tweet_retweeted_by);
+        tweetActionBarView = findViewById(R.id.twitter_tweet_action_bar);
         quoteTweetHolder = findViewById(R.id.quote_tweet_holder);
         bottomSeparator = findViewById(R.id.bottom_separator);
     }

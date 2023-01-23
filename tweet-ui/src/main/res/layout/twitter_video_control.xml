@@ -15,54 +15,53 @@
   ~
   -->
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/tw__video_control_height">
 
     <ImageButton
-        android:id="@+id/tw__state_control"
+        android:id="@+id/twitter_state_control"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:background="@null"
+        android:contentDescription="@string/twitter_pause"
         android:paddingTop="4dp"
-        android:src="@drawable/twitter_video_pause_btn"
-        android:contentDescription="@string/twitter_pause"/>
+        android:src="@drawable/twitter_video_pause_btn" />
 
     <TextView
-        android:id="@+id/tw__current_time"
+        android:id="@+id/twitter_current_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/tw__state_control"
+        android:layout_toRightOf="@id/twitter_state_control"
         android:textColor="@android:color/white"
         android:textSize="@dimen/tw__video_control_text_size"
-        tools:text="0:01"/>
+        tools:text="0:01" />
 
     <SeekBar
-        tools:ignore="UnusedAttribute"
-        android:id="@+id/tw__progress"
+        android:id="@+id/twitter_progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/tw__duration"
-        android:layout_toRightOf="@+id/tw__current_time"
+        android:layout_toLeftOf="@+id/twitter_duration"
+        android:layout_toRightOf="@+id/twitter_current_time"
         android:background="@null"
-        android:splitTrack="false"
         android:progressDrawable="@drawable/twitter_video_seekbar"
-        android:thumb="@drawable/twitter_seekbar_thumb"/>
+        android:splitTrack="false"
+        android:thumb="@drawable/twitter_seekbar_thumb"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
-        android:id="@+id/tw__duration"
+        android:id="@+id/twitter_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
         android:textColor="@android:color/white"
         android:textSize="@dimen/tw__video_control_text_size"
-        android:layout_marginRight="10dp"
-        tools:text="1:00"/>
+        tools:text="1:00" />
 </RelativeLayout>

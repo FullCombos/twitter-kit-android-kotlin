@@ -16,9 +16,10 @@
  */
 package com.twitter.sdk.android.core.identity
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.*
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.Signature
 import android.os.Build
@@ -135,37 +136,43 @@ internal class SSOAuthHandler(
             return true
         }
 
+        @Suppress("DEPRECATION")
         private fun getSignatures(
             context: Context,
             packageName: String
         ): Array<Signature>? {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                val packageInfo = context.packageManager?.getPackageInfo(
-                    packageName,
-                    PackageManager.GET_SIGNING_CERTIFICATES
-                )
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
 
-                if (packageInfo?.signingInfo == null) {
-                    return null
-                }
+                    val packageInfo = context.packageManager?.getPackageInfo(
+                        packageName,
+                        PackageManager.GET_SIGNING_CERTIFICATES
+                    )
 
-                return if (packageInfo.signingInfo.hasMultipleSigners()) {
-                    packageInfo.signingInfo.apkContentsSigners
+
+                    if (packageInfo?.signingInfo == null) {
+                        return null
+                    }
+
+                    return if (packageInfo.signingInfo.hasMultipleSigners()) {
+                        packageInfo.signingInfo.apkContentsSigners
+                    } else {
+                        packageInfo.signingInfo.signingCertificateHistory
+                    }
                 } else {
-                    packageInfo.signingInfo.signingCertificateHistory
-                }
-            } else {
-                @SuppressLint("PackageManagerGetSignatures")
-                val packageInfo = context.packageManager?.getPackageInfo(
-                    packageName,
-                    PackageManager.GET_SIGNATURES
-                )
+                    val packageInfo = context.packageManager?.getPackageInfo(
+                        packageName,
+                        PackageManager.GET_SIGNATURES
+                    )
 
-                return if (packageInfo?.signatures == null) {
-                    null
-                } else {
-                    packageInfo.signatures
+                    return if (packageInfo?.signatures == null) {
+                        null
+                    } else {
+                        packageInfo.signatures
+                    }
                 }
+            } catch (e: PackageManager.NameNotFoundException) {
+                return null
             }
         }
     }

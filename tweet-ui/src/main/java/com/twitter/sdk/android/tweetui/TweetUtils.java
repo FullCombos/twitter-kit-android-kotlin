@@ -20,6 +20,8 @@ package com.twitter.sdk.android.tweetui;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Twitter;
@@ -42,18 +44,20 @@ public final class TweetUtils {
     private static final String SYMBOL_URL = TWITTER_URL + "search?q=%%24%s&" + TWITTER_KIT_REF;
     static final String LOAD_TWEET_DEBUG = "loadTweet failure for Tweet Id %d.";
 
-    private TweetUtils() {}
+    private TweetUtils() {
+    }
 
     /**
      * Loads a single Tweet by id.
+     *
      * @param tweetId Tweet id
-     * @param cb callback
+     * @param cb      callback
      */
     public static void loadTweet(final long tweetId, final Callback<Tweet> cb) {
         TweetUi.getInstance().getTweetRepository().loadTweet(tweetId,
                 new LoggingCallback<Tweet>(cb, Twitter.getLogger()) {
                     @Override
-                    public void success(Result<Tweet> result) {
+                    public void success(@NonNull Result<Tweet> result) {
                         if (cb != null) {
                             cb.success(result);
                         }
@@ -63,8 +67,9 @@ public final class TweetUtils {
 
     /**
      * Loads a List of Tweets by id. Returns Tweets in the order requested.
+     *
      * @param tweetIds List of Tweet ids
-     * @param cb callback
+     * @param cb       callback
      */
     public static void loadTweets(final List<Long> tweetIds, final Callback<List<Tweet>> cb) {
         TweetUi.getInstance().getTweetRepository().loadTweets(tweetIds,
@@ -92,6 +97,7 @@ public final class TweetUtils {
     /**
      * Returns the Tweet which should be displayed in a TweetView. If the given Tweet is a retweet,
      * the embedded retweetedStatus Tweet is returned.
+     *
      * @param tweet A tweet from the API
      * @return either the tweet argument or the Tweet in the retweetedStatus field
      */
@@ -118,7 +124,7 @@ public final class TweetUtils {
      *
      * @param screenName The screen name to build the url with
      * @param tweetId    The id to build the url with
-     * @return           Can be null, otherwise a resolvable permalink to a Tweet.
+     * @return Can be null, otherwise a resolvable permalink to a Tweet.
      */
     static Uri getPermalink(String screenName, long tweetId) {
         if (tweetId <= 0) {
@@ -133,11 +139,12 @@ public final class TweetUtils {
         }
         return Uri.parse(permalink);
     }
+
     /**
      * Builds a permalink for the profile of a given screen name
      *
      * @param screenName The screen name to build the url with
-     * @return           Can be null, otherwise a resolvable permalink to a Profile.
+     * @return Can be null, otherwise a resolvable permalink to a Profile.
      */
     static String getProfilePermalink(String screenName) {
         final String permalink;
@@ -151,6 +158,7 @@ public final class TweetUtils {
 
     /**
      * Builds a permalink for a hashtag entity
+     *
      * @param text
      * @return Formatted url string
      */
@@ -160,6 +168,7 @@ public final class TweetUtils {
 
     /**
      * Builds a permalink for a symbol entity
+     *
      * @param text
      * @return Formatted url string
      */

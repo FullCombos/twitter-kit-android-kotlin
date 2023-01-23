@@ -23,13 +23,11 @@ import android.widget.Toast
 import com.twitter.sdk.android.tweetcomposer.TweetUploadService
 
 class TweetSuccessReceiver : BroadcastReceiver() {
+
     override fun onReceive(context: Context, intent: Intent) {
         intent.extras?.apply {
             val tweetId = getLong(TweetUploadService.EXTRA_TWEET_ID)
-            Toast.makeText(
-                context, "Success TweetId $tweetId",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(context, "Success TweetId $tweetId", Toast.LENGTH_SHORT).show()
         }
     }
 }

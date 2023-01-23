@@ -58,8 +58,8 @@ public class TweetActionBarView extends LinearLayout {
     }
 
     void findSubviews() {
-        likeButton = findViewById(R.id.tw__tweet_like_button);
-        shareButton = findViewById(R.id.tw__tweet_share_button);
+        likeButton = findViewById(R.id.twitter_tweet_like_button);
+        shareButton = findViewById(R.id.twitter_tweet_share_button);
     }
 
     /*

@@ -32,9 +32,9 @@ data class TwitterAuthToken(
     @SerializedName("secret")
     val secret: String,
 
-    override val createdAt: Long = System.currentTimeMillis()
+    val _createdAt: Long = System.currentTimeMillis()
 
-) : AuthToken(createdAt), Parcelable {
+) : AuthToken(_createdAt), Parcelable {
 
     override val isExpired: Boolean
         // Twitter does not expire OAuth1a tokens

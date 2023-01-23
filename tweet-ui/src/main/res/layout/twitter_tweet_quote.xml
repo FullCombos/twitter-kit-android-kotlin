@@ -23,35 +23,35 @@
 
     <!--Name doesn't ellipsize, but @username does ellipsize-->
     <LinearLayout
-        android:id="@+id/tw__author_attribution"
+        android:id="@+id/twitter_author_attribution"
         style="@style/twitter_QuoteAttributionLine"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/tw__tweet_author_full_name"
+            android:id="@+id/twitter_tweet_author_full_name"
             style="@style/twitter_TweetFullName.Compact"
             tools:text="Jack" />
 
         <TextView
-            android:id="@+id/tw__tweet_author_screen_name"
+            android:id="@+id/twitter_tweet_author_screen_name"
             style="@style/twitter_TweetScreenName.Compact"
             tools:text="\@jack" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tw__tweet_text"
+        android:id="@+id/twitter_tweet_text"
         style="@style/twitter_TweetText.Quote"
-        android:layout_below="@+id/tw__author_attribution"
+        android:layout_below="@+id/twitter_author_attribution"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         tools:text="just setting up my twttr" />
 
     <com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout
-        android:id="@+id/tw__aspect_ratio_media_container"
+        android:id="@+id/twitter_aspect_ratio_media_container"
         style="@style/twitter_TweetMediaContainer.Quote"
-        android:layout_below="@id/tw__tweet_text"
+        android:layout_below="@id/twitter_tweet_text"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true">
 
@@ -60,7 +60,7 @@
             style="@style/twitter_TweetMedia" />
 
         <com.twitter.sdk.android.tweetui.internal.MediaBadgeView
-            android:id="@+id/tw__tweet_media_badge"
+            android:id="@+id/twitter_tweet_media_badge"
             style="@style/twitter_TweetBadge" />
     </com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout>
 

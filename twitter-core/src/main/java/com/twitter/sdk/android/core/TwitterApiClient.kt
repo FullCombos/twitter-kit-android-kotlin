@@ -181,6 +181,7 @@ class TwitterApiClient internal constructor(client: OkHttpClient, twitterApi: Tw
         if (!services.contains(cls)) {
             services.putIfAbsent(cls, retrofit.create(cls))
         }
+        @Suppress("UNCHECKED_CAST")
         return services[cls] as T
     }
 }

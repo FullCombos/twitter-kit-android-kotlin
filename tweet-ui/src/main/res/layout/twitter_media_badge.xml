@@ -19,11 +19,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/tw__gif_badge"
+        android:id="@+id/twitter_gif_badge"
         style="@style/twitter_Badge"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/tw__video_duration"
+        android:id="@+id/twitter_video_duration"
         style="@style/twitter_Badge.VideoDuration" />
 </merge>

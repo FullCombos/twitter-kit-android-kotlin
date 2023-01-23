@@ -45,7 +45,7 @@ public class GalleryActivity extends Activity {
         final GalleryAdapter adapter = new GalleryAdapter(this, getSwipeToDismissCallback());
         adapter.addAll(galleryItem.mediaEntities);
 
-        final ViewPager viewPager = findViewById(R.id.tw__view_pager);
+        final ViewPager viewPager = findViewById(R.id.twitter_view_pager);
         final int marginPixels =
                 getResources().getDimensionPixelSize(R.dimen.tw__gallery_page_margin);
         viewPager.setPageMargin(marginPixels);

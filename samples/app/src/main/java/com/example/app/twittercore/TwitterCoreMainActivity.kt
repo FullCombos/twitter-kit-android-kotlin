@@ -50,10 +50,8 @@ class TwitterCoreMainActivity : BaseActivity() {
 
             override fun failure(exception: TwitterException) {
                 // Upon error, show a toast message indicating that authorization request failed.
-                Toast.makeText(
-                    applicationContext, exception.message,
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@TwitterCoreMainActivity, exception.message, Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }

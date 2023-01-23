@@ -149,13 +149,13 @@ abstract class AbstractTweetView extends RelativeLayout {
      */
     void findSubviews() {
         // Tweet attribution (avatar, name, screen name, etc.)
-        fullNameView = findViewById(R.id.tw__tweet_author_full_name);
-        screenNameView = findViewById(R.id.tw__tweet_author_screen_name);
+        fullNameView = findViewById(R.id.twitter_tweet_author_full_name);
+        screenNameView = findViewById(R.id.twitter_tweet_author_screen_name);
         mediaContainer =
-                findViewById(R.id.tw__aspect_ratio_media_container);
+                findViewById(R.id.twitter_aspect_ratio_media_container);
         tweetMediaView = findViewById(R.id.tweet_media_view);
-        contentView = findViewById(R.id.tw__tweet_text);
-        mediaBadgeView = findViewById(R.id.tw__tweet_media_badge);
+        contentView = findViewById(R.id.twitter_tweet_text);
+        mediaBadgeView = findViewById(R.id.twitter_tweet_media_badge);
     }
 
     /*

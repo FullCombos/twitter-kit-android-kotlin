@@ -28,19 +28,19 @@ open class UrlEntity(
      * values for the indices parameter.
      */
     @SerializedName("url")
-    open val url: String,
+    val url: String,
 
     /**
      * Expanded version of display_url
      */
     @SerializedName("expanded_url")
-    open val expandedUrl: String,
+    val expandedUrl: String,
 
     /**
      * Version of the URL to display to clients.
      */
     @SerializedName("display_url")
-    open val displayUrl: String,
+    val displayUrl: String,
 
     start: Int,
     end: Int

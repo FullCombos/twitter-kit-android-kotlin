@@ -82,12 +82,12 @@ interface SearchService {
         @Query("q") query: String,  //EncodedQuery protects commas from encode
         @Query(value = "geocode", encoded = true) geocode: Geocode?,
         @Query("lang") lang: String,
-        @Query("locale") locale: String,
+        @Query("locale") locale: String?,
         @Query("result_type") resultType: String,
         @Query("count") count: Int,
         @Query("until") until: String,
-        @Query("since_id") sinceId: Long,
-        @Query("max_id") maxId: Long,
+        @Query("since_id") sinceId: Long?,
+        @Query("max_id") maxId: Long?,
         @Query("include_entities") includeEntities: Boolean
     ): Call<Search>
 }

@@ -25,7 +25,7 @@ import com.google.gson.annotations.SerializedName
 open class Session<T : AuthToken>(
 
     @SerializedName("auth_token")
-    open val authToken: T,
+    val authToken: T,
 
     @SerializedName("id")
     val id: Long

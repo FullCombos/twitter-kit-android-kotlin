@@ -24,11 +24,11 @@ import java.io.Serializable
  */
 class MediaEntity(
 
-    override val url: String,
+    _url: String,
 
-    override val expandedUrl: String,
+    _expandedUrl: String,
 
-    override val displayUrl: String,
+    _displayUrl: String,
 
     start: Int,
 
@@ -102,7 +102,7 @@ class MediaEntity(
     @SerializedName("ext_alt_text")
     val altText: String
 
-) : UrlEntity(url, expandedUrl, displayUrl, start, end) {
+) : UrlEntity(_url, _expandedUrl, _displayUrl, start, end) {
 
     class Sizes(
         /**

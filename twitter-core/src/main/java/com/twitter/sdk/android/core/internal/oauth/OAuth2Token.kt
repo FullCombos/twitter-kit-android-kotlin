@@ -29,14 +29,14 @@ import kotlinx.parcelize.Parcelize
 open class OAuth2Token(
 
     @SerializedName("token_type")
-    open val tokenType: String,
+    val tokenType: String,
 
     @SerializedName("access_token")
-    open val accessToken: String,
+    val accessToken: String,
 
-    override val createdAt: Long = System.currentTimeMillis()
+    open val _createdAt: Long = System.currentTimeMillis()
 
-) : AuthToken(createdAt), Parcelable {
+) : AuthToken(_createdAt), Parcelable {
 
     // Oauth 2.0 tokens do not have a common expiration policy. Returning false indicates
     // the token is not known to have expired. App auth tokens only expire when manually
