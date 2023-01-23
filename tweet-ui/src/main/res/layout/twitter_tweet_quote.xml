@@ -18,42 +18,42 @@
 <!--Tweet container-->
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/tw__TweetFillWidth"
+    style="@style/twitter_TweetFillWidth"
     tools:parentTag="RelativeLayout">
 
     <!--Name doesn't ellipsize, but @username does ellipsize-->
     <LinearLayout
         android:id="@+id/tw__author_attribution"
         style="@style/twitter_QuoteAttributionLine"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/tw__tweet_author_full_name"
-            style="@style/tw__TweetFullName.Compact"
+            style="@style/twitter_TweetFullName.Compact"
             tools:text="Jack" />
 
         <TextView
             android:id="@+id/tw__tweet_author_screen_name"
-            style="@style/tw__TweetScreenName.Compact"
+            style="@style/twitter_TweetScreenName.Compact"
             tools:text="\@jack" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tw__tweet_text"
-        style="@style/tw__TweetText.Quote"
+        style="@style/twitter_TweetText.Quote"
+        android:layout_below="@+id/tw__author_attribution"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/tw__author_attribution"
         tools:text="just setting up my twttr" />
 
     <com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout
         android:id="@+id/tw__aspect_ratio_media_container"
-        style="@style/tw__TweetMediaContainer.Quote"
+        style="@style/twitter_TweetMediaContainer.Quote"
+        android:layout_below="@id/tw__tweet_text"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/tw__tweet_text">
+        android:layout_alignParentRight="true">
 
         <com.twitter.sdk.android.tweetui.internal.TweetMediaView
             android:id="@+id/tweet_media_view"

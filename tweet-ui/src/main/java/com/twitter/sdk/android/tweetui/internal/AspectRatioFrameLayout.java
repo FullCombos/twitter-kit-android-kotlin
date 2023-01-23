@@ -54,10 +54,10 @@ public class AspectRatioFrameLayout extends FrameLayout {
                 R.styleable.AspectRatioFrameLayout);
         try {
             aspectRatio = a.getFloat(
-                    R.styleable.AspectRatioFrameLayout_tw__frame_layout_aspect_ratio,
+                    R.styleable.AspectRatioFrameLayout_twitter_frame_layout_aspect_ratio,
                     DEFAULT_ASPECT_RATIO);
             dimensionToAdjust = a.getInt(
-                    R.styleable.AspectRatioFrameLayout_tw__frame_layout_dimension_to_adjust,
+                    R.styleable.AspectRatioFrameLayout_twitter_frame_layout_dimension_to_adjust,
                     DEFAULT_ADJUST_DIMENSION);
         } finally {
             a.recycle();
@@ -75,26 +75,26 @@ public class AspectRatioFrameLayout extends FrameLayout {
         final int horizontalPadding = getPaddingLeft() + getPaddingRight();
         final int verticalPadding = getPaddingBottom() + getPaddingTop();
 
-       if (dimensionToAdjust == ADJUST_DIMENSION_HEIGHT) {
-           if (View.MeasureSpec.getMode(widthMeasureSpec) == View.MeasureSpec.EXACTLY) {
-               width = View.MeasureSpec.getSize(widthMeasureSpec) - horizontalPadding;
-           } else {
-               super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-               width = getMeasuredWidth() - horizontalPadding;
-           }
-           height = (int) (width / aspectRatio);
-       } else {
-           if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY) {
-               height = MeasureSpec.getSize(heightMeasureSpec) - verticalPadding;
-           } else {
-               super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-               height = getMeasuredHeight() - verticalPadding;
-           }
-           width = (int) (height * aspectRatio);
-       }
+        if (dimensionToAdjust == ADJUST_DIMENSION_HEIGHT) {
+            if (View.MeasureSpec.getMode(widthMeasureSpec) == View.MeasureSpec.EXACTLY) {
+                width = View.MeasureSpec.getSize(widthMeasureSpec) - horizontalPadding;
+            } else {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                width = getMeasuredWidth() - horizontalPadding;
+            }
+            height = (int) (width / aspectRatio);
+        } else {
+            if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY) {
+                height = MeasureSpec.getSize(heightMeasureSpec) - verticalPadding;
+            } else {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                height = getMeasuredHeight() - verticalPadding;
+            }
+            width = (int) (height * aspectRatio);
+        }
 
         super.onMeasure(
-            View.MeasureSpec.makeMeasureSpec(width + horizontalPadding, View.MeasureSpec.EXACTLY),
-            View.MeasureSpec.makeMeasureSpec(height + verticalPadding, View.MeasureSpec.EXACTLY));
+                View.MeasureSpec.makeMeasureSpec(width + horizontalPadding, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(height + verticalPadding, View.MeasureSpec.EXACTLY));
     }
 }

@@ -60,7 +60,7 @@ class ListTimelineFragment : ListFragment() {
         val adapter: TweetTimelineListAdapter = TweetTimelineListAdapter.Builder(activity)
             .setTimelineFilter(basicTimelineFilter)
             .setTimeline(timeline)
-            .setViewStyle(com.twitter.sdk.android.tweetui.R.style.tw_TweetLightWithActionsStyle)
+            .setViewStyle(com.twitter.sdk.android.tweetui.R.style.twitter_TweetLightWithActionsStyle)
             .setOnActionCallback(actionCallback)
             .build()
         listAdapter = adapter

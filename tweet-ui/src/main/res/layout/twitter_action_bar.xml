@@ -15,29 +15,28 @@
   ~
   -->
 
-<com.twitter.sdk.android.tweetui.TweetActionBarView
-    android:id="@+id/tw__tweet_action_bar"
-    style="@style/twitter_TweetFillWidth"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.twitter.sdk.android.tweetui.TweetActionBarView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:twitter="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tw__tweet_action_bar"
+    style="@style/twitter_TweetFillWidth"
     android:orientation="horizontal"
     android:visibility="gone"
     tools:visibility="visible">
 
     <com.twitter.sdk.android.tweetui.ToggleImageButton
         android:id="@+id/tw__tweet_like_button"
-        style="@style/tw__TweetActionButton.Heart"
+        style="@style/twitter_TweetActionButton.Heart"
+        android:layout_marginEnd="@dimen/tw__tweet_action_button_spacing"
+        android:layout_marginRight="@dimen/tw__tweet_action_button_spacing"
         android:src="@drawable/twitter_like_action"
         twitter:contentDescriptionOff="@string/twitter_like_tweet"
-        twitter:contentDescriptionOn="@string/twitter_liked_tweet"
-        android:layout_marginRight="@dimen/tw__tweet_action_button_spacing"
-        android:layout_marginEnd="@dimen/tw__tweet_action_button_spacing"/>
+        twitter:contentDescriptionOn="@string/twitter_liked_tweet" />
 
     <ImageButton
         android:id="@+id/tw__tweet_share_button"
-        style="@style/tw__TweetActionButton.Share"
+        style="@style/twitter_TweetActionButton.Share"
         android:contentDescription="@string/twitter_share_tweet"
-        android:src="@drawable/twitter_share_action"/>
+        android:src="@drawable/twitter_share_action" />
 
 </com.twitter.sdk.android.tweetui.TweetActionBarView>

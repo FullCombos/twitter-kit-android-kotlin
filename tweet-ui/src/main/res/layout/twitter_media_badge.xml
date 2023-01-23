@@ -15,16 +15,15 @@
   ~
   -->
 
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        tools:ignore="ContentDescription"
         android:id="@+id/tw__gif_badge"
-        style="@style/twitter_Badge"/>
+        style="@style/twitter_Badge"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tw__video_duration"
-        style="@style/tw__Badge.VideoDuration" />
+        style="@style/twitter_Badge.VideoDuration" />
 </merge>

@@ -68,12 +68,20 @@ class TweetPreviewActivity : TweetUiActivity() {
             binding.buttonShowLight.setOnClickListener {
                 val tweetId = selectorInput.text.toString().toLong()
                 tweetRegion.removeAllViews()
-                loadTweet(tweetId, tweetRegion, R.style.tw__TweetLightStyle)
+                loadTweet(
+                    tweetId,
+                    tweetRegion,
+                    com.twitter.sdk.android.tweetui.R.style.twitter_TweetLightStyle
+                )
             }
             binding.buttonShowDark.setOnClickListener {
                 val tweetId = selectorInput.text.toString().toLong()
                 tweetRegion.removeAllViews()
-                loadTweet(tweetId, tweetRegion, R.style.tw__TweetDarkStyle)
+                loadTweet(
+                    tweetId,
+                    tweetRegion,
+                    com.twitter.sdk.android.tweetui.R.style.twitter_TweetDarkStyle
+                )
             }
             return binding.root
         }

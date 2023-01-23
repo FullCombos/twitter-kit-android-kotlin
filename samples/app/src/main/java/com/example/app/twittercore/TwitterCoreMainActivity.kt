@@ -42,7 +42,7 @@ class TwitterCoreMainActivity : BaseActivity() {
 
         // Set up the login button by setting callback to invoke when authorization request
         // completes
-        binding.loginButton.callback = object : Callback<TwitterSession>() {
+        binding.loginButton.setCallback(object : Callback<TwitterSession>() {
 
             override fun success(result: Result<TwitterSession>) {
                 requestEmailAddress(applicationContext, result.data)
@@ -55,7 +55,7 @@ class TwitterCoreMainActivity : BaseActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

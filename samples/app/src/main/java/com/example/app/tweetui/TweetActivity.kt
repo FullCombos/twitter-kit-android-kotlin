@@ -107,7 +107,7 @@ class TweetActivity : TweetUiActivity() {
                     val tweet = result.data
                     val tv = TweetView(
                         context, tweet,
-                        R.style.tw__TweetLightWithActionsStyle
+                        com.twitter.sdk.android.tweetui.R.style.twitter_TweetLightWithActionsStyle
                     )
                     tv.setOnActionCallback(actionCallback)
                     tv.id = viewId
@@ -136,7 +136,7 @@ class TweetActivity : TweetUiActivity() {
                     for (i in result.data.indices) {
                         val tv = CompactTweetView(
                             context, result.data[i],
-                            R.style.tw__TweetDarkWithActionsStyle
+                            com.twitter.sdk.android.tweetui.R.style.twitter_TweetDarkWithActionsStyle
                         )
                         tv.setOnActionCallback(actionCallback)
                         tv.id = viewIds[i]

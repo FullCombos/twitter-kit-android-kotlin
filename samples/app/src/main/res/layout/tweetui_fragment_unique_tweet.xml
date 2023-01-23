@@ -1,5 +1,4 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:twittersdk="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,27 +13,27 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <com.twitter.sdk.android.tweetui.TweetView
             android:id="@+id/xml_emoji_url_video_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="656637487117299712"/>
+            twittersdk:twitter_tweet_id="656637487117299712" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <com.twitter.sdk.android.tweetui.CompactTweetView
             android:id="@+id/xml_emoji_url_video_compact_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="656637487117299712"/>
+            twittersdk:twitter_tweet_id="656637487117299712" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <!--animated gif-->
 
@@ -42,21 +41,21 @@
             android:id="@+id/xml_animated_gif_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="669274925937664001"/>
+            twittersdk:twitter_tweet_id="669274925937664001" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <com.twitter.sdk.android.tweetui.CompactTweetView
             android:id="@+id/xml_animated_gif_compact_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="669274925937664001"/>
+            twittersdk:twitter_tweet_id="669274925937664001" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <!--Retweet with photo-->
 
@@ -64,21 +63,21 @@
             android:id="@+id/retweet_with_photo_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="687698492211499010"/>
+            twittersdk:twitter_tweet_id="687698492211499010" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <com.twitter.sdk.android.tweetui.CompactTweetView
             android:id="@+id/retweet_with_photo_compact_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="687698492211499010"/>
+            twittersdk:twitter_tweet_id="687698492211499010" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <!--Retweet without photo-->
 
@@ -86,21 +85,21 @@
             android:id="@+id/retweet_without_photo_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="685490103544762369"/>
+            twittersdk:twitter_tweet_id="685490103544762369" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
         <com.twitter.sdk.android.tweetui.CompactTweetView
             android:id="@+id/retweet_without_photo_compact_tweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            twittersdk:tw__tweet_id="685490103544762369"/>
+            twittersdk:twitter_tweet_id="685490103544762369" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/demo_tweet_space"/>
+            android:layout_height="@dimen/demo_tweet_space" />
 
     </LinearLayout>
 </ScrollView>

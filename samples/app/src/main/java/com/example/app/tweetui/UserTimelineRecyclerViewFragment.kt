@@ -20,13 +20,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.app.R
-import com.example.app.databinding.TweetuiFragmentUniqueTweetBinding
-import com.example.app.databinding.TweetuiTimelineBinding
 import com.example.app.databinding.TweetuiTimelineRecyclerviewBinding
 import com.example.app.twittercore.TwitterCoreMainActivity
 import com.twitter.sdk.android.core.Callback
@@ -36,7 +31,6 @@ import com.twitter.sdk.android.core.TwitterException
 import com.twitter.sdk.android.core.models.Tweet
 import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter
 import com.twitter.sdk.android.tweetui.UserTimeline
-import java.security.AccessController.getContext
 
 class UserTimelineRecyclerViewFragment : Fragment() {
 
@@ -68,7 +62,7 @@ class UserTimelineRecyclerViewFragment : Fragment() {
         }
         val adapter = TweetTimelineRecyclerViewAdapter.Builder(context)
             .setTimeline(userTimeline)
-            .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
+            .setViewStyle(com.twitter.sdk.android.tweetui.R.style.twitter_TweetLightWithActionsStyle)
             .setOnActionCallback(actionCallback)
             .build()
         binding.recyclerView.setAdapter(adapter)

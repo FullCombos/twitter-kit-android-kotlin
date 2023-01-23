@@ -154,7 +154,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
      *
      * @param context the context of the view
      * @param attrs   set of raw XML attributes associated with the view's XML tag
-     * @throws IllegalArgumentException if the tw__tweet_id XML attribute is invalid
+     * @throws IllegalArgumentException if the twitter_tweet_id XML attribute is invalid
      */
     private void initXmlAttributes(Context context, AttributeSet attrs) {
         if (attrs == null) return;
@@ -173,13 +173,13 @@ public abstract class BaseTweetView extends AbstractTweetView {
      * Parses and sets the Tweet data XML attributes. Must be called before view inflation.
      *
      * @param a A TypedArray holding the attribute values obtained from the XML attributes
-     * @throws IllegalArgumentException if the tw__tweet_id XML attribute is invalid
+     * @throws IllegalArgumentException if the twitter_tweet_id XML attribute is invalid
      */
     private void setXmlDataAttributes(TypedArray a) {
         final long tweetId = Utils.numberOrDefault(
-                a.getString(R.styleable.tw__TweetView_tw__tweet_id), INVALID_ID);
+                a.getString(R.styleable.twitter_TweetView_twitter_tweet_id), INVALID_ID);
         if (tweetId <= 0) {
-            throw new IllegalArgumentException("Invalid tw__tweet_id");
+            throw new IllegalArgumentException("Invalid twitter_tweet_id");
         }
         // XML special case. The screen_name is not known yet. A permalink can be constructed and
         // followed. Permalink should be updated once the loadTweet call receives the Tweet.
@@ -195,18 +195,18 @@ public abstract class BaseTweetView extends AbstractTweetView {
      */
     private void setStyleAttributes(TypedArray a) {
         // Styled via attributes
-        containerBgColor = a.getColor(R.styleable.tw__TweetView_tw__container_bg_color,
+        containerBgColor = a.getColor(R.styleable.twitter_TweetView_twitter_container_bg_color,
                 getResources().getColor(R.color.twitter_tweet_light_container_bg_color));
-        primaryTextColor = a.getColor(R.styleable.tw__TweetView_tw__primary_text_color,
+        primaryTextColor = a.getColor(R.styleable.twitter_TweetView_twitter_primary_text_color,
                 getResources().getColor(R.color.twitter_tweet_light_primary_text_color));
         actionColor = a.getColor(
-                R.styleable.tw__TweetView_tw__action_color,
+                R.styleable.twitter_TweetView_twitter_action_color,
                 getResources().getColor(R.color.twitter_tweet_action_color));
         actionHighlightColor = a.getColor(
-                R.styleable.tw__TweetView_tw__action_highlight_color,
+                R.styleable.twitter_TweetView_twitter_action_highlight_color,
                 getResources().getColor(R.color.twitter_tweet_action_light_highlight_color));
         tweetActionsEnabled =
-                a.getBoolean(R.styleable.tw__TweetView_tw__tweet_actions_enabled, false);
+                a.getBoolean(R.styleable.twitter_TweetView_twitter_tweet_actions_enabled, false);
 
         // Calculated colors
         final boolean isLightBg = ColorUtils.isLightColor(containerBgColor);
