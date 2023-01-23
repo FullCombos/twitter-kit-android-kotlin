@@ -34,7 +34,7 @@ public class PlayerActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tw__player_activity);
+        setContentView(R.layout.twitter_player_activity);
 
         final PlayerItem item = (PlayerItem) getIntent().getSerializableExtra(PLAYER_ITEM);
         final View rootView = findViewById(android.R.id.content);

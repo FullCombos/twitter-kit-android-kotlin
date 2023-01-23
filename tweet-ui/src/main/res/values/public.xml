@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--suppress UnusedResources -->
-    <public type="style" name="tw__TweetLightStyle"/>
+    <public name="twitter_TweetLightStyle" type="style" />
     <!--suppress UnusedResources -->
-    <public type="style" name="tw__TweetLightWithActionsStyle"/>
+    <public name="twitter_TweetLightWithActionsStyle" type="style" />
     <!--suppress UnusedResources -->
-    <public type="style" name="tw__TweetDarkStyle"/>
+    <public name="twitter_TweetDarkStyle" type="style" />
     <!--suppress UnusedResources -->
-    <public type="style" name="tw__TweetDarkWithActionsStyle"/>
+    <public name="twitter_TweetDarkWithActionsStyle" type="style" />
 </resources>

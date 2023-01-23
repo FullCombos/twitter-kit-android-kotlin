@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">Tweet Beğen</string>
-    <string name="tw__liked_tweet">Beğenmekten Vazgeç</string>
-    <string name="tw__loading_tweet">Tweet Yükleniyor</string>
-    <string name="tw__pause">duraklat</string>
-    <string name="tw__play">oynat</string>
-    <string name="tw__replay">tekrar oynat</string>
-    <string name="tw__retweeted_by_format">%1$s tarafından Retweetlendi</string>
-    <string name="tw__share_content_format">\@%1$s adlı kişinin Tweetini incele: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">Tweet gönderen: %1$s (\@%2$s)</string>
-    <string name="tw__share_tweet">Tweet Paylaş</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">Tweet Medyası</string>
+    <string name="twitter_like_tweet">Tweet Beğen</string>
+    <string name="twitter_liked_tweet">Beğenmekten Vazgeç</string>
+    <string name="twitter_loading_tweet">Tweet Yükleniyor</string>
+    <string name="twitter_pause">duraklat</string>
+    <string name="twitter_play">oynat</string>
+    <string name="twitter_replay">tekrar oynat</string>
+    <string name="twitter_retweeted_by_format">%1$s tarafından Retweetlendi</string>
+    <string name="twitter_share_content_format">\@%1$s adlı kişinin Tweetini incele: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">Tweet gönderen: %1$s (\@%2$s)</string>
+    <string name="twitter_share_tweet">Tweet Paylaş</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">Tweet Medyası</string>
 </resources>

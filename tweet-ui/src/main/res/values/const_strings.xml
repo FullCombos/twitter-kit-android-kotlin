@@ -19,6 +19,6 @@
 <resources>
     <!--Date Format strings-->
     <!--These strings are in here because we pull translations manually from twitter-cldr-->
-    <string name="tw__relative_date_format_short">MMM dd</string>
-    <string name="tw__relative_date_format_long">MM/dd/yy</string>
+    <string name="twitter_relative_date_format_short">MMM dd</string>
+    <string name="twitter_relative_date_format_long">MM/dd/yy</string>
 </resources>

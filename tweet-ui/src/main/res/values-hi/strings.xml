@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">ट्वीट पसंद करें</string>
-    <string name="tw__liked_tweet">पसंद पूर्ववत करें</string>
-    <string name="tw__loading_tweet">ट्वीट लोड हो रहे हैं</string>
-    <string name="tw__pause">विराम</string>
-    <string name="tw__play">चलाएँ</string>
-    <string name="tw__replay">रीप्ले</string>
-    <string name="tw__retweeted_by_format">%1$s द्वारा रीट्विट</string>
-    <string name="tw__share_content_format">\@%1$s के ट्वीट पर नजर डालें: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">%1$s (\@%2$s) से ट्वीट</string>
-    <string name="tw__share_tweet">ट्वीट साझा करें</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">ट्वीट मीडिया</string>
+    <string name="twitter_like_tweet">ट्वीट पसंद करें</string>
+    <string name="twitter_liked_tweet">पसंद पूर्ववत करें</string>
+    <string name="twitter_loading_tweet">ट्वीट लोड हो रहे हैं</string>
+    <string name="twitter_pause">विराम</string>
+    <string name="twitter_play">चलाएँ</string>
+    <string name="twitter_replay">रीप्ले</string>
+    <string name="twitter_retweeted_by_format">%1$s द्वारा रीट्विट</string>
+    <string name="twitter_share_content_format">\@%1$s के ट्वीट पर नजर डालें: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">%1$s (\@%2$s) से ट्वीट</string>
+    <string name="twitter_share_tweet">ट्वीट साझा करें</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">ट्वीट मीडिया</string>
 </resources>

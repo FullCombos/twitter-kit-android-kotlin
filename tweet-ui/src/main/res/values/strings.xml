@@ -18,25 +18,25 @@
 <resources>
 
     <!--Accessibility strings-->
-    <string name="tw__loading_tweet">Loading Tweet</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_loading_tweet">Loading Tweet</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
 
     <!--Retweeted By string-->
-    <string name="tw__retweeted_by_format">Retweeted by %1$s</string>
+    <string name="twitter_retweeted_by_format">Retweeted by %1$s</string>
 
     <!--Tweet action strings-->
-    <string name="tw__like_tweet">Like Tweet</string>
-    <string name="tw__liked_tweet">Undo Like</string>
-    <string name="tw__share_tweet">Share Tweet</string>
-    <string name="tw__share_subject_format">Tweet from %1$s (@%2$s)</string>
-    <string name="tw__share_content_format">Check out @%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_like_tweet">Like Tweet</string>
+    <string name="twitter_liked_tweet">Undo Like</string>
+    <string name="twitter_share_tweet">Share Tweet</string>
+    <string name="twitter_share_subject_format">Tweet from %1$s (@%2$s)</string>
+    <string name="twitter_share_content_format">Check out @%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
 
     <!--Vine refers to the brand "Vine" and should not be translated-->
 
     <!--Video player accessibility strings-->
-    <string name="tw__play">play</string>
-    <string name="tw__pause">pause</string>
-    <string name="tw__replay">replay</string>
-    <string name="tw__tweet_media">Tweet Media</string>
+    <string name="twitter_play">play</string>
+    <string name="twitter_pause">pause</string>
+    <string name="twitter_replay">replay</string>
+    <string name="twitter_tweet_media">Tweet Media</string>
 
 </resources>

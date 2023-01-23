@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">Вподобати твіт</string>
-    <string name="tw__liked_tweet">Скасувати вподобання</string>
-    <string name="tw__loading_tweet">Завантаження твіта</string>
-    <string name="tw__pause">призупинити</string>
-    <string name="tw__play">відтворити</string>
-    <string name="tw__replay">повторити</string>
-    <string name="tw__retweeted_by_format">Ретвітнуто користувачем(кою) %1$s</string>
-    <string name="tw__share_content_format">Подивіться-но твіт від \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">Твіт від %1$s (\@%2$s)</string>
-    <string name="tw__share_tweet">Поділитися твітом</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">Медіафайли твітів</string>
+    <string name="twitter_like_tweet">Вподобати твіт</string>
+    <string name="twitter_liked_tweet">Скасувати вподобання</string>
+    <string name="twitter_loading_tweet">Завантаження твіта</string>
+    <string name="twitter_pause">призупинити</string>
+    <string name="twitter_play">відтворити</string>
+    <string name="twitter_replay">повторити</string>
+    <string name="twitter_retweeted_by_format">Ретвітнуто користувачем(кою) %1$s</string>
+    <string name="twitter_share_content_format">Подивіться-но твіт від \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">Твіт від %1$s (\@%2$s)</string>
+    <string name="twitter_share_tweet">Поділитися твітом</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">Медіафайли твітів</string>
 </resources>

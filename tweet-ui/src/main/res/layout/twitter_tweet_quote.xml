@@ -24,7 +24,7 @@
     <!--Name doesn't ellipsize, but @username does ellipsize-->
     <LinearLayout
         android:id="@+id/tw__author_attribution"
-        style="@style/tw__QuoteAttributionLine"
+        style="@style/twitter_QuoteAttributionLine"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
@@ -57,11 +57,11 @@
 
         <com.twitter.sdk.android.tweetui.internal.TweetMediaView
             android:id="@+id/tweet_media_view"
-            style="@style/tw__TweetMedia" />
+            style="@style/twitter_TweetMedia" />
 
         <com.twitter.sdk.android.tweetui.internal.MediaBadgeView
             android:id="@+id/tw__tweet_media_badge"
-            style="@style/tw__TweetBadge" />
+            style="@style/twitter_TweetBadge" />
     </com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout>
 
 </merge>

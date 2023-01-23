@@ -38,7 +38,7 @@ public class GalleryActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tw__gallery_activity);
+        setContentView(R.layout.twitter_gallery_activity);
 
         galleryItem = getGalleryItem();
 

@@ -65,7 +65,7 @@ class TimelineActivity : BaseActivity() {
         val timeline = SearchTimeline.Builder().query("#twitter").build()
         val adapter = TweetTimelineListAdapter.Builder(this@TimelineActivity)
             .setTimeline(timeline)
-            .setViewStyle(com.twitter.sdk.android.tweetui.R.style.tw__TweetLightWithActionsStyle)
+            .setViewStyle(com.twitter.sdk.android.tweetui.R.style.twitter_TweetLightWithActionsStyle)
             .setOnActionCallback(actionCallback)
             .build()
 

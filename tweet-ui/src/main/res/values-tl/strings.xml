@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">Gustuhin ang Tweet</string>
-    <string name="tw__liked_tweet">I-undo ang Gusto</string>
-    <string name="tw__loading_tweet">Naglo-load ng Tweet</string>
-    <string name="tw__pause">i-pause</string>
-    <string name="tw__play">i-play</string>
-    <string name="tw__replay">i-play muli</string>
-    <string name="tw__retweeted_by_format">Ni-retweet ni %1$s</string>
-    <string name="tw__share_content_format">Tingnan \@%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">Tweet mula kay %1$s (\@%2$s)</string>
-    <string name="tw__share_tweet">Ibahagi ang Tweet</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">Media ng Tweet</string>
+    <string name="twitter_like_tweet">Gustuhin ang Tweet</string>
+    <string name="twitter_liked_tweet">I-undo ang Gusto</string>
+    <string name="twitter_loading_tweet">Naglo-load ng Tweet</string>
+    <string name="twitter_pause">i-pause</string>
+    <string name="twitter_play">i-play</string>
+    <string name="twitter_replay">i-play muli</string>
+    <string name="twitter_retweeted_by_format">Ni-retweet ni %1$s</string>
+    <string name="twitter_share_content_format">Tingnan \@%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">Tweet mula kay %1$s (\@%2$s)</string>
+    <string name="twitter_share_tweet">Ibahagi ang Tweet</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">Media ng Tweet</string>
 </resources>

@@ -52,7 +52,7 @@ public class MediaBadgeView extends FrameLayout {
     void initSubViews(Context context) {
         final LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View view = inflater.inflate(R.layout.tw__media_badge, this, true);
+        final View view = inflater.inflate(R.layout.twitter_media_badge, this, true);
 
         videoDuration = view.findViewById(R.id.tw__video_duration);
         badge = view.findViewById(R.id.tw__gif_badge);

@@ -52,7 +52,7 @@ public class CompactTweetView extends BaseTweetView {
 
     @Override
     protected int getLayout() {
-        return R.layout.tw__tweet_compact;
+        return R.layout.twitter_tweet_compact;
     }
 
     @Override

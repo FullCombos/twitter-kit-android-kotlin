@@ -85,7 +85,7 @@ public class VideoControlView extends FrameLayout {
     void initSubviews() {
         final LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.tw__video_control, this);
+        inflater.inflate(R.layout.twitter_video_control, this);
 
         stateControl = findViewById(R.id.tw__state_control);
         currentTime = findViewById(R.id.tw__current_time);
@@ -174,17 +174,17 @@ public class VideoControlView extends FrameLayout {
 
     void setPlayDrawable() {
         stateControl.setImageResource(R.drawable.twitter_video_play_btn);
-        stateControl.setContentDescription(getContext().getString(R.string.tw__play));
+        stateControl.setContentDescription(getContext().getString(R.string.twitter_play));
     }
 
     void setPauseDrawable() {
         stateControl.setImageResource(R.drawable.twitter_video_pause_btn);
-        stateControl.setContentDescription(getContext().getString(R.string.tw__pause));
+        stateControl.setContentDescription(getContext().getString(R.string.twitter_pause));
     }
 
     void setReplayDrawable() {
         stateControl.setImageResource(R.drawable.twitter_video_replay_btn);
-        stateControl.setContentDescription(getContext().getString(R.string.tw__replay));
+        stateControl.setContentDescription(getContext().getString(R.string.twitter_replay));
     }
 
     void hide() {

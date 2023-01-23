@@ -49,7 +49,7 @@ public class TweetView extends BaseTweetView {
 
     @Override
     protected int getLayout() {
-        return R.layout.tw__tweet;
+        return R.layout.twitter_tweet;
     }
 
     /**

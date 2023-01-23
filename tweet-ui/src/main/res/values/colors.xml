@@ -17,21 +17,21 @@
 
 <!-- see go/colors -->
 <resources>
-    <color name="tw__tweet_action_color">#55acee</color>
-    <color name="tw__tweet_action_light_highlight_color">#ebeef0</color>
-    <color name="tw__tweet_action_dark_highlight_color">#667580</color>
+    <color name="twitter_tweet_action_color">#55acee</color>
+    <color name="twitter_tweet_action_light_highlight_color">#ebeef0</color>
+    <color name="twitter_tweet_action_dark_highlight_color">#667580</color>
 
-    <color name="tw__tweet_light_container_bg_color">#ffffff</color>
-    <color name="tw__tweet_light_primary_text_color">#292f33</color>
+    <color name="twitter_tweet_light_container_bg_color">#ffffff</color>
+    <color name="twitter_tweet_light_primary_text_color">#292f33</color>
 
-    <color name="tw__tweet_dark_container_bg_color">#d9000000</color>
-    <color name="tw__tweet_dark_primary_text_color">#e1ffffff</color>
+    <color name="twitter_tweet_dark_container_bg_color">#d9000000</color>
+    <color name="twitter_tweet_dark_primary_text_color">#e1ffffff</color>
 
-    <color name="tw__seekbar_thumb_outer_color">#4dffffff</color>
-    <color name="tw__seekbar_thumb_inner_color">#ffffffff</color>
+    <color name="twitter_seekbar_thumb_outer_color">#4dffffff</color>
+    <color name="twitter_seekbar_thumb_inner_color">#ffffffff</color>
 
-    <color name="tw__cta_border_color">@android:color/white</color>
-    <color name="tw__cta_text_color">@android:color/white</color>
+    <color name="twitter_cta_border_color">@android:color/white</color>
+    <color name="twitter_cta_text_color">@android:color/white</color>
 
-    <color name="tw__black_opacity_10">#1a000000</color>
+    <color name="twitter_black_opacity_10">#1a000000</color>
 </resources>

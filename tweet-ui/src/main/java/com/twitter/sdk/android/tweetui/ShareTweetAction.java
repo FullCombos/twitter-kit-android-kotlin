@@ -47,18 +47,18 @@ class ShareTweetAction implements View.OnClickListener {
         final String shareSubject = getShareSubject(resources);
         final String shareContent = getShareContent(resources);
         final Intent shareIntent = getShareIntent(shareSubject, shareContent);
-        final String shareText = resources.getString(R.string.tw__share_tweet);
+        final String shareText = resources.getString(R.string.twitter_share_tweet);
         final Intent chooser = Intent.createChooser(shareIntent, shareText);
         launchShareIntent(chooser, context);
     }
 
     String getShareContent(Resources resources) {
-        return resources.getString(R.string.tw__share_content_format,
+        return resources.getString(R.string.twitter_share_content_format,
                 tweet.user.getScreenName(), Long.toString(tweet.getId()));
     }
 
     String getShareSubject(Resources resources) {
-        return resources.getString(R.string.tw__share_subject_format, tweet.user.getName(),
+        return resources.getString(R.string.twitter_share_subject_format, tweet.user.getName(),
                 tweet.user.getScreenName());
     }
 

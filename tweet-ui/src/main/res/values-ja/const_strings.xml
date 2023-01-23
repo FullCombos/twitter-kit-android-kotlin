@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="tw__relative_date_format_long">y/M/d</string>
-    <string name="tw__relative_date_format_short">M月d日</string>
+    <string name="twitter_relative_date_format_long">y/M/d</string>
+    <string name="twitter_relative_date_format_short">M月d日</string>
 </resources>

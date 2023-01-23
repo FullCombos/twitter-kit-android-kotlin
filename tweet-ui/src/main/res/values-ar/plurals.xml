@@ -18,15 +18,15 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <plurals name="tw__time_hours">
+    <plurals name="twitter_time_hours">
         <item quantity="one">1 س</item>
         <item quantity="other">%d س</item>
     </plurals>
-    <plurals name="tw__time_mins">
+    <plurals name="twitter_time_mins">
         <item quantity="one">1 د</item>
         <item quantity="other">%d د</item>
     </plurals>
-    <plurals name="tw__time_secs">
+    <plurals name="twitter_time_secs">
         <item quantity="one">1 ث</item>
         <item quantity="other">%d ث</item>
     </plurals>

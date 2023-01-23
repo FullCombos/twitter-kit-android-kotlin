@@ -52,7 +52,7 @@ public class TweetTimelineRecyclerViewAdapter extends
      * @throws java.lang.IllegalArgumentException if context is null
      */
     public TweetTimelineRecyclerViewAdapter(Context context, Timeline<Tweet> timeline) {
-        this(context, timeline, R.style.tw__TweetLightStyle, null);
+        this(context, timeline, R.style.twitter_TweetLightStyle, null);
     }
 
     protected TweetTimelineRecyclerViewAdapter(Context context, Timeline<Tweet> timeline,
@@ -182,7 +182,7 @@ public class TweetTimelineRecyclerViewAdapter extends
         private Timeline<Tweet> timeline;
         private Callback<Tweet> actionCallback;
         private TimelineFilter timelineFilter;
-        private int styleResId = R.style.tw__TweetLightStyle;
+        private int styleResId = R.style.twitter_TweetLightStyle;
 
         /**
          * Constructs a Builder.

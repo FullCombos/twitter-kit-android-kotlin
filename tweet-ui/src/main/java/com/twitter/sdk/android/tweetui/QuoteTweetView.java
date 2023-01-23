@@ -49,7 +49,7 @@ public class QuoteTweetView extends AbstractTweetView {
 
     @Override
     protected int getLayout() {
-        return R.layout.tw__tweet_quote;
+        return R.layout.twitter_tweet_quote;
     }
 
     @Override

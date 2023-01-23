@@ -22,34 +22,34 @@
 
     <com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout
         android:id="@+id/tw__aspect_ratio_media_container"
-        style="@style/tw__TweetMediaContainer">
+        style="@style/twitter_TweetMediaContainer">
 
         <com.twitter.sdk.android.tweetui.internal.TweetMediaView
             android:id="@+id/tweet_media_view"
-            style="@style/tw__TweetMedia"/>
+            style="@style/twitter_TweetMedia"/>
 
         <com.twitter.sdk.android.tweetui.internal.MediaBadgeView
             android:id="@+id/tw__tweet_media_badge"
-            style="@style/tw__TweetBadge" />
+            style="@style/twitter_TweetBadge" />
     </com.twitter.sdk.android.tweetui.internal.AspectRatioFrameLayout>
 
     <TextView
         android:id="@+id/tw__tweet_retweeted_by"
         android:layout_below="@id/tw__aspect_ratio_media_container"
-        style="@style/tw__TweetRetweetedBy"
+        style="@style/twitter_TweetRetweetedBy"
         tools:text="Retweeted by Jack"
         tools:visibility="visible"/>
 
     <ImageView
         tools:ignore="ContentDescription"
         android:id="@+id/tw__tweet_author_avatar"
-        style="@style/tw__TweetAvatar"
+        style="@style/twitter_TweetAvatar"
         android:layout_below="@id/tw__tweet_retweeted_by"
         tools:src="#CCCCCC"/>
 
     <TextView
         android:id="@+id/tw__tweet_author_full_name"
-        style="@style/tw__TweetFullName"
+        style="@style/twitter_TweetFullName"
         android:layout_below="@id/tw__tweet_retweeted_by"
         android:layout_toRightOf="@id/tw__tweet_author_avatar"
         android:layout_toEndOf="@id/tw__tweet_author_avatar"
@@ -60,14 +60,14 @@
     <ImageView
         tools:ignore="ContentDescription"
         android:id="@+id/tw__twitter_logo"
-        style="@style/tw__TwitterLogo"
+        style="@style/twitter_TwitterLogo"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/tw__tweet_retweeted_by"/>
 
     <TextView
         android:id="@+id/tw__tweet_author_screen_name"
-        style="@style/tw__TweetScreenName"
+        style="@style/twitter_TweetScreenName"
         android:layout_below="@id/tw__tweet_author_full_name"
         android:layout_alignBottom="@id/tw__tweet_author_avatar"
         android:layout_toRightOf="@id/tw__tweet_author_avatar"
@@ -76,7 +76,7 @@
 
     <TextView
         android:id="@+id/tw__tweet_timestamp"
-        style="@style/tw__TweetTimestamp"
+        style="@style/twitter_TweetTimestamp"
         android:layout_below="@id/tw__tweet_author_full_name"
         android:layout_alignBottom="@id/tw__tweet_author_screen_name"
         android:layout_toRightOf="@id/tw__tweet_author_screen_name"
@@ -85,7 +85,7 @@
 
     <TextView
         android:id="@+id/tw__tweet_text"
-        style="@style/tw__TweetText"
+        style="@style/twitter_TweetText"
         android:layout_below="@id/tw__tweet_author_avatar"
         android:visibility="gone"
         tools:text="just setting up my twttr"
@@ -93,11 +93,11 @@
 
     <FrameLayout
         android:id="@+id/quote_tweet_holder"
-        style="@style/tw__QuoteTweetContainer"
+        style="@style/twitter_QuoteTweetContainer"
         android:layout_below="@id/tw__tweet_text"/>
 
     <include
-        style="@style/tw__TweetActionButtonBar"
+        style="@style/twitter_TweetActionButtonBar"
         layout="@layout/tw__action_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

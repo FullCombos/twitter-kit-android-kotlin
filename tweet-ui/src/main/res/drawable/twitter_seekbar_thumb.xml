@@ -33,7 +33,7 @@
         android:bottom="@dimen/tw__seekbar_thumb_outer_padding">
         <shape android:shape="oval">
             <solid
-                android:color="@color/tw__seekbar_thumb_outer_color"/>
+                android:color="@color/twitter_seekbar_thumb_outer_color"/>
         </shape>
     </item>
     <!-- pre-Lollipop does not like padding on root layer-lists so we need to set the position
@@ -45,7 +45,7 @@
         android:bottom="@dimen/tw__seekbar_thumb_inner_padding">
         <shape android:shape="oval">
             <solid
-                android:color="@color/tw__seekbar_thumb_inner_color"/>
+                android:color="@color/twitter_seekbar_thumb_inner_color"/>
         </shape>
     </item>
 </layer-list>

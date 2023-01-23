@@ -152,7 +152,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        final Integer mediaEntityIndex = (Integer) view.getTag(R.id.tw__entity_index);
+        final Integer mediaEntityIndex = (Integer) view.getTag(R.id.twitter_entity_index);
         if (tweetMediaClickListener != null) {
             final MediaEntity mediaEntity;
             if (!mediaEntities.isEmpty()) {
@@ -367,7 +367,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
 
         imageView.setVisibility(VISIBLE);
         imageView.setBackgroundColor(mediaBgColor);
-        imageView.setTag(R.id.tw__entity_index, index);
+        imageView.setTag(R.id.twitter_entity_index, index);
 
         return imageView;
     }
@@ -384,7 +384,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
         if (!TextUtils.isEmpty(description)) {
             imageView.setContentDescription(description);
         } else {
-            imageView.setContentDescription(getResources().getString(R.string.tw__tweet_media));
+            imageView.setContentDescription(getResources().getString(R.string.twitter_tweet_media));
         }
     }
 

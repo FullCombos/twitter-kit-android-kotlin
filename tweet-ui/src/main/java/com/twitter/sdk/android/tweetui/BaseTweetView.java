@@ -140,7 +140,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
     private void initAttributes(int styleResId) {
         this.styleResId = styleResId;
         final TypedArray a = getContext().getTheme().obtainStyledAttributes(styleResId,
-                R.styleable.tw__TweetView);
+                R.styleable.twitter_TweetView);
         try {
             setStyleAttributes(a);
         } finally {
@@ -160,7 +160,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
         if (attrs == null) return;
         // parse the xml attributes by resolving resource references
         final TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
-                R.styleable.tw__TweetView, 0, 0);
+                R.styleable.twitter_TweetView, 0, 0);
         try {
             setXmlDataAttributes(a);
             setStyleAttributes(a);
@@ -196,15 +196,15 @@ public abstract class BaseTweetView extends AbstractTweetView {
     private void setStyleAttributes(TypedArray a) {
         // Styled via attributes
         containerBgColor = a.getColor(R.styleable.tw__TweetView_tw__container_bg_color,
-                getResources().getColor(R.color.tw__tweet_light_container_bg_color));
+                getResources().getColor(R.color.twitter_tweet_light_container_bg_color));
         primaryTextColor = a.getColor(R.styleable.tw__TweetView_tw__primary_text_color,
-                getResources().getColor(R.color.tw__tweet_light_primary_text_color));
+                getResources().getColor(R.color.twitter_tweet_light_primary_text_color));
         actionColor = a.getColor(
                 R.styleable.tw__TweetView_tw__action_color,
-                getResources().getColor(R.color.tw__tweet_action_color));
+                getResources().getColor(R.color.twitter_tweet_action_color));
         actionHighlightColor = a.getColor(
                 R.styleable.tw__TweetView_tw__action_highlight_color,
-                getResources().getColor(R.color.tw__tweet_action_light_highlight_color));
+                getResources().getColor(R.color.twitter_tweet_action_light_highlight_color));
         tweetActionsEnabled =
                 a.getBoolean(R.styleable.tw__TweetView_tw__tweet_actions_enabled, false);
 
@@ -356,7 +356,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
             retweetedByView.setVisibility(GONE);
         } else {
             retweetedByView.setText(
-                    getResources().getString(R.string.tw__retweeted_by_format, tweet.user.getName()));
+                    getResources().getString(R.string.twitter_retweeted_by_format, tweet.user.getName()));
             retweetedByView.setVisibility(VISIBLE);
         }
     }
@@ -447,7 +447,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         imageView.getDrawable().setColorFilter(getResources().getColor(
-                                R.color.tw__black_opacity_10), PorterDuff.Mode.SRC_ATOP);
+                                R.color.twitter_black_opacity_10), PorterDuff.Mode.SRC_ATOP);
                         imageView.invalidate();
                         break;
                     case MotionEvent.ACTION_UP:

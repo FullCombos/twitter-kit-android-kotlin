@@ -76,13 +76,13 @@ final class TweetDateUtils {
         if (diff >= 0) {
             if (diff < DateUtils.MINUTE_IN_MILLIS) { // Less than a minute ago
                 final int secs = (int) (diff / 1000);
-                return res.getQuantityString(R.plurals.tw__time_secs, secs, secs);
+                return res.getQuantityString(R.plurals.twitter_time_secs, secs, secs);
             } else if (diff < DateUtils.HOUR_IN_MILLIS) { // Less than an hour ago
                 final int mins = (int) (diff / DateUtils.MINUTE_IN_MILLIS);
-                return res.getQuantityString(R.plurals.tw__time_mins, mins, mins);
+                return res.getQuantityString(R.plurals.twitter_time_mins, mins, mins);
             } else if (diff < DateUtils.DAY_IN_MILLIS) { // Less than a day ago
                 final int hours = (int) (diff / DateUtils.HOUR_IN_MILLIS);
-                return res.getQuantityString(R.plurals.tw__time_hours, hours, hours);
+                return res.getQuantityString(R.plurals.twitter_time_hours, hours, hours);
             } else {
                 final Calendar now = Calendar.getInstance();
                 now.setTimeInMillis(currentTimeMillis);
@@ -108,11 +108,11 @@ final class TweetDateUtils {
         private Locale currentLocale;
 
         synchronized String formatLongDateString(Resources res, Date date) {
-            return getDateFormat(res, R.string.tw__relative_date_format_long).format(date);
+            return getDateFormat(res, R.string.twitter_relative_date_format_long).format(date);
         }
 
         synchronized String formatShortDateString(Resources res, Date date) {
-            return getDateFormat(res, R.string.tw__relative_date_format_short).format(date);
+            return getDateFormat(res, R.string.twitter_relative_date_format_short).format(date);
         }
 
         private synchronized DateFormat getDateFormat(Resources res, int patternId) {

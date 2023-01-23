@@ -18,7 +18,7 @@
 
 <resources>
 
-    <style name="tw__TweetFullName" parent="tw__TweetFullNameBase">
+    <style name="twitter_TweetFullName" parent="twitter_TweetFullNameBase">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 

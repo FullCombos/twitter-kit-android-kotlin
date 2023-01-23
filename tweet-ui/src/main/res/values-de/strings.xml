@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">Tweet gefällt mir</string>
-    <string name="tw__liked_tweet">Gefällt mir nicht mehr</string>
-    <string name="tw__loading_tweet">Tweet wird geladen</string>
-    <string name="tw__pause">Pause</string>
-    <string name="tw__play">Abspielen</string>
-    <string name="tw__replay">Erneut abspielen</string>
-    <string name="tw__retweeted_by_format">Retweetet von %1$s</string>
-    <string name="tw__share_content_format">Sieh Dir den Tweet von \@%1$s an: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">Tweet von %1$s (\@%2$s)</string>
-    <string name="tw__share_tweet">Tweet teilen</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">Medien twittern</string>
+    <string name="twitter_like_tweet">Tweet gefällt mir</string>
+    <string name="twitter_liked_tweet">Gefällt mir nicht mehr</string>
+    <string name="twitter_loading_tweet">Tweet wird geladen</string>
+    <string name="twitter_pause">Pause</string>
+    <string name="twitter_play">Abspielen</string>
+    <string name="twitter_replay">Erneut abspielen</string>
+    <string name="twitter_retweeted_by_format">Retweetet von %1$s</string>
+    <string name="twitter_share_content_format">Sieh Dir den Tweet von \@%1$s an: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">Tweet von %1$s (\@%2$s)</string>
+    <string name="twitter_share_tweet">Tweet teilen</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">Medien twittern</string>
 </resources>

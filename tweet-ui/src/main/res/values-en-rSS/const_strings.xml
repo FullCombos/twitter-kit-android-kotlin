@@ -17,6 +17,6 @@
   -->
 
 <resources>
-    <string name="tw__relative_date_format_long">[[59353]] MM/dd/yy</string>
-    <string name="tw__relative_date_format_short">[[59352]] MMM dd</string>
+    <string name="twitter_relative_date_format_long">[[59353]] MM/dd/yy</string>
+    <string name="twitter_relative_date_format_short">[[59352]] MMM dd</string>
 </resources>

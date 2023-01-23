@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">Menyukai Tweet</string>
-    <string name="tw__liked_tweet">Batal Suka</string>
-    <string name="tw__loading_tweet">Memuat Tweet</string>
-    <string name="tw__pause">jeda</string>
-    <string name="tw__play">putar</string>
-    <string name="tw__replay">putar ulang</string>
-    <string name="tw__retweeted_by_format">Di-retweet oleh %1$s</string>
-    <string name="tw__share_content_format">Lihat Tweet \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">Tweet dari %1$s (\@%2$s)</string>
-    <string name="tw__share_tweet">Sebarkan Tweet</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">Media Tweet</string>
+    <string name="twitter_like_tweet">Menyukai Tweet</string>
+    <string name="twitter_liked_tweet">Batal Suka</string>
+    <string name="twitter_loading_tweet">Memuat Tweet</string>
+    <string name="twitter_pause">jeda</string>
+    <string name="twitter_play">putar</string>
+    <string name="twitter_replay">putar ulang</string>
+    <string name="twitter_retweeted_by_format">Di-retweet oleh %1$s</string>
+    <string name="twitter_share_content_format">Lihat Tweet \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">Tweet dari %1$s (\@%2$s)</string>
+    <string name="twitter_share_tweet">Sebarkan Tweet</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">Media Tweet</string>
 </resources>

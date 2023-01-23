@@ -30,7 +30,7 @@
         android:background="@null"
         android:paddingTop="4dp"
         android:src="@drawable/twitter_video_pause_btn"
-        android:contentDescription="@string/tw__pause"/>
+        android:contentDescription="@string/twitter_pause"/>
 
     <TextView
         android:id="@+id/tw__current_time"

@@ -53,7 +53,7 @@ import java.util.List;
 
 abstract class AbstractTweetView extends RelativeLayout {
     static final String TAG = TweetUi.LOGTAG;
-    static final int DEFAULT_STYLE = R.style.tw__TweetLightStyle;
+    static final int DEFAULT_STYLE = R.style.twitter_TweetLightStyle;
     static final String EMPTY_STRING = "";
     static final double DEFAULT_ASPECT_RATIO = 16.0 / 9.0;
 
@@ -381,7 +381,7 @@ abstract class AbstractTweetView extends RelativeLayout {
 
     void setContentDescription(Tweet displayTweet) {
         if (!TweetUtils.isTweetResolvable(displayTweet)) {
-            setContentDescription(getResources().getString(R.string.tw__loading_tweet));
+            setContentDescription(getResources().getString(R.string.twitter_loading_tweet));
             return;
         }
 
@@ -396,7 +396,7 @@ abstract class AbstractTweetView extends RelativeLayout {
             timestamp = DateFormat.getDateInstance().format(new Date(createdAt));
         }
 
-        setContentDescription(getResources().getString(R.string.tw__tweet_content_description,
+        setContentDescription(getResources().getString(R.string.twitter_tweet_content_description,
                 Utils.stringOrEmpty(displayTweet.user.getName()), Utils.stringOrEmpty(tweetText),
                 Utils.stringOrEmpty(timestamp)));
     }

@@ -18,16 +18,16 @@
   -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="tw__like_tweet">M\'agrada el tuit</string>
-    <string name="tw__liked_tweet">Desfés l\'agradament</string>
-    <string name="tw__loading_tweet">S\'està carregant el tuit</string>
-    <string name="tw__pause">atura temporalment</string>
-    <string name="tw__play">reprodueix</string>
-    <string name="tw__replay">torna a reproduir</string>
-    <string name="tw__retweeted_by_format">Retuitat per %1$s</string>
-    <string name="tw__share_content_format">Dóna un cop d\'ull al tuit de \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
-    <string name="tw__share_subject_format">Tuit de %1$s (\@%2$s)</string>
-    <string name="tw__share_tweet">Comparteix el tuit</string>
-    <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>
-    <string name="tw__tweet_media">Tuit amb contingut multimèdia</string>
+    <string name="twitter_like_tweet">M\'agrada el tuit</string>
+    <string name="twitter_liked_tweet">Desfés l\'agradament</string>
+    <string name="twitter_loading_tweet">S\'està carregant el tuit</string>
+    <string name="twitter_pause">atura temporalment</string>
+    <string name="twitter_play">reprodueix</string>
+    <string name="twitter_replay">torna a reproduir</string>
+    <string name="twitter_retweeted_by_format">Retuitat per %1$s</string>
+    <string name="twitter_share_content_format">Dóna un cop d\'ull al tuit de \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
+    <string name="twitter_share_subject_format">Tuit de %1$s (\@%2$s)</string>
+    <string name="twitter_share_tweet">Comparteix el tuit</string>
+    <string name="twitter_tweet_content_description">%1$s. %2$s. %3$s.</string>
+    <string name="twitter_tweet_media">Tuit amb contingut multimèdia</string>
 </resources>
