@@ -25,10 +25,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-public class GalleryImageView extends FrameLayout implements Target {
+public class GalleryImageView extends FrameLayout {
     final MultiTouchImageView imageView;
     final ProgressBar progressBar;
 
@@ -59,18 +56,15 @@ public class GalleryImageView extends FrameLayout implements Target {
         imageView.setOnTouchListener(listener);
     }
 
-    @Override
-    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+    public void onBitmapLoaded(Bitmap bitmap) {
         imageView.setImageBitmap(bitmap);
         progressBar.setVisibility(View.GONE);
     }
 
-    @Override
     public void onBitmapFailed(Drawable errorDrawable) {
 
     }
 
-    @Override
     public void onPrepareLoad(Drawable placeHolderDrawable) {
         imageView.setImageResource(android.R.color.transparent);
         progressBar.setVisibility(View.VISIBLE);

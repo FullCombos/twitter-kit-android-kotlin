@@ -18,31 +18,26 @@
 package com.twitter.sdk.android.tweetui;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.squareup.picasso.Picasso;
-import com.twitter.sdk.android.core.GuestSessionProvider;
-import com.twitter.sdk.android.core.SessionManager;
+import androidx.annotation.Nullable;
+
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.TwitterImageLoader;
 
 /**
  * The TweetUi Kit provides views to render Tweets.
  */
 public class TweetUi {
+
     @SuppressLint("StaticFieldLeak")
-    static volatile TweetUi instance;
+    private static volatile TweetUi instance;
     static final String LOGTAG = "TweetUi";
 
-    SessionManager<TwitterSession> sessionManager;
-    GuestSessionProvider guestSessionProvider;
-    Context context;
-
     private TweetRepository tweetRepository;
-    private Picasso imageLoader;
+    private TwitterImageLoader imageLoader;
 
     public static TweetUi getInstance() {
         if (instance == null) {
@@ -58,12 +53,9 @@ public class TweetUi {
     TweetUi() {
         final TwitterCore twitterCore = TwitterCore.getInstance();
 
-        context = Twitter.getInstance().getContext(getIdentifier());
-        sessionManager = twitterCore.getSessionManager();
-        guestSessionProvider = twitterCore.getGuestSessionProvider();
         tweetRepository = new TweetRepository(new Handler(Looper.getMainLooper()),
                 twitterCore.getSessionManager());
-        imageLoader = Picasso.with(Twitter.getInstance().getContext(getIdentifier()));
+        imageLoader = Twitter.getInstance().getImageLoader();
     }
 
     public String getIdentifier() {
@@ -83,12 +75,13 @@ public class TweetUi {
         this.tweetRepository = tweetRepository;
     }
 
-    public Picasso getImageLoader() {
+    @Nullable
+    public TwitterImageLoader getImageLoader() {
         return imageLoader;
     }
 
     // Testing purposes only
-    void setImageLoader(Picasso imageLoader) {
+    void setImageLoader(TwitterImageLoader imageLoader) {
         this.imageLoader = imageLoader;
     }
 }

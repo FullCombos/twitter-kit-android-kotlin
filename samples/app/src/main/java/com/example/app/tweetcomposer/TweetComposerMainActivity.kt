@@ -68,7 +68,7 @@ class TweetComposerMainActivity : BaseActivity() {
 
     private fun launchComposer(uri: Uri?) {
         val session = TwitterCore.getInstance().getSessionManager().getActiveSession()!!
-        val intent: Intent = ComposerActivity.Builder(this)
+        val intent = ComposerActivity.Builder(this)
             .session(session)
             .image(uri)
             .text("Tweet from TwitterKit!")

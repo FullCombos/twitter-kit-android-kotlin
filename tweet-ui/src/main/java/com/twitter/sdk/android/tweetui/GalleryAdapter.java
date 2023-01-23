@@ -18,12 +18,18 @@
 package com.twitter.sdk.android.tweetui;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.core.LoadImageCallback;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterImageLoader;
 import com.twitter.sdk.android.core.models.MediaEntity;
 import com.twitter.sdk.android.tweetui.internal.GalleryImageView;
 import com.twitter.sdk.android.tweetui.internal.SwipeToDismissTouchListener;
@@ -33,9 +39,11 @@ import java.util.List;
 
 class GalleryAdapter extends PagerAdapter {
 
-    final List<MediaEntity> items = new ArrayList<>();
-    final Context context;
-    final SwipeToDismissTouchListener.Callback callback;
+    private final List<MediaEntity> items = new ArrayList<>();
+    private final Context context;
+    private final SwipeToDismissTouchListener.Callback callback;
+    @Nullable
+    private final TwitterImageLoader imageLoader = Twitter.getInstance().getImageLoader();
 
     GalleryAdapter(Context context, SwipeToDismissTouchListener.Callback callback) {
         this.context = context;
@@ -53,7 +61,7 @@ class GalleryAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;
     }
 
@@ -65,13 +73,32 @@ class GalleryAdapter extends PagerAdapter {
         container.addView(root);
 
         final MediaEntity entity = items.get(position);
-        Picasso.with(context).load(entity.getMediaUrlHttps()).into(root);
+
+        if (imageLoader != null) {
+            imageLoader.load(entity.getMediaUrlHttps()).into(root, new LoadImageCallback() {
+
+                @Override
+                public void onPrepare(Drawable placeholder) {
+                    root.onPrepareLoad(placeholder);
+                }
+
+                @Override
+                public void onSuccess(@NonNull Bitmap bitmap) {
+                    root.onBitmapLoaded(bitmap);
+                }
+
+                @Override
+                public void onError(Drawable error) {
+                    root.onBitmapFailed(error);
+                }
+            });
+        }
 
         return root;
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
     }
 }

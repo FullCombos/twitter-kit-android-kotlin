@@ -35,7 +35,8 @@ class Twitter private constructor(config: TwitterConfig) {
     private val twitterAuthConfig: TwitterAuthConfig
     private val lifecycleManager = ActivityLifecycleManager(context)
     private val logger = config.logger ?: DEFAULT_LOGGER
-    private var debug = config.debug
+    private val debug = config.debug
+    private val imageLoader = config.imageLoader
 
     init {
         twitterAuthConfig = if (config.twitterAuthConfig == null) {
@@ -77,6 +78,10 @@ class Twitter private constructor(config: TwitterConfig) {
         return lifecycleManager
     }
 
+    fun getImageLoader(): TwitterImageLoader? {
+        return imageLoader
+    }
+
     companion object {
 
         internal const val TAG = "Twitter"
@@ -114,7 +119,7 @@ class Twitter private constructor(config: TwitterConfig) {
         fun initialize(context: Context) {
             val config = TwitterConfig.Builder(context)
                 .build()
-            createTwitter(config)
+            initialize(config)
         }
 
         /**

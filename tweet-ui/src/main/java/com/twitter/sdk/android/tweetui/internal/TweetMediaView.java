@@ -19,10 +19,12 @@ package com.twitter.sdk.android.tweetui.internal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -30,8 +32,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.twitter.sdk.android.core.IntentUtils;
+import com.twitter.sdk.android.core.LoadImageCallback;
+import com.twitter.sdk.android.core.TwitterImageLoader;
 import com.twitter.sdk.android.core.internal.VineCardUtils;
 import com.twitter.sdk.android.core.models.Card;
 import com.twitter.sdk.android.core.models.ImageValue;
@@ -398,14 +404,14 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
     }
 
     void setMediaImage(ImageView imageView, String imagePath) {
-        final Picasso imageLoader = dependencyProvider.getImageLoader();
+        final TwitterImageLoader imageLoader = dependencyProvider.getImageLoader();
         if (imageLoader == null) return;
 
         imageLoader.load(imagePath)
                 .fit()
                 .centerCrop()
                 .error(photoErrorResId)
-                .into(imageView, new PicassoCallback(imageView));
+                .into(imageView, new LoadImageCallbackImpl(imageView));
     }
 
     /**
@@ -413,15 +419,20 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
      * overdraw. A weak reference is used to avoid leaking the Activity context because the Callback
      * will be strongly referenced by Picasso.
      */
-    static class PicassoCallback implements com.squareup.picasso.Callback {
+    private static class LoadImageCallbackImpl implements LoadImageCallback {
         final WeakReference<ImageView> imageViewWeakReference;
 
-        PicassoCallback(ImageView imageView) {
+        LoadImageCallbackImpl(ImageView imageView) {
             imageViewWeakReference = new WeakReference<>(imageView);
         }
 
         @Override
-        public void onSuccess() {
+        public void onPrepare(@Nullable Drawable placeholder) {
+
+        }
+
+        @Override
+        public void onSuccess(@NonNull Bitmap bitmap) {
             final ImageView imageView = imageViewWeakReference.get();
             if (imageView != null) {
                 imageView.setBackgroundResource(android.R.color.transparent);
@@ -429,7 +440,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
         }
 
         @Override
-        public void onError() { /* intentionally blank */ }
+        public void onError(Drawable error) { /* intentionally blank */ }
     }
 
     static class Size {
@@ -458,7 +469,8 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
         /**
          * Can be null if run before TweetUi#doInBackground completes
          */
-        Picasso getImageLoader() {
+        @Nullable
+        TwitterImageLoader getImageLoader() {
             return TweetUi.getInstance().getImageLoader();
         }
     }

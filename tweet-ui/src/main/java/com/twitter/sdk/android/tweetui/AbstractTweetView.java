@@ -17,7 +17,6 @@
 
 package com.twitter.sdk.android.tweetui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -30,9 +29,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import androidx.annotation.Nullable;
+
 import com.twitter.sdk.android.core.IntentUtils;
 import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterImageLoader;
 import com.twitter.sdk.android.core.internal.UserUtils;
 import com.twitter.sdk.android.core.internal.VineCardUtils;
 import com.twitter.sdk.android.core.models.Card;
@@ -283,7 +284,6 @@ abstract class AbstractTweetView extends RelativeLayout {
     /**
      * Sets the Tweet text. If the Tweet text is unavailable, resets to empty string.
      */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void setText(Tweet displayTweet) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             contentView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
@@ -442,7 +442,8 @@ abstract class AbstractTweetView extends RelativeLayout {
         /**
          * Can be null if run before TweetUi#doInBackground completes
          */
-        Picasso getImageLoader() {
+        @Nullable
+        TwitterImageLoader getImageLoader() {
             return TweetUi.getInstance().getImageLoader();
         }
     }

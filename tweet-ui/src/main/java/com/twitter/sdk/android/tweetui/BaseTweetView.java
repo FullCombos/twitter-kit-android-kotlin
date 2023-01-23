@@ -34,12 +34,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.IntentUtils;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterImageLoader;
 import com.twitter.sdk.android.core.internal.UserUtils;
 import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.core.models.TweetBuilder;
@@ -407,8 +407,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
      * recycling.
      */
     void setProfilePhotoView(Tweet displayTweet) {
-        final Picasso imageLoader = dependencyProvider.getImageLoader();
-
+        final TwitterImageLoader imageLoader = dependencyProvider.getImageLoader();
         if (imageLoader == null) return;
 
         final String url;
@@ -420,7 +419,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
         }
 
         if (!TextUtils.isEmpty(url)) {
-            imageLoader.load(url).placeholder(avatarMediaBg).into(avatarView);
+            imageLoader.load(url).placeholder(avatarMediaBg).into(avatarView, null);
         }
     }
 

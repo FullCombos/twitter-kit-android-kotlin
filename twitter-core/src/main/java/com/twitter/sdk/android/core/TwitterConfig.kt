@@ -28,6 +28,7 @@ class TwitterConfig private constructor(
     val logger: Logger?,
     val twitterAuthConfig: TwitterAuthConfig?,
     val executorService: ExecutorService?,
+    val imageLoader: TwitterImageLoader?,
     val debug: Boolean
 ) {
     /**
@@ -40,44 +41,52 @@ class TwitterConfig private constructor(
         private var twitterAuthConfig: TwitterAuthConfig? = null
         private var executorService: ExecutorService? = null
         private var debug: Boolean = false
+        private var imageLoader: TwitterImageLoader? = null
 
         /**
          * Sets the [Logger] to build with.
          */
-        fun logger(logger: Logger): Builder {
+        fun logger(logger: Logger) = apply {
             this.logger = logger
-            return this
         }
 
         /**
          * Sets the [TwitterAuthConfig] to build with.
          */
-        fun twitterAuthConfig(authConfig: TwitterAuthConfig): Builder {
+        fun twitterAuthConfig(authConfig: TwitterAuthConfig) = apply {
             twitterAuthConfig = authConfig
-            return this
         }
 
         /**
          * Sets the [Executor] to build with.
          */
-        fun executor(executorService: ExecutorService): Builder {
+        fun executor(executorService: ExecutorService) = apply {
             this.executorService = executorService
-            return this
         }
 
         /**
          * Enable debug mode
          */
-        fun debug(debug: Boolean): Builder {
+        fun debug(debug: Boolean) = apply {
             this.debug = debug
-            return this
+        }
+
+        fun imageLoader(imageLoader: TwitterImageLoader) = apply {
+            this.imageLoader = imageLoader
         }
 
         /**
          * Build the [TwitterConfig] instance
          */
         fun build(): TwitterConfig {
-            return TwitterConfig(context, logger, twitterAuthConfig, executorService, debug)
+            return TwitterConfig(
+                context,
+                logger,
+                twitterAuthConfig,
+                executorService,
+                imageLoader,
+                debug
+            )
         }
     }
 }

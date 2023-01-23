@@ -8,10 +8,10 @@ And:
 4. Migrate deprecated android api
 5. Improve system compatibility
 6. Add video upload function
+7. Remove `picasso` dependency
 
 TODO:
 
-1. Remove `picasso` dependency
-2. Use `JobIntentService` for `TweetUploadService`
-3. Convert java to kotlin for `tweet-ui`
-4. Migrate deprecated implementations to `registerForActivityResult`
+1. Use `JobIntentService` for `TweetUploadService`
+2. Convert java to kotlin for `tweet-ui`
+3. Migrate deprecated implementations to `registerForActivityResult`

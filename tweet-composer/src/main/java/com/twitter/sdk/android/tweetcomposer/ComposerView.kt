@@ -29,7 +29,7 @@ import android.widget.LinearLayout
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
-import com.squareup.picasso.Picasso
+import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.internal.UserUtils
 import com.twitter.sdk.android.core.models.User
 import com.twitter.sdk.android.tweetcomposer.databinding.TwitterComposerViewBinding
@@ -49,13 +49,12 @@ internal class ComposerView @JvmOverloads constructor(
 
     private val binding: TwitterComposerViewBinding
 
-    private val imageLoader: Picasso
+    private val imageLoader = Twitter.getInstance().getImageLoader()
 
     init {
         mediaBg =
             ColorDrawable(ContextCompat.getColor(context, R.color.twitter_composer_light_gray))
         binding = TwitterComposerViewBinding.inflate(LayoutInflater.from(context), this, true)
-        imageLoader = Picasso.with(context)
     }
 
     override fun onFinishInflate() {
@@ -116,7 +115,7 @@ internal class ComposerView @JvmOverloads constructor(
             UserUtils.AvatarSize.REASONABLY_SMALL
         )
         // Passing null url will not trigger any request, but will set the placeholder bg
-        imageLoader.load(url).placeholder(mediaBg).into(binding.twitterAuthorAvatar)
+        imageLoader?.load(url)?.placeholder(mediaBg)?.into(binding.twitterAuthorAvatar)
     }
 
     fun getTweetText(): String {
@@ -142,7 +141,7 @@ internal class ComposerView @JvmOverloads constructor(
     fun setImageView(imageUri: Uri?) {
         imageUri ?: return
         binding.twitterImageView.visibility = VISIBLE
-        imageLoader.load(imageUri).into(binding.twitterImageView)
+        imageLoader?.load(imageUri)?.into(binding.twitterImageView)
     }
 
     fun setImageView(image: Bitmap?) {

@@ -21,6 +21,7 @@ import android.os.StrictMode
 import android.util.Log
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterApiClient
+import com.twitter.sdk.android.core.TwitterConfig
 import com.twitter.sdk.android.core.TwitterCore
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,7 +45,11 @@ class SampleApplication : Application() {
                 .build()
         )
 
-        Twitter.initialize(this)
+        Twitter.initialize(
+            TwitterConfig.Builder(this)
+                .imageLoader(ImageLoader())
+                .build()
+        )
 
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC

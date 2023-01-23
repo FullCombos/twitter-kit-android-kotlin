@@ -79,6 +79,7 @@ dependencies {
     implementation dependency.material
     implementation dependency.okHttpInterceptor
     implementation dependency.swipeRefreshLayout
+    implementation dependency.picasso
 
     debugImplementation dependency.leakCanary
 }

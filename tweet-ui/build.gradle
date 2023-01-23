@@ -72,7 +72,6 @@ android {
 dependencies {
     api project(':twitter-core')
 
-    implementation dependency.picasso
     implementation dependency.legacyCoreUi
     implementation dependency.coreKt
     implementation dependency.recyclerview

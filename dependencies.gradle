@@ -24,7 +24,7 @@ ext {
             appCompat            : 'androidx.appcompat:appcompat:1.4.2',
 
             // Other
-            picasso              : 'com.squareup.picasso:picasso:2.5.2',
+            picasso              : 'com.squareup.picasso:picasso:2.8',
             coreKt               : 'androidx.core:core-ktx:1.8.0',
             legacyCoreUi         : 'androidx.legacy:legacy-support-core-ui:1.0.0',
             retrofit             : 'com.squareup.retrofit2:retrofit:2.9.0',
