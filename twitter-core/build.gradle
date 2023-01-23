@@ -69,6 +69,7 @@ dependencies {
     api dependency.gson
     api dependency.okHttp
 
+    implementation dependency.coroutines
     implementation dependency.retrofitGsonConverter
     implementation dependency.coreKt
 }

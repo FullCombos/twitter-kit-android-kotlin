@@ -36,6 +36,7 @@ class SafeMapAdapter : TypeAdapterFactory {
                 delegate.write(out, value)
             }
 
+            @Suppress("UNCHECKED_CAST")
             @Throws(IOException::class)
             override fun read(arg0: JsonReader): T {
                 val t = delegate.read(arg0)

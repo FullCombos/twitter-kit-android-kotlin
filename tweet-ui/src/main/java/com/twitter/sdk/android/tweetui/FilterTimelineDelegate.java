@@ -26,17 +26,19 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Tweet;
 
 import java.util.List;
-import java.util.concurrent.Executor;
+
+import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.ExecutorsKt;
 
 /**
  * FilterTimelineDelegate manages and filters timeline data items and loads items from a Timeline.
  */
 class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
+
     final TimelineFilter timelineFilter;
     final TweetUi tweetUi;
 
@@ -87,16 +89,15 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
      * Handles filtering of tweets from the timeline, provided a given TimelineFilter
      */
     class TimelineFilterCallback extends Callback<TimelineResult<Tweet>> {
+
         final DefaultCallback callback;
         final TimelineFilter timelineFilter;
         final Handler handler;
-        final Executor executor;
 
         TimelineFilterCallback(DefaultCallback callback, TimelineFilter timelineFilter) {
             this.callback = callback;
             this.timelineFilter = timelineFilter;
             this.handler = new Handler(Looper.getMainLooper());
-            this.executor = Twitter.getInstance().getExecutorService();
         }
 
         @Override
@@ -109,11 +110,11 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
                 handler.post(() -> callback.success(new Result<>(filteredTimelineResult, result.getResponse())));
             };
 
-            executor.execute(timelineFilterRunnable);
+            ExecutorsKt.asExecutor(Dispatchers.getDefault()).execute(timelineFilterRunnable);
         }
 
         @Override
-        public void failure(final TwitterException ex) {
+        public void failure(@NonNull final TwitterException ex) {
             if (callback != null) {
                 callback.failure(ex);
             }

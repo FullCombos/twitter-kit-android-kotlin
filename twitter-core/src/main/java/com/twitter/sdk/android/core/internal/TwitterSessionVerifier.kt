@@ -31,7 +31,7 @@ internal class TwitterSessionVerifier private constructor(private val accountSer
      *
      * @param session
      */
-    override fun verifySession(session: TwitterSession) {
+    override suspend fun verifySession(session: TwitterSession) {
         val accountService = accountServiceProvider.getAccountService(session)
         try {
             accountService.verifyCredentials(

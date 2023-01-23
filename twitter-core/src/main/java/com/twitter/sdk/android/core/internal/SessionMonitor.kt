@@ -20,8 +20,11 @@ import android.app.Activity
 import android.text.format.DateUtils
 import com.twitter.sdk.android.core.Session
 import com.twitter.sdk.android.core.SessionManager
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
-import java.util.concurrent.ExecutorService
 
 /**
  * A session monitor for validating sessions.
@@ -30,7 +33,6 @@ import java.util.concurrent.ExecutorService
 internal class SessionMonitor<T : Session<*>> private constructor(
     private val sessionManager: SessionManager<T>,
     private val time: SystemCurrentTimeProvider,
-    private val executorService: ExecutorService,
     private val monitorState: MonitorState,
     private val sessionVerifier: SessionVerifier<T>
 ) {
@@ -40,12 +42,10 @@ internal class SessionMonitor<T : Session<*>> private constructor(
      */
     constructor(
         sessionManager: SessionManager<T>,
-        executorService: ExecutorService,
         sessionVerifier: SessionVerifier<T>
     ) : this(
         sessionManager,
         SystemCurrentTimeProvider(),
-        executorService,
         MonitorState(),
         sessionVerifier
     )
@@ -54,11 +54,14 @@ internal class SessionMonitor<T : Session<*>> private constructor(
      * This is how we hook into the activity lifecycle to detect if the user is using the app.
      * @param activityLifecycleManager
      */
+    @OptIn(DelicateCoroutinesApi::class)
     fun monitorActivityLifecycle(activityLifecycleManager: ActivityLifecycleManager) {
         activityLifecycleManager.registerCallbacks(object : ActivityLifecycleManager.Callbacks {
 
             override fun onActivityStarted(activity: Activity) {
-                triggerVerificationIfNecessary()
+                GlobalScope.launch(Dispatchers.IO) {
+                    triggerVerificationIfNecessary()
+                }
             }
         })
     }
@@ -68,17 +71,17 @@ internal class SessionMonitor<T : Session<*>> private constructor(
      * has passed in order to run another verification. If it determines it can verify, it submits a
      * runnable that does the verification in a background thread.
      */
-    fun triggerVerificationIfNecessary() {
+    private suspend fun triggerVerificationIfNecessary() {
         val session = sessionManager.getActiveSession()
         val currentTime = time.getCurrentTimeMillis()
         val startVerification = session != null &&
                 monitorState.beginVerification(currentTime)
         if (startVerification) {
-            executorService.submit { verifyAll() }
+            verifyAll()
         }
     }
 
-    private fun verifyAll() {
+    private suspend fun verifyAll() {
         for (session in sessionManager.getSessionMap().values) {
             sessionVerifier.verifySession(session)
         }

@@ -17,8 +17,6 @@
 package com.twitter.sdk.android.core
 
 import android.content.Context
-import java.util.concurrent.Executor
-import java.util.concurrent.ExecutorService
 
 /**
  * Configurable Twitter options
@@ -27,7 +25,6 @@ class TwitterConfig private constructor(
     val context: Context,
     val logger: Logger?,
     val twitterAuthConfig: TwitterAuthConfig?,
-    val executorService: ExecutorService?,
     val imageLoader: TwitterImageLoader?,
     val debug: Boolean
 ) {
@@ -39,7 +36,6 @@ class TwitterConfig private constructor(
         private val context = context.applicationContext
         private var logger: Logger? = null
         private var twitterAuthConfig: TwitterAuthConfig? = null
-        private var executorService: ExecutorService? = null
         private var debug: Boolean = false
         private var imageLoader: TwitterImageLoader? = null
 
@@ -55,13 +51,6 @@ class TwitterConfig private constructor(
          */
         fun twitterAuthConfig(authConfig: TwitterAuthConfig) = apply {
             twitterAuthConfig = authConfig
-        }
-
-        /**
-         * Sets the [Executor] to build with.
-         */
-        fun executor(executorService: ExecutorService) = apply {
-            this.executorService = executorService
         }
 
         /**
@@ -83,7 +72,6 @@ class TwitterConfig private constructor(
                 context,
                 logger,
                 twitterAuthConfig,
-                executorService,
                 imageLoader,
                 debug
             )

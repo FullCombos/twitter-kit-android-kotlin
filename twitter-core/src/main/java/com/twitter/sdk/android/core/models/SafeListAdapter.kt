@@ -31,11 +31,13 @@ class SafeListAdapter : TypeAdapterFactory {
         val delegate = gson.getDelegateAdapter(this, tokenType)
 
         return object : TypeAdapter<T>() {
+
             @Throws(IOException::class)
             override fun write(out: JsonWriter, value: T) {
                 delegate.write(out, value)
             }
 
+            @Suppress("UNCHECKED_CAST")
             @Throws(IOException::class)
             override fun read(arg0: JsonReader): T {
                 val t = delegate.read(arg0)

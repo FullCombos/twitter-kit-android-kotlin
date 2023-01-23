@@ -20,9 +20,7 @@ import android.annotation.SuppressLint
 import android.content.*
 import com.twitter.sdk.android.core.internal.ActivityLifecycleManager
 import com.twitter.sdk.android.core.internal.CommonUtils
-import com.twitter.sdk.android.core.internal.ExecutorUtils
 import java.io.File
-import java.util.concurrent.ExecutorService
 
 /**
  * The [Twitter] class stores common configuration and state for TwitterKit SDK.
@@ -30,8 +28,6 @@ import java.util.concurrent.ExecutorService
 class Twitter private constructor(config: TwitterConfig) {
 
     private val context = config.context
-    private val executorService =
-        config.executorService ?: ExecutorUtils.buildThreadPoolExecutorService("twitter-worker")
     private val twitterAuthConfig: TwitterAuthConfig
     private val lifecycleManager = ActivityLifecycleManager(context)
     private val logger = config.logger ?: DEFAULT_LOGGER
@@ -62,13 +58,6 @@ class Twitter private constructor(config: TwitterConfig) {
      */
     fun getTwitterAuthConfig(): TwitterAuthConfig {
         return twitterAuthConfig
-    }
-
-    /**
-     * @return the global [ExecutorService].
-     */
-    fun getExecutorService(): ExecutorService {
-        return executorService
     }
 
     /**

@@ -23,6 +23,7 @@ import com.twitter.sdk.android.core.internal.TwitterApi
 import com.twitter.sdk.android.core.internal.TwitterSessionVerifier
 import com.twitter.sdk.android.core.internal.oauth.OAuth2Service
 import com.twitter.sdk.android.core.internal.persistence.PreferenceStoreImpl
+import kotlinx.coroutines.*
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -58,7 +59,6 @@ class TwitterCore internal constructor(
         )
         sessionMonitor = SessionMonitor(
             twitterSessionManager,
-            Twitter.getInstance().getExecutorService(),
             TwitterSessionVerifier()
         )
     }
@@ -67,16 +67,18 @@ class TwitterCore internal constructor(
         return BuildConfig.VERSION_NAME + "." + BuildConfig.BUILD_NUMBER
     }
 
-    private fun doInBackground() {
-        // Trigger restoration of session
-        twitterSessionManager.getActiveSession()
-        guestSessionManager.getActiveSession()
-        getGuestSessionProvider()
-        // Monitor activity lifecycle after sessions have been restored. Otherwise we would not
-        // have any sessions to monitor anyways.
-        sessionMonitor.monitorActivityLifecycle(
-            Twitter.getInstance().getActivityLifecycleManager()
-        )
+    private suspend fun doInBackground() {
+        return suspendCancellableCoroutine {
+            // Trigger restoration of session
+            twitterSessionManager.getActiveSession()
+            guestSessionManager.getActiveSession()
+            getGuestSessionProvider()
+            // Monitor activity lifecycle after sessions have been restored. Otherwise we would not
+            // have any sessions to monitor anyways.
+            sessionMonitor.monitorActivityLifecycle(
+                Twitter.getInstance().getActivityLifecycleManager()
+            )
+        }
     }
 
     private fun getIdentifier(): String {
@@ -86,7 +88,7 @@ class TwitterCore internal constructor(
     /**********************************************************************************************
      * BEGIN PUBLIC API METHODS
      */
-    
+
     /**
      * @return the [com.twitter.sdk.android.core.SessionManager] for user sessions.
      */
@@ -203,14 +205,16 @@ class TwitterCore internal constructor(
         private const val PREF_KEY_GUEST_SESSION = "guestsession"
         private const val SESSION_PREF_FILE_NAME = "session_store"
 
+        @OptIn(DelicateCoroutinesApi::class)
         @JvmStatic
         fun getInstance(): TwitterCore {
             if (instance == null) {
                 synchronized(TwitterCore::class.java) {
                     if (instance == null) {
                         instance = TwitterCore(Twitter.getInstance().getTwitterAuthConfig())
-                        Twitter.getInstance().getExecutorService()
-                            .execute { instance!!.doInBackground() }
+                        GlobalScope.launch(Dispatchers.Default) {
+                            instance!!.doInBackground()
+                        }
                     }
                 }
             }

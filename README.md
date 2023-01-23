@@ -9,6 +9,7 @@ And:
 5. Improve system compatibility
 6. Add video upload function
 7. Remove `picasso` dependency
+8. Use `Coroutine` instead of `ExecutorService`
 
 TODO:
 

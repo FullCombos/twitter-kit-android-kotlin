@@ -38,6 +38,7 @@ class BindingValues(bindingValues: Map<String, Any?> = emptyMap()) {
      */
     fun <T> get(key: String): T? {
         return try {
+            @Suppress("UNCHECKED_CAST")
             bindingValues[key] as T
         } catch (ex: ClassCastException) {
             null

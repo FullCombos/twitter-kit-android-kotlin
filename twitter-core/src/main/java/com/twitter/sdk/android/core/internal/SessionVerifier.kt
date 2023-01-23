@@ -19,5 +19,5 @@ package com.twitter.sdk.android.core.internal
 import com.twitter.sdk.android.core.Session
 
 internal interface SessionVerifier<T : Session<*>> {
-    fun verifySession(session: T)
+    suspend fun verifySession(session: T)
 }

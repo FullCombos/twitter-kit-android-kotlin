@@ -187,7 +187,7 @@ internal class CommonUtils private constructor() {
          * Used internally to log errors only when the com.twitter.sdk.android.TRACE_ENABLED resource
          * value is set to true.  When it is, this API passes processing to the logError API.
          */
-        fun logControlledError(context: Context, msg: String, tr: Throwable) {
+        fun logControlledError(context: Context, msg: String) {
             if (isClsTrace(context)) {
                 Twitter.getLogger().e(Twitter.TAG, msg)
             }
@@ -197,7 +197,7 @@ internal class CommonUtils private constructor() {
          * Used internally to log only when the com.twitter.sdk.android.TRACE_ENABLED resource value
          * is set to true.  When it is, this API passes processing to the log API.
          */
-        fun logControlled(context: Context, level: Int, tag: String, msg: String) {
+        fun logControlled(context: Context, level: Int, msg: String) {
             if (isClsTrace(context)) {
                 Twitter.getLogger().log(level, Twitter.TAG, msg)
             }
