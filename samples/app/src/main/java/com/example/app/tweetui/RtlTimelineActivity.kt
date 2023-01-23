@@ -45,6 +45,7 @@ class RtlTimelineActivity : TweetUiActivity() {
         setLocale(deviceLocale)
     }
 
+    @Suppress("DEPRECATION")
     private fun setLocale(locale: Locale) {
         Locale.setDefault(locale)
 

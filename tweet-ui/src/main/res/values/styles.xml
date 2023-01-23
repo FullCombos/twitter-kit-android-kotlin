@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 Twitter, Inc.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,21 +21,25 @@
         <item name="twitter_container_bg_color">@color/twitter_tweet_light_container_bg_color</item>
         <item name="twitter_primary_text_color">@color/twitter_tweet_light_primary_text_color</item>
         <item name="twitter_action_color">@color/twitter_tweet_action_color</item>
-        <item name="twitter_action_highlight_color">@color/twitter_tweet_action_light_highlight_color</item>
+        <item name="twitter_action_highlight_color">
+            @color/twitter_tweet_action_light_highlight_color
+        </item>
     </style>
 
     <style name="twitter_TweetLightWithActionsStyle" parent="twitter_TweetLightStyle">
         <item name="twitter_tweet_actions_enabled">true</item>
     </style>
 
-    <style name="tw__TweetDarkStyle">
+    <style name="twitter_TweetDarkStyle">
         <item name="twitter_container_bg_color">@color/twitter_tweet_dark_container_bg_color</item>
         <item name="twitter_primary_text_color">@color/twitter_tweet_dark_primary_text_color</item>
         <item name="twitter_action_color">@color/twitter_tweet_action_color</item>
-        <item name="twitter_action_highlight_color">@color/twitter_tweet_action_dark_highlight_color</item>
+        <item name="twitter_action_highlight_color">
+            @color/twitter_tweet_action_dark_highlight_color
+        </item>
     </style>
 
-    <style name="tw__TweetDarkWithActionsStyle" parent="tw__TweetDarkStyle">
+    <style name="twitter_TweetDarkWithActionsStyle" parent="twitter_TweetDarkStyle">
         <item name="twitter_tweet_actions_enabled">true</item>
     </style>
 </resources>
