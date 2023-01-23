@@ -4,7 +4,7 @@ And:
 
 1. Convert java to kotlin
 2. Fix legacy issues
-3. Use androidx library instead of deprecated support library
+3. Use `androidx` library instead of deprecated `support` library
 4. Migrate deprecated android api
 5. Improve system compatibility
 6. Add video upload function
