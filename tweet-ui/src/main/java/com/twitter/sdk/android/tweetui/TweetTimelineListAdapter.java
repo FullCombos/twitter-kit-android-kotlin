@@ -21,6 +21,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
@@ -92,14 +94,14 @@ public class TweetTimelineListAdapter extends TimelineListAdapter<Tweet> {
 
         @Override
         public void success(Result<Tweet> result) {
-            delegate.setItemById(result.data);
+            delegate.setItemById(result.getData());
             if (cb != null) {
                 cb.success(result);
             }
         }
 
         @Override
-        public void failure(TwitterException exception) {
+        public void failure(@NonNull TwitterException exception) {
             if (cb != null) {
                 cb.failure(exception);
             }

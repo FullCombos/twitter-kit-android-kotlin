@@ -17,6 +17,8 @@
 
 package com.twitter.sdk.android.tweetui;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
@@ -46,6 +48,7 @@ abstract class BaseTimeline {
 
         /**
          * Constructs a TweetsCallback
+         *
          * @param cb A callback which expects a TimelineResult
          */
         TweetsCallback(Callback<TimelineResult<Tweet>> cb) {
@@ -54,16 +57,16 @@ abstract class BaseTimeline {
 
         @Override
         public void success(Result<List<Tweet>> result) {
-            final List<Tweet> tweets = result.data;
+            final List<Tweet> tweets = result.getData();
             final TimelineResult<Tweet> timelineResult
                     = new TimelineResult<>(new TimelineCursor(tweets), tweets);
             if (cb != null) {
-                cb.success(new Result<>(timelineResult, result.response));
+                cb.success(new Result<>(timelineResult, result.getResponse()));
             }
         }
 
         @Override
-        public void failure(TwitterException exception) {
+        public void failure(@NonNull TwitterException exception) {
             if (cb != null) {
                 cb.failure(exception);
             }

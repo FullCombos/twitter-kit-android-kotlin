@@ -38,25 +38,25 @@ class FormattedUrlEntity {
     }
 
     static FormattedUrlEntity createFormattedUrlEntity(UrlEntity entity) {
-        return new FormattedUrlEntity(entity.getStart(), entity.getEnd(), entity.displayUrl,
-                entity.url, entity.expandedUrl);
+        return new FormattedUrlEntity(entity.getStart(), entity.getEnd(), entity.getDisplayUrl(),
+                entity.getUrl(), entity.getExpandedUrl());
     }
 
     static FormattedUrlEntity createFormattedUrlEntity(HashtagEntity hashtagEntity) {
-        final String url = TweetUtils.getHashtagPermalink(hashtagEntity.text);
+        final String url = TweetUtils.getHashtagPermalink(hashtagEntity.getText());
         return new FormattedUrlEntity(hashtagEntity.getStart(), hashtagEntity.getEnd(),
-                "#" + hashtagEntity.text, url, url);
+                "#" + hashtagEntity.getText(), url, url);
     }
 
     static FormattedUrlEntity createFormattedUrlEntity(MentionEntity mentionEntity) {
-        final String url = TweetUtils.getProfilePermalink(mentionEntity.screenName);
+        final String url = TweetUtils.getProfilePermalink(mentionEntity.getScreenName());
         return new FormattedUrlEntity(mentionEntity.getStart(), mentionEntity.getEnd(),
-                "@" + mentionEntity.screenName, url, url);
+                "@" + mentionEntity.getScreenName(), url, url);
     }
 
     static FormattedUrlEntity createFormattedUrlEntity(SymbolEntity symbolEntity) {
-        final String url = TweetUtils.getSymbolPermalink(symbolEntity.text);
+        final String url = TweetUtils.getSymbolPermalink(symbolEntity.getText());
         return new FormattedUrlEntity(symbolEntity.getStart(), symbolEntity.getEnd(),
-                "$" + symbolEntity.text, url, url);
+                "$" + symbolEntity.getText(), url, url);
     }
 }

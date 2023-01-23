@@ -20,7 +20,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.ListFragment
+import com.example.app.BuildConfig
 import com.example.app.R
 import com.example.app.twittercore.TwitterCoreMainActivity
 import com.mopub.nativeads.MoPubAdAdapter
@@ -65,7 +67,7 @@ class UserTimelineFragment : ListFragment() {
             .setOnActionCallback(actionCallback)
             .build()
 
-        moPubAdAdapter = TwitterMoPubAdAdapter(activity, adapter).apply {
+        moPubAdAdapter = TwitterMoPubAdAdapter(activity as FragmentActivity, adapter).apply {
             val adRenderer = TwitterStaticNativeAdRenderer()
             registerAdRenderer(adRenderer)
             loadAds(BuildConfig.MOPUB_AD_UNIT_ID)

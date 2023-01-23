@@ -1,18 +1,15 @@
 package com.example.app.tweetui
 
-import android.R
-import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
+import com.example.app.R
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter
 import com.twitter.sdk.android.tweetui.UserTimeline
 import java.util.*
@@ -28,7 +25,7 @@ class RtlTimelineActivity : TweetUiActivity() {
         supportActionBar?.setTitle(R.string.rtl_timeline)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            findViewById<View>(R.id.content).layoutDirection = View.LAYOUT_DIRECTION_RTL
+            findViewById<View>(android.R.id.content).layoutDirection = View.LAYOUT_DIRECTION_RTL
         }
     }
 
@@ -77,7 +74,7 @@ class RtlTimelineActivity : TweetUiActivity() {
             val userTimeline = UserTimeline.Builder()
                 .screenName("DubaiAirportsAr")
                 .build()
-            val adapter: TweetTimelineListAdapter = TweetTimelineListAdapter.Builder(getActivity())
+            val adapter: TweetTimelineListAdapter = TweetTimelineListAdapter.Builder(activity)
                 .setTimeline(userTimeline)
                 .build()
 

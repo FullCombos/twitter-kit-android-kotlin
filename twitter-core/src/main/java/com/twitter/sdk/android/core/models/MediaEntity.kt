@@ -70,7 +70,7 @@ class MediaEntity(
      * An object showing available sizes for the media file.
      */
     @SerializedName("sizes")
-    val sizes: Sizes,
+    val sizes: Sizes?,
 
     /**
      * For Tweets containing media that was originally associated with a different tweet, this ID
@@ -90,14 +90,14 @@ class MediaEntity(
      * Type of uploaded media.
      */
     @SerializedName("type")
-    val type: String,
+    val type: String?,
 
     /**
      * An object showing details for the video file. This field is present only when there is a
      * video in the payload.
      */
     @SerializedName("video_info")
-    val videoInfo: VideoInfo,
+    val videoInfo: VideoInfo?,
 
     @SerializedName("ext_alt_text")
     val altText: String
@@ -121,7 +121,7 @@ class MediaEntity(
          * Information for a medium-sized version of the media.
          */
         @SerializedName("medium")
-        val medium: Size,
+        val medium: Size?,
 
         /**
          * Information for a large-sized version of the media.

@@ -85,8 +85,8 @@ public final class TweetUtils {
      * @return Returns true if tweet has a greater than zero id and a screen name
      */
     static boolean isTweetResolvable(Tweet tweet) {
-        return tweet != null && tweet.id > 0 && tweet.user != null
-                && !TextUtils.isEmpty(tweet.user.screenName);
+        return tweet != null && tweet.getId() > 0 && tweet.user != null
+                && !TextUtils.isEmpty(tweet.user.getScreenName());
     }
 
     /**

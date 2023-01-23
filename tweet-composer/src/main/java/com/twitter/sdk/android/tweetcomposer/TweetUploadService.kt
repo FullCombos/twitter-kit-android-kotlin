@@ -50,19 +50,21 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
 
     @Deprecated("Deprecated in Java")
     override fun onHandleIntent(intent: Intent?) {
-        val token = intent?.getParcelableExtra<TwitterAuthToken>(EXTRA_USER_TOKEN)
+        val token = intent?.getParcelableExtra<TwitterAuthToken>(EXTRA_USER_TOKEN) ?: return
+
         this.intent = intent
         val twitterSession = TwitterSession(
             token,
             TwitterSession.UNKNOWN_USER_ID,
             TwitterSession.UNKNOWN_USER_NAME
         )
-        val tweetText = intent?.getStringExtra(EXTRA_TWEET_TEXT)
-        val imageUri = intent?.getParcelableExtra<Uri>(EXTRA_IMAGE_URI)
+        val tweetText = intent.getStringExtra(EXTRA_TWEET_TEXT)
+        val imageUri = intent.getParcelableExtra<Uri>(EXTRA_IMAGE_URI)
+
         uploadTweet(twitterSession, tweetText, imageUri)
     }
 
-    private fun uploadTweet(session: TwitterSession?, text: String?, imageUri: Uri?) {
+    private fun uploadTweet(session: TwitterSession, text: String?, imageUri: Uri?) {
         if (imageUri != null) {
             uploadMedia(session, imageUri, object : Callback<Media>() {
 
@@ -79,9 +81,10 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
         }
     }
 
-    private fun uploadTweetWithMedia(session: TwitterSession?, text: String?, mediaId: String?) {
+    private fun uploadTweetWithMedia(session: TwitterSession, text: String?, mediaId: String?) {
         val client = dependencyProvider.getTwitterApiClient(session)
-        client.statusesService.update(text, null, null, null, null, null, null, true, mediaId)
+        client.getStatusesService()
+            .update(text.orEmpty(), null, null, null, null, null, null, true, mediaId)
             .enqueue(object : Callback<Tweet>() {
 
                 override fun success(result: Result<Tweet>) {
@@ -95,7 +98,7 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
             })
     }
 
-    private fun uploadMedia(session: TwitterSession?, imageUri: Uri, callback: Callback<Media>) {
+    private fun uploadMedia(session: TwitterSession, imageUri: Uri, callback: Callback<Media>) {
         val client = dependencyProvider.getTwitterApiClient(session)
         val path = FileUtils.getPath(this@TweetUploadService, imageUri)
         if (path == null) {
@@ -105,7 +108,7 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
         val file = File(path)
         val mimeType = FileUtils.getMimeType(file)
         val media = file.asRequestBody(mimeType?.toMediaTypeOrNull())
-        client.mediaService.upload(media, null, null).enqueue(callback)
+        client.getMediaService().upload(media, null, null).enqueue(callback)
     }
 
     private fun fail(e: TwitterException?) {
@@ -133,7 +136,7 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
      */
     class DependencyProvider {
 
-        fun getTwitterApiClient(session: TwitterSession?): TwitterApiClient {
+        fun getTwitterApiClient(session: TwitterSession): TwitterApiClient {
             return TwitterCore.getInstance().getApiClient(session)
         }
     }

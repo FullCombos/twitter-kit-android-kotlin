@@ -56,6 +56,7 @@ public class TweetView extends BaseTweetView {
      * Render the Tweet by updating the subviews. For any data that is missing from the Tweet,
      * invalidate the subview value (e.g. text views set to empty string) for view recycling.
      * Do not call with render true until inflation has completed.
+     *
      * @throws IllegalArgumentException
      */
     @Override
@@ -84,9 +85,9 @@ public class TweetView extends BaseTweetView {
      * verification data is unavailable, remove the check.
      */
     private void setVerifiedCheck(Tweet tweet) {
-        if (tweet != null && tweet.user != null && tweet.user.verified) {
+        if (tweet != null && tweet.user != null && tweet.user.getVerified()) {
             fullNameView.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-                    R.drawable.tw__ic_tweet_verified, 0);
+                    R.drawable.twitter_ic_tweet_verified, 0);
         } else {
             fullNameView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }

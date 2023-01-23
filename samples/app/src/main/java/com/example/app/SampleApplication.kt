@@ -19,7 +19,6 @@ package com.example.app
 import android.app.Application
 import android.os.StrictMode
 import android.util.Log
-import com.squareup.leakcanary.LeakCanary
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterApiClient
 import com.twitter.sdk.android.core.TwitterCore
@@ -31,7 +30,6 @@ class SampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        LeakCanary.install(this)
         Log.d(TAG, "Setting up StrictMode policy checking.")
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
@@ -52,7 +50,7 @@ class SampleApplication : Application() {
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
         val customClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor).build()
-        val activeSession = TwitterCore.getInstance().sessionManager.activeSession
+        val activeSession = TwitterCore.getInstance().getSessionManager().getActiveSession()
 
         val customApiClient: TwitterApiClient
         if (activeSession != null) {

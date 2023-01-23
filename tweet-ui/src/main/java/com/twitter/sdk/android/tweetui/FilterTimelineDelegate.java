@@ -20,6 +20,8 @@ package com.twitter.sdk.android.tweetui;
 import android.os.Handler;
 import android.os.Looper;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.twitter.sdk.android.core.Callback;
@@ -46,7 +48,8 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
     /**
      * Constructs a FilterTimelineDelegate with a timeline for requesting data and timelineFilter to
      * filter tweets
-     * @param timeline Timeline source
+     *
+     * @param timeline       Timeline source
      * @param timelineFilter a timelineFilter for filtering tweets from timeline
      * @throws java.lang.IllegalArgumentException if timeline is null
      */
@@ -63,14 +66,14 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
         // load latest timeline items and replace existing items
         loadNext(timelineStateHolder.positionForNext(),
                 new TimelineFilterCallback(new RefreshCallback(developerCb, timelineStateHolder),
-                timelineFilter));
+                        timelineFilter));
     }
 
     @Override
     public void next(Callback<TimelineResult<Tweet>> developerCb) {
         loadNext(timelineStateHolder.positionForNext(),
-            new TimelineFilterCallback(new NextCallback(developerCb, timelineStateHolder),
-                    timelineFilter));
+                new TimelineFilterCallback(new NextCallback(developerCb, timelineStateHolder),
+                        timelineFilter));
     }
 
     @Override
@@ -93,17 +96,17 @@ class FilterTimelineDelegate extends TimelineDelegate<Tweet> {
             this.callback = callback;
             this.timelineFilter = timelineFilter;
             this.handler = new Handler(Looper.getMainLooper());
-            this.executor = Twitter.getInstance().getExecutor();
+            this.executor = Twitter.getInstance().getExecutorService();
         }
 
         @Override
-        public void success(final Result<TimelineResult<Tweet>> result) {
+        public void success(@NonNull final Result<TimelineResult<Tweet>> result) {
             final Runnable timelineFilterRunnable = () -> {
-                final List<Tweet> filteredTweets = timelineFilter.filter(result.data.items);
+                final List<Tweet> filteredTweets = timelineFilter.filter(result.getData().items);
                 final TimelineResult<Tweet> filteredTimelineResult =
-                        buildTimelineResult(result.data.timelineCursor, filteredTweets);
+                        buildTimelineResult(result.getData().timelineCursor, filteredTweets);
 
-                handler.post(() -> callback.success(new Result<>(filteredTimelineResult, result.response)));
+                handler.post(() -> callback.success(new Result<>(filteredTimelineResult, result.getResponse())));
             };
 
             executor.execute(timelineFilterRunnable);

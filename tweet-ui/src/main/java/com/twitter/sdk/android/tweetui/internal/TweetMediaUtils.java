@@ -48,7 +48,7 @@ public final class TweetMediaUtils {
         final List<MediaEntity> mediaEntityList = getAllMediaEntities(tweet);
         for (int i = mediaEntityList.size() - 1; i >= 0; i--) {
             final MediaEntity entity = mediaEntityList.get(i);
-            if (entity.type != null && isPhotoType(entity)) {
+            if (entity.getType() != null && isPhotoType(entity)) {
                 return entity;
             }
         }
@@ -69,7 +69,7 @@ public final class TweetMediaUtils {
                 && extendedEntities.media.size() > 0) {
             for (int i = 0; i <= extendedEntities.media.size() - 1; i++) {
                 final MediaEntity entity = extendedEntities.media.get(i);
-                if (entity.type != null && isPhotoType(entity)) {
+                if (entity.getType() != null && isPhotoType(entity)) {
                     photoEntities.add(entity);
                 }
             }
@@ -98,7 +98,7 @@ public final class TweetMediaUtils {
      */
     public static MediaEntity getVideoEntity(Tweet tweet) {
         for (MediaEntity mediaEntity : getAllMediaEntities(tweet)) {
-            if (mediaEntity.type != null && isVideoType(mediaEntity)) {
+            if (mediaEntity.getType() != null && isVideoType(mediaEntity)) {
                 return mediaEntity;
             }
         }
@@ -120,16 +120,16 @@ public final class TweetMediaUtils {
     }
 
     static boolean isPhotoType(MediaEntity mediaEntity) {
-        return PHOTO_TYPE.equals(mediaEntity.type);
+        return PHOTO_TYPE.equals(mediaEntity.getType());
 
     }
 
     static boolean isVideoType(MediaEntity mediaEntity) {
-        return VIDEO_TYPE.equals(mediaEntity.type) || GIF_TYPE.equals(mediaEntity.type);
+        return VIDEO_TYPE.equals(mediaEntity.getType()) || GIF_TYPE.equals(mediaEntity.getType());
     }
 
     public static VideoInfo.Variant getSupportedVariant(MediaEntity mediaEntity) {
-        for (VideoInfo.Variant variant : mediaEntity.videoInfo.variants) {
+        for (VideoInfo.Variant variant : mediaEntity.getVideoInfo().variants) {
             if (isVariantSupported(variant)) {
                 return variant;
             }
@@ -139,24 +139,22 @@ public final class TweetMediaUtils {
     }
 
     public static boolean isLooping(MediaEntity mediaEntity) {
-        return GIF_TYPE.equals(mediaEntity.type) ||
-                VIDEO_TYPE.endsWith(mediaEntity.type) &&
-                mediaEntity.videoInfo.durationMillis < LOOP_VIDEO_IN_MILLIS;
+        return GIF_TYPE.equals(mediaEntity.getType()) ||
+                VIDEO_TYPE.endsWith(mediaEntity.getType()) &&
+                        mediaEntity.getVideoInfo().durationMillis < LOOP_VIDEO_IN_MILLIS;
     }
 
     public static boolean showVideoControls(MediaEntity mediaEntity) {
-        return !GIF_TYPE.equals(mediaEntity.type);
+        return !GIF_TYPE.equals(mediaEntity.getType());
     }
 
     static boolean isVariantSupported(VideoInfo.Variant variant) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-                CONTENT_TYPE_HLS.equals(variant.contentType)) {
+                CONTENT_TYPE_HLS.equals(variant.getContentType())) {
             return true;
-        } else if (CONTENT_TYPE_MP4.equals(variant.contentType)) {
-            return true;
+        } else {
+            return CONTENT_TYPE_MP4.equals(variant.getContentType());
         }
-
-        return false;
     }
 
     static List<MediaEntity> getAllMediaEntities(Tweet tweet) {

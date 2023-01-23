@@ -19,8 +19,10 @@ package com.twitter.sdk.android.tweetui;
 
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -45,7 +47,7 @@ public class TweetTimelineRecyclerViewAdapter extends
     /**
      * Constructs a TweetTimelineRecyclerViewAdapter for a RecyclerView implementation of a timeline
      *
-     * @param context the context for row views.
+     * @param context  the context for row views.
      * @param timeline a Timeline&lt;Tweet&gt; providing access to Tweet data items.
      * @throws java.lang.IllegalArgumentException if context is null
      */
@@ -77,13 +79,13 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         this.timelineDelegate.refresh(new Callback<TimelineResult<Tweet>>() {
             @Override
-            public void success(Result<TimelineResult<Tweet>> result) {
+            public void success(@NonNull Result<TimelineResult<Tweet>> result) {
                 notifyDataSetChanged();
                 previousCount = TweetTimelineRecyclerViewAdapter.this.timelineDelegate.getCount();
             }
 
             @Override
-            public void failure(TwitterException exception) {
+            public void failure(@NonNull TwitterException exception) {
 
             }
         });
@@ -158,14 +160,14 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         @Override
         public void success(Result<Tweet> result) {
-            delegate.setItemById(result.data);
+            delegate.setItemById(result.getData());
             if (cb != null) {
                 cb.success(result);
             }
         }
 
         @Override
-        public void failure(TwitterException exception) {
+        public void failure(@NonNull TwitterException exception) {
             if (cb != null) {
                 cb.failure(exception);
             }
@@ -184,6 +186,7 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         /**
          * Constructs a Builder.
+         *
          * @param context Context for Tweet views.
          */
         public Builder(Context context) {
@@ -192,6 +195,7 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         /**
          * Sets the Tweet timeline data source.
+         *
          * @param timeline Timeline of Tweets
          */
         public TweetTimelineRecyclerViewAdapter.Builder setTimeline(Timeline<Tweet> timeline) {
@@ -201,6 +205,7 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         /**
          * Sets the Tweet view style by resource id.
+         *
          * @param styleResId resource id of the Tweet view style
          */
         public TweetTimelineRecyclerViewAdapter.Builder setViewStyle(int styleResId) {
@@ -210,6 +215,7 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         /**
          * Sets the callback to call when a Tweet action is performed on a Tweet view.
+         *
          * @param actionCallback called when a Tweet action is performed.
          */
         public TweetTimelineRecyclerViewAdapter.Builder setOnActionCallback(
@@ -220,6 +226,7 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         /**
          * Sets the TimelineFilter used to filter tweets from timeline.
+         *
          * @param timelineFilter timelineFilter for timeline
          */
         public TweetTimelineRecyclerViewAdapter.Builder setTimelineFilter(
@@ -230,6 +237,7 @@ public class TweetTimelineRecyclerViewAdapter extends
 
         /**
          * Builds a TweetTimelineRecyclerViewAdapter from Builder parameters.
+         *
          * @return a TweetTimelineListAdpater
          */
         public TweetTimelineRecyclerViewAdapter build() {

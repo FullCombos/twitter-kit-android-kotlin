@@ -17,6 +17,8 @@
 
 package com.twitter.sdk.android.tweetui;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterCore;
@@ -106,16 +108,16 @@ public class SearchTimeline extends BaseTimeline implements Timeline<Tweet> {
 
         @Override
         public void success(Result<Search> result) {
-            final List<Tweet> tweets = result.data.tweets;
+            final List<Tweet> tweets = result.getData().tweets;
             final TimelineResult<Tweet> timelineResult
                     = new TimelineResult<>(new TimelineCursor(tweets), tweets);
             if (cb != null) {
-                cb.success(new Result<>(timelineResult, result.response));
+                cb.success(new Result<>(timelineResult, result.getResponse()));
             }
         }
 
         @Override
-        public void failure(TwitterException exception) {
+        public void failure(@NonNull TwitterException exception) {
             if (cb != null) {
                 cb.failure(exception);
             }

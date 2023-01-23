@@ -19,6 +19,8 @@ package com.twitter.sdk.android.tweetui;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterApiException;
@@ -48,11 +50,11 @@ class LikeTweetAction extends BaseTweetAction implements View.OnClickListener {
     public void onClick(View view) {
         if (view instanceof ToggleImageButton) {
             final ToggleImageButton toggleImageButton = (ToggleImageButton) view;
-            if (tweet.favorited) {
-                tweetRepository.unfavorite(tweet.id,
+            if (tweet.favorited == Boolean.TRUE) {
+                tweetRepository.unfavorite(tweet.getId(),
                         new LikeCallback(toggleImageButton, tweet, getActionCallback()));
             } else {
-                tweetRepository.favorite(tweet.id,
+                tweetRepository.favorite(tweet.getId(),
                         new LikeCallback(toggleImageButton, tweet, getActionCallback()));
             }
         }
@@ -80,12 +82,12 @@ class LikeTweetAction extends BaseTweetAction implements View.OnClickListener {
         }
 
         @Override
-        public void success(Result<Tweet> result) {
+        public void success(@NonNull Result<Tweet> result) {
             cb.success(result);
         }
 
         @Override
-        public void failure(TwitterException exception) {
+        public void failure(@NonNull TwitterException exception) {
             if (exception instanceof TwitterApiException) {
                 final TwitterApiException apiException = (TwitterApiException) exception;
                 final int errorCode = apiException.getErrorCode();
@@ -103,13 +105,13 @@ class LikeTweetAction extends BaseTweetAction implements View.OnClickListener {
                         return;
                     default:
                         // reset the toggle state back to match the Tweet
-                        button.setToggledOn(tweet.favorited);
+                        button.setToggledOn(Boolean.TRUE.equals(tweet.favorited));
                         cb.failure(exception);
                         return;
                 }
             }
             // reset the toggle state back to match the Tweet
-            button.setToggledOn(tweet.favorited);
+            button.setToggledOn(Boolean.TRUE.equals(tweet.favorited));
             cb.failure(exception);
         }
     }

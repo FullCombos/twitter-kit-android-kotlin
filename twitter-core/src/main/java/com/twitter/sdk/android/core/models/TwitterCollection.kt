@@ -23,11 +23,12 @@ import com.google.gson.annotations.SerializedName
  * name, and select which Tweets to add, either by hand or programmatically using the REST API.
  */
 class TwitterCollection(
+
     @SerializedName("objects")
-    val contents: Content,
+    val contents: Content?,
 
     @SerializedName("response")
-    val metadata: Metadata
+    val metadata: Metadata?
 ) {
     /**
      * Contents represent the grouped, decomposed collection objects (tweets, users).
@@ -67,13 +68,13 @@ class TwitterCollection(
         val timelineId: String,
 
         @SerializedName("position")
-        val position: Position,
+        val position: Position?,
 
         /**
          * The ordered set of Collection items.
          */
         @SerializedName("timeline")
-        val timelineItems: List<TimelineItem>
+        val timelineItems: List<TimelineItem>?
 
     ) {
         /**

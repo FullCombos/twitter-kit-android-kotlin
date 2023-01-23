@@ -30,9 +30,10 @@ import com.twitter.sdk.android.core.internal.persistence.SerializationStrategy
  *
  * @throws java.lang.IllegalArgumentException if token argument is null
  */
-data class TwitterSession
-    (
+data class TwitterSession(
+
     override val authToken: TwitterAuthToken,
+
     val userId: Long,
 
     @SerializedName("user_name")

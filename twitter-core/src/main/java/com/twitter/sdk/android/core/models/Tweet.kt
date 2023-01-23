@@ -37,7 +37,7 @@ class Tweet(
      * UTC time when this Tweet was created.
      */
     @SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: String?,
 
     /**
      * Perspectival. Only surfaces on methods supporting the include_my_retweet parameter, when set
@@ -79,19 +79,20 @@ class Tweet(
     card: Card?
 
 ) : Identifiable {
+
     /**
      * Entities which have been parsed out of the text of the Tweet.
      */
     @JvmField
     @SerializedName("entities")
-    val entities: TweetEntities
+    val entities: TweetEntities?
 
     /**
      * Additional entities such as multi photos, animated gifs and video.
      */
     @JvmField
     @SerializedName("extended_entities")
-    val extendedEntities: TweetEntities
+    val extendedEntities: TweetEntities?
 
     /**
      * Nullable. Indicates approximately how many times this Tweet has been "favorited" by Twitter

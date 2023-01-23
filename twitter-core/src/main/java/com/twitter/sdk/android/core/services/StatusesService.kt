@@ -127,7 +127,7 @@ interface StatusesService {
         @Query("max_id") maxId: Long,
         @Query("trim_user") trimUser: Boolean,
         @Query("exclude_replies") excludeReplies: Boolean,
-        @Query("contributor_details") contributeDetails: Boolean,
+        @Query("contributor_details") contributeDetails: Boolean?,
         @Query("include_rts") includeRetweets: Boolean
     ): Call<List<Tweet>>
 
@@ -232,9 +232,9 @@ interface StatusesService {
     )
     fun show(
         @Query("id") id: Long,
-        @Query("trim_user") trimUser: Boolean,
-        @Query("include_my_retweet") includeMyRetweet: Boolean,
-        @Query("include_entities") includeEntities: Boolean
+        @Query("trim_user") trimUser: Boolean?,
+        @Query("include_my_retweet") includeMyRetweet: Boolean?,
+        @Query("include_entities") includeEntities: Boolean?
     ): Call<Tweet>
 
     /**
@@ -275,9 +275,9 @@ interface StatusesService {
     )
     fun lookup(
         @Query("id") id: String,
-        @Query("include_entities") includeEntities: Boolean,
-        @Query("trim_user") trimUser: Boolean,
-        @Query("map") map: Boolean
+        @Query("include_entities") includeEntities: Boolean?,
+        @Query("trim_user") trimUser: Boolean?,
+        @Query("map") map: Boolean?
     ): Call<List<Tweet>>
 
     /**
@@ -331,14 +331,14 @@ interface StatusesService {
     )
     fun update(
         @Field("status") status: String,
-        @Field("in_reply_to_status_id") inReplyToStatusId: Long,
-        @Field("possibly_sensitive") possiblySensitive: Boolean,
-        @Field("lat") latitude: Double,
-        @Field("long") longitude: Double,
-        @Field("place_id") placeId: String,
-        @Field("display_coordinates") displayCoordinates: Boolean,
+        @Field("in_reply_to_status_id") inReplyToStatusId: Long?,
+        @Field("possibly_sensitive") possiblySensitive: Boolean?,
+        @Field("lat") latitude: Double?,
+        @Field("long") longitude: Double?,
+        @Field("place_id") placeId: String?,
+        @Field("display_coordinates") displayCoordinates: Boolean?,
         @Field("trim_user") trimUser: Boolean,
-        @Field("media_ids") mediaIds: String
+        @Field("media_ids") mediaIds: String?
     ): Call<Tweet>
 
     /**

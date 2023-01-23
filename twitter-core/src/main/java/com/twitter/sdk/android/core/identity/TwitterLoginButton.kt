@@ -198,7 +198,7 @@ class TwitterLoginButton internal constructor(
             TwitterCore.getInstance()
         } catch (ex: IllegalStateException) {
             //Disable if TwitterCore hasn't started
-            Twitter.getLogger().e(TAG, ex.message)
+            Twitter.getLogger().e(TAG, ex.message.orEmpty())
             isEnabled = false
         }
     }

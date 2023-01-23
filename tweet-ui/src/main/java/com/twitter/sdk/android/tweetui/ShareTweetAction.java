@@ -54,18 +54,18 @@ class ShareTweetAction implements View.OnClickListener {
 
     String getShareContent(Resources resources) {
         return resources.getString(R.string.tw__share_content_format,
-                tweet.user.screenName, Long.toString(tweet.id));
+                tweet.user.getScreenName(), Long.toString(tweet.getId()));
     }
 
     String getShareSubject(Resources resources) {
-        return resources.getString(R.string.tw__share_subject_format, tweet.user.name,
-                tweet.user.screenName);
+        return resources.getString(R.string.tw__share_subject_format, tweet.user.getName(),
+                tweet.user.getScreenName());
     }
 
     void launchShareIntent(Intent chooser, Context context) {
         if (!IntentUtils.safeStartActivity(context, chooser)) {
             Twitter.getLogger()
-                    .e(TweetUi.LOGTAG, "Activity cannot be found to handle share intent");
+                    .e(TweetUi.LOGTAG, "Activity cannot be found to handle share intent", null);
         }
     }
 

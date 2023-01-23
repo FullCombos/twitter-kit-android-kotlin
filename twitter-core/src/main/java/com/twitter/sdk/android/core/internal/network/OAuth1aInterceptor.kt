@@ -38,7 +38,7 @@ internal class OAuth1aInterceptor(
             .build()
         val newRequest = hackRequest
             .newBuilder()
-            .header(OAuthConstants.HEADER_AUTHORIZATION, getAuthorizationHeader(hackRequest)!!)
+            .header(OAuthConstants.HEADER_AUTHORIZATION, getAuthorizationHeader(hackRequest))
             .build()
         return chain.proceed(newRequest)
     }

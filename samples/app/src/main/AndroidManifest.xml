@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 Twitter, Inc.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,9 +17,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".SampleApplication"
@@ -29,63 +28,65 @@
         android:label="@string/twitter_app_name"
         android:supportsRtl="true"
         android:theme="@style/TwitterSampleTheme">
+
         <activity
             android:name=".TwitterSampleActivity"
-            android:label="@string/twitter_app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            android:exported="true">
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <!-- Activities for testing TwitterCore -->
         <activity
             android:name=".twittercore.TwitterCoreMainActivity"
-            android:label="@string/kit_twittercore"/>
+            android:label="@string/kit_twittercore" />
 
         <!-- Activities for testing TweetComposer -->
         <activity
             android:name=".tweetcomposer.TweetComposerMainActivity"
-            android:label="@string/kit_tweetcomposer"/>
+            android:label="@string/kit_tweetcomposer" />
 
         <!-- Activities for testing TweetUi -->
         <activity
             android:name=".tweetui.TweetUiMainActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.XmlTweetActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.TweetActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.UniqueTweetActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.FixedTimelineActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.TimelineActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.TimelinesActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.TweetPreviewActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.TweetPojoActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
         <activity
             android:name=".tweetui.RtlTimelineActivity"
-            android:label="@string/kit_tweetui"/>
+            android:label="@string/kit_tweetui" />
 
         <receiver
             android:name=".tweetcomposer.TweetSuccessReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_SUCCESS"/>
+                <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_SUCCESS" />
             </intent-filter>
         </receiver>
 
@@ -93,7 +94,7 @@
             android:name=".tweetcomposer.TweetFailureReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_FAILURE"/>
+                <action android:name="com.twitter.sdk.android.tweetcomposer.UPLOAD_FAILURE" />
             </intent-filter>
         </receiver>
 
@@ -101,7 +102,7 @@
             android:name=".tweetcomposer.TweetCancelReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.twitter.sdk.android.tweetcomposer.TWEET_COMPOSE_CANCEL"/>
+                <action android:name="com.twitter.sdk.android.tweetcomposer.TWEET_COMPOSE_CANCEL" />
             </intent-filter>
         </receiver>
 

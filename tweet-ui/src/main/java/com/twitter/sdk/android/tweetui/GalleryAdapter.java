@@ -18,9 +18,10 @@
 package com.twitter.sdk.android.tweetui;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.core.models.MediaEntity;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class GalleryAdapter extends PagerAdapter {
+
     final List<MediaEntity> items = new ArrayList<>();
     final Context context;
     final SwipeToDismissTouchListener.Callback callback;
@@ -63,7 +65,7 @@ class GalleryAdapter extends PagerAdapter {
         container.addView(root);
 
         final MediaEntity entity = items.get(position);
-        Picasso.with(context).load(entity.mediaUrlHttps).into(root);
+        Picasso.with(context).load(entity.getMediaUrlHttps()).into(root);
 
         return root;
     }

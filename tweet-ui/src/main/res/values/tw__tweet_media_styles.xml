@@ -36,7 +36,7 @@
         <item name="android:layout_marginTop">@dimen/tw__tweet_logo_margin_top</item>
         <item name="android:layout_marginRight">@dimen/tw__tweet_logo_margin_right</item>
         <item name="android:layout_marginEnd">@dimen/tw__tweet_logo_margin_right</item>
-        <item name="android:src">@drawable/tw__ic_logo_blue</item>
+        <item name="android:src">@drawable/twitter_ic_logo_blue</item>
         <item name="android:focusable">false</item>
     </style>
 
@@ -89,7 +89,7 @@
     </style>
 
     <style name="tw__Badge.VideoDuration">
-        <item name="android:background">@drawable/tw__bg_media_badge</item>
+        <item name="android:background">@drawable/twitter_bg_media_badge</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:padding">2dp</item>
         <item name="android:textColor">@android:color/white</item>
@@ -125,7 +125,7 @@
         <item name="android:layout_marginTop">@dimen/tw__compact_tweet_logo_margin_top</item>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_logo_margin_right</item>
         <item name="android:layout_marginEnd">@dimen/tw__compact_tweet_logo_margin_right</item>
-        <item name="android:src">@drawable/tw__ic_logo_blue</item>
+        <item name="android:src">@drawable/twitter_ic_logo_blue</item>
     </style>
 
 </resources>

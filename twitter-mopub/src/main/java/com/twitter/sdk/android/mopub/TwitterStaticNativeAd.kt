@@ -134,6 +134,7 @@ internal class TwitterStaticNativeAd @JvmOverloads constructor(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             binding.nativeAdCard.background = layerDrawable
         } else {
+            @Suppress("DEPRECATION")
             binding.nativeAdCard.setBackgroundDrawable(layerDrawable)
         }
     }
@@ -168,6 +169,7 @@ internal class TwitterStaticNativeAd @JvmOverloads constructor(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             binding.nativeAdCta.background = stateListDrawable
         } else {
+            @Suppress("DEPRECATION")
             binding.nativeAdCta.setBackgroundDrawable(stateListDrawable)
         }
     }

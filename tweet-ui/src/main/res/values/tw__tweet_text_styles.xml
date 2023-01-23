@@ -26,8 +26,8 @@
         <item name="android:layout_marginLeft">@dimen/tw__tweet_retweeted_by_margin_left</item>
         <item name="android:layout_marginStart">@dimen/tw__tweet_retweeted_by_margin_left</item>
         <item name="android:layout_marginBottom">@dimen/tw__tweet_retweeted_by_margin_bottom</item>
-        <item name="android:drawableLeft">@drawable/tw__ic_retweet_light</item>
-        <item name="android:drawableStart">@drawable/tw__ic_retweet_light</item>
+        <item name="android:drawableLeft">@drawable/twitter_ic_retweet_light</item>
+        <item name="android:drawableStart">@drawable/twitter_ic_retweet_light</item>
         <item name="android:drawablePadding">@dimen/tw__tweet_retweeted_by_drawable_padding</item>
         <item name="android:textSize">@dimen/tw__text_size_medium</item>
         <item name="android:fontFamily">sans-serif</item>

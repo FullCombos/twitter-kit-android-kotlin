@@ -16,12 +16,10 @@
  */
 package com.twitter.sdk.android.tweetcomposer
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.text.TextUtils
 import com.twitter.sdk.android.core.*
 import com.twitter.sdk.android.core.BuildConfig
 import com.twitter.sdk.android.core.internal.network.UrlUtils
@@ -95,7 +93,7 @@ class TweetComposer internal constructor() {
          * Creates [android.content.Intent] based on data in [com.twitter.sdk.android.tweetcomposer.TweetComposer.Builder]
          * @return an Intent to the Twitter for Android or a web intent.
          */
-        fun createIntent(): Intent {
+        private fun createIntent(): Intent {
             var intent = createTwitterIntent()
             if (intent == null) {
                 intent = createWebIntent()

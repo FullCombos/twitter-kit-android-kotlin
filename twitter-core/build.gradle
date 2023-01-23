@@ -36,6 +36,7 @@ android {
             buildConfigField "String", "ARTIFACT_ID", "\"${pom_artifact_id}\""
             buildConfigField "String", "BUILD_NUMBER", "\"${buildNumber}\""
             buildConfigField "long", "BUILD_TIME", "${System.currentTimeMillis()}L"
+            buildConfigField "String", "VERSION_NAME", "\"${defaultConfig.versionName}\""
 
             testCoverageEnabled enableTestCodeCoverage
         }
@@ -45,6 +46,7 @@ android {
             buildConfigField "String", "ARTIFACT_ID", "\"${pom_artifact_id}\""
             buildConfigField "String", "BUILD_NUMBER", "\"${buildNumber}\""
             buildConfigField "long", "BUILD_TIME", "${System.currentTimeMillis()}L"
+            buildConfigField "String", "VERSION_NAME", "\"${defaultConfig.versionName}\""
         }
     }
 

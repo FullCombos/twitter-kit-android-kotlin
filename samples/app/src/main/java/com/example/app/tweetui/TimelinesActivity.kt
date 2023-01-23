@@ -18,15 +18,12 @@ package com.example.app.tweetui
 
 import android.content.res.Resources
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.example.app.R
 import com.example.app.databinding.ActivityPagerBinding
-import com.google.android.material.tabs.TabLayout
 
 /**
  * TimelinesActivity pages between different timeline Fragments.

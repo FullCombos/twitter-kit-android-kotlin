@@ -173,17 +173,17 @@ public class VideoControlView extends FrameLayout {
     }
 
     void setPlayDrawable() {
-        stateControl.setImageResource(R.drawable.tw__video_play_btn);
+        stateControl.setImageResource(R.drawable.twitter_video_play_btn);
         stateControl.setContentDescription(getContext().getString(R.string.tw__play));
     }
 
     void setPauseDrawable() {
-        stateControl.setImageResource(R.drawable.tw__video_pause_btn);
+        stateControl.setImageResource(R.drawable.twitter_video_pause_btn);
         stateControl.setContentDescription(getContext().getString(R.string.tw__pause));
     }
 
     void setReplayDrawable() {
-        stateControl.setImageResource(R.drawable.tw__video_replay_btn);
+        stateControl.setImageResource(R.drawable.twitter_video_replay_btn);
         stateControl.setContentDescription(getContext().getString(R.string.tw__replay));
     }
 

@@ -17,6 +17,8 @@
 
 package com.twitter.sdk.android.tweetui;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterCore;
@@ -57,8 +59,9 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
     /**
      * Loads items with position greater than minPosition. If minPosition is null, loads items
      * with the greatest ids.
+     *
      * @param minPosition minimum position of the items to load (exclusive).
-     * @param cb callback.
+     * @param cb          callback.
      */
     @Override
     public void next(Long minPosition, Callback<TimelineResult<Tweet>> cb) {
@@ -67,8 +70,9 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
     /**
      * Loads items with position less than or equal to maxPosition.
+     *
      * @param maxPosition maximum position of the items to load (exclusive).
-     * @param cb callback.
+     * @param cb          callback.
      */
     @Override
     public void previous(Long maxPosition, Callback<TimelineResult<Tweet>> cb) {
@@ -76,7 +80,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
     }
 
     Call<TwitterCollection> createCollectionRequest(final Long minPosition,
-            final Long maxPosition) {
+                                                    final Long maxPosition) {
         return twitterCore.getApiClient().getCollectionService()
                 .collection(collectionIdentifier, maxItemsPerRequest, maxPosition, minPosition);
     }
@@ -90,6 +94,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
         /**
          * Constructs a CollectionCallback
+         *
          * @param cb A Callback which expects a TimelineResult
          */
         CollectionCallback(Callback<TimelineResult<Tweet>> cb) {
@@ -98,8 +103,8 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
         @Override
         public void success(Result<TwitterCollection> result) {
-            final TimelineCursor timelineCursor = getTimelineCursor(result.data);
-            final List<Tweet> tweets = getOrderedTweets(result.data);
+            final TimelineCursor timelineCursor = getTimelineCursor(result.getData());
+            final List<Tweet> tweets = getOrderedTweets(result.getData());
             final TimelineResult<Tweet> timelineResult;
             if (timelineCursor != null) {
                 timelineResult = new TimelineResult<>(timelineCursor, tweets);
@@ -107,12 +112,12 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
                 timelineResult = new TimelineResult<>(null, Collections.<Tweet>emptyList());
             }
             if (cb != null) {
-                cb.success(new Result(timelineResult, result.response));
+                cb.success(new Result(timelineResult, result.getResponse()));
             }
         }
 
         @Override
-        public void failure(TwitterException exception) {
+        public void failure(@NonNull TwitterException exception) {
             if (cb != null) {
                 cb.failure(exception);
             }
@@ -121,17 +126,17 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
 
     static List<Tweet> getOrderedTweets(TwitterCollection collection) {
-        if (collection == null || collection.contents == null ||
-                collection.contents.tweetMap == null || collection.contents.userMap == null ||
-                collection.contents.tweetMap.isEmpty() || collection.contents.userMap.isEmpty() ||
-                collection.metadata == null || collection.metadata.timelineItems == null ||
-                collection.metadata.position == null) {
+        if (collection == null || collection.getContents() == null ||
+                collection.getContents().tweetMap == null || collection.getContents().userMap == null ||
+                collection.getContents().tweetMap.isEmpty() || collection.getContents().userMap.isEmpty() ||
+                collection.getMetadata() == null || collection.getMetadata().getTimelineItems() == null ||
+                collection.getMetadata().getPosition() == null) {
             return Collections.emptyList();
         }
         final List<Tweet> tweets = new ArrayList<>();
-        for (TwitterCollection.TimelineItem item: collection.metadata.timelineItems) {
-            final Tweet trimmedTweet =  collection.contents.tweetMap.get(item.tweetItem.id);
-            final Tweet tweet = mapTweetToUsers(trimmedTweet, collection.contents.userMap);
+        for (TwitterCollection.TimelineItem item : collection.getMetadata().getTimelineItems()) {
+            final Tweet trimmedTweet = collection.getContents().tweetMap.get(item.getTweetItem().getId());
+            final Tweet tweet = mapTweetToUsers(trimmedTweet, collection.getContents().userMap);
             tweets.add(tweet);
         }
         return tweets;
@@ -139,7 +144,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
     static Tweet mapTweetToUsers(Tweet trimmedTweet, Map<Long, User> userMap) {
         // read user id from the trimmed Tweet
-        final Long userId = trimmedTweet.user.id;
+        final Long userId = trimmedTweet.user.getId();
         // lookup User in the collection response's UserMap
         final User user = userMap.get(userId);
         // build the Tweet with the User
@@ -154,12 +159,12 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
     }
 
     static TimelineCursor getTimelineCursor(TwitterCollection twitterCollection) {
-        if (twitterCollection == null || twitterCollection.metadata == null ||
-                twitterCollection.metadata.position == null) {
+        if (twitterCollection == null || twitterCollection.getMetadata() == null ||
+                twitterCollection.getMetadata().getPosition() == null) {
             return null;
         }
-        final Long minPosition = twitterCollection.metadata.position.minPosition;
-        final Long maxPosition = twitterCollection.metadata.position.maxPosition;
+        final Long minPosition = twitterCollection.getMetadata().getPosition().getMinPosition();
+        final Long maxPosition = twitterCollection.getMetadata().getPosition().getMaxPosition();
         return new TimelineCursor(minPosition, maxPosition);
     }
 
@@ -185,6 +190,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
         /**
          * Sets the id for the CollectionTimeline.
+         *
          * @param collectionId The collection id such as 539487832448843776.
          */
         public Builder id(Long collectionId) {
@@ -194,6 +200,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
         /**
          * Sets the number of Tweets returned per request for the CollectionTimeline.
+         *
          * @param maxItemsPerRequest The number of tweets to return per request, up to a maximum of
          *                           200.
          */
@@ -204,6 +211,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
         /**
          * Builds a CollectionTimeline from the Builder parameters.
+         *
          * @return a CollectionTimeline
          * @throws java.lang.IllegalStateException if query is not set (is null).
          */

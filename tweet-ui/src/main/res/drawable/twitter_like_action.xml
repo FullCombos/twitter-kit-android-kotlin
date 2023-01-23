@@ -15,13 +15,11 @@
   ~
   -->
 
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/tw__bg_media_badge"/>
-    <item
-        android:left="@dimen/tw__badge_padding"
-        android:bottom="@dimen/tw__badge_padding"
-        android:right="@dimen/tw__badge_padding"
-        android:top="@dimen/tw__badge_padding">
-        <bitmap android:src="@drawable/tw__ic_vine_badge"/>
-    </item>
-</layer-list>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:twitter="http://schemas.android.com/apk/res-auto">
+    <item twitter:state_toggled_on="true"
+          android:drawable="@drawable/twitter_action_heart_on_default"/>
+
+    <item android:state_enabled="false"
+          android:drawable="@drawable/twitter_action_heart_off_default"/>
+</selector>

@@ -33,7 +33,7 @@ open class BaseActivity : AppCompatActivity() {
      * Finds and sets the Toolbar as the support ActionBar if it is non-null. Returns the Toolbar.
      * @return The Toolbar view or null if not found.
      */
-    protected fun setupToolbar(): Toolbar? {
+    private fun setupToolbar(): Toolbar? {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar?.let { setSupportActionBar(it) }
         return toolbar

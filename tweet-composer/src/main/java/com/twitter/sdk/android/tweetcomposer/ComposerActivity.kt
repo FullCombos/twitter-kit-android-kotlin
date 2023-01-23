@@ -42,7 +42,7 @@ class ComposerActivity : Activity() {
 
         val token = intent.getParcelableExtra<TwitterAuthToken>(EXTRA_USER_TOKEN)
         val session = TwitterSession(
-            token, TwitterSession.UNKNOWN_USER_ID, TwitterSession.UNKNOWN_USER_NAME
+            token!!, TwitterSession.UNKNOWN_USER_ID, TwitterSession.UNKNOWN_USER_NAME
         )
         val imageUri = intent.getParcelableExtra<Uri>(EXTRA_IMAGE_URI)
         val text = intent.getStringExtra(EXTRA_TEXT)
@@ -90,7 +90,6 @@ class ComposerActivity : Activity() {
 
         fun session(session: TwitterSession): Builder {
             val token = session.authToken
-                ?: throw IllegalArgumentException("TwitterSession token must not be null")
             // session passed via the parcelable auth token
             this.token = token
             return this

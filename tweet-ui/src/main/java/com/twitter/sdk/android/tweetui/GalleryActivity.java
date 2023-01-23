@@ -19,7 +19,8 @@ package com.twitter.sdk.android.tweetui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.twitter.sdk.android.core.models.MediaEntity;
 import com.twitter.sdk.android.tweetui.internal.SwipeToDismissTouchListener;
@@ -29,6 +30,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GalleryActivity extends Activity {
+
     public static final String GALLERY_ITEM = "GALLERY_ITEM";
     static final String MEDIA_ENTITY = "MEDIA_ENTITY";
     GalleryItem galleryItem;
@@ -80,7 +82,7 @@ public class GalleryActivity extends Activity {
            @Override
            public void onDismiss() {
                finish();
-               overridePendingTransition(0, R.anim.tw__slide_out);
+               overridePendingTransition(0, R.anim.twitter_slide_out);
            }
 
            @Override
@@ -101,7 +103,7 @@ public class GalleryActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0, R.anim.tw__slide_out);
+        overridePendingTransition(0, R.anim.twitter_slide_out);
     }
 
     public static class GalleryItem implements Serializable {

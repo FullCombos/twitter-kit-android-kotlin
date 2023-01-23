@@ -55,8 +55,8 @@ internal class ComposerController constructor(
     }
 
     private fun setProfilePhoto() {
-        dependencyProvider.getApiClient(session).accountService
-            .verifyCredentials(false, true, false)
+        dependencyProvider.getApiClient(session).getAccountService()
+            .verifyCredentials(includeEntities = false, skipStatus = true, includeEmail = false)
             .enqueue(object : Callback<User>() {
 
                 override fun success(result: Result<User>) {

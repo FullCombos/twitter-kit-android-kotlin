@@ -22,7 +22,7 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 import java.util.*
 
-internal class UrlUtils private constructor() {
+class UrlUtils private constructor() {
 
     companion object {
 

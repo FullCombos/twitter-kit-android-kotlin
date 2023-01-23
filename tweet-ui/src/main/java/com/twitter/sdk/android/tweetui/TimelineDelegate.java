@@ -30,6 +30,7 @@ import java.util.List;
 
 /**
  * TimelineDelegate manages timeline data items and loads items from a Timeline.
+ *
  * @param <T> the item type
  */
 class TimelineDelegate<T extends Identifiable> {
@@ -44,6 +45,7 @@ class TimelineDelegate<T extends Identifiable> {
 
     /**
      * Constructs a TimelineDelegate with a timeline for requesting data.
+     *
      * @param timeline Timeline source
      * @throws java.lang.IllegalArgumentException if timeline is null
      */
@@ -100,6 +102,7 @@ class TimelineDelegate<T extends Identifiable> {
 
     /**
      * Returns the number of items in the data set.
+     *
      * @return Count of items.
      */
     public int getCount() {
@@ -113,6 +116,7 @@ class TimelineDelegate<T extends Identifiable> {
 
     /**
      * Gets the data item associated with the specified position in the data set.
+     *
      * @param position The position of the item within the adapter's data set.
      * @return The data at the specified position.
      */
@@ -125,6 +129,7 @@ class TimelineDelegate<T extends Identifiable> {
 
     /**
      * Gets the row id associated with the specified position in the list.
+     *
      * @param position The position of the item within the adapter's data set.
      * @return The id of the item at the specified position.
      */
@@ -136,6 +141,7 @@ class TimelineDelegate<T extends Identifiable> {
     /**
      * Sets all items in the itemList with the item id to be item. If no items with the same id
      * are found, no changes are made.
+     *
      * @param item the updated item to set in the itemList
      */
     public void setItemById(T item) {
@@ -169,10 +175,10 @@ class TimelineDelegate<T extends Identifiable> {
             if (timelineStateHolder.startTimelineRequest()) {
                 timeline.next(minPosition, cb);
             } else {
-                cb.failure(new TwitterException("Request already in flight"));
+                cb.failure(new TwitterException("Request already in flight", null));
             }
         } else {
-            cb.failure(new TwitterException("Max capacity reached"));
+            cb.failure(new TwitterException("Max capacity reached", null));
         }
     }
 
@@ -184,10 +190,10 @@ class TimelineDelegate<T extends Identifiable> {
             if (timelineStateHolder.startTimelineRequest()) {
                 timeline.previous(maxPosition, cb);
             } else {
-                cb.failure(new TwitterException("Request already in flight"));
+                cb.failure(new TwitterException("Request already in flight", null));
             }
         } else {
-            cb.failure(new TwitterException("Max capacity reached"));
+            cb.failure(new TwitterException("Max capacity reached", null));
         }
     }
 
@@ -230,18 +236,18 @@ class TimelineDelegate<T extends Identifiable> {
     class NextCallback extends DefaultCallback {
 
         NextCallback(Callback<TimelineResult<T>> developerCb,
-                TimelineStateHolder timelineStateHolder) {
+                     TimelineStateHolder timelineStateHolder) {
             super(developerCb, timelineStateHolder);
         }
 
         @Override
         public void success(Result<TimelineResult<T>> result) {
-            if (result.data.items.size() > 0) {
-                final ArrayList<T> receivedItems = new ArrayList<>(result.data.items);
+            if (result.getData().items.size() > 0) {
+                final ArrayList<T> receivedItems = new ArrayList<>(result.getData().items);
                 receivedItems.addAll(itemList);
                 itemList = receivedItems;
                 notifyDataSetChanged();
-                timelineStateHolder.setNextCursor(result.data.timelineCursor);
+                timelineStateHolder.setNextCursor(result.getData().timelineCursor);
             }
             // do nothing when zero items are received. Subsequent 'next' call does not change.
             super.success(result);
@@ -256,13 +262,13 @@ class TimelineDelegate<T extends Identifiable> {
     class RefreshCallback extends NextCallback {
 
         RefreshCallback(Callback<TimelineResult<T>> developerCb,
-                TimelineStateHolder timelineStateHolder) {
+                        TimelineStateHolder timelineStateHolder) {
             super(developerCb, timelineStateHolder);
         }
 
         @Override
         public void success(Result<TimelineResult<T>> result) {
-            if (result.data.items.size() > 0) {
+            if (result.getData().items.size() > 0) {
                 itemList.clear();
             }
             super.success(result);
@@ -280,10 +286,10 @@ class TimelineDelegate<T extends Identifiable> {
 
         @Override
         public void success(Result<TimelineResult<T>> result) {
-            if (result.data.items.size() > 0) {
-                itemList.addAll(result.data.items);
+            if (result.getData().items.size() > 0) {
+                itemList.addAll(result.getData().items);
                 notifyDataSetChanged();
-                timelineStateHolder.setPreviousCursor(result.data.timelineCursor);
+                timelineStateHolder.setPreviousCursor(result.getData().timelineCursor);
             }
             // do nothing when zero items are received. Subsequent 'next' call does not change.
             super.success(result);
@@ -294,6 +300,7 @@ class TimelineDelegate<T extends Identifiable> {
 
     /**
      * Registers an observer that is called when changes happen to the managed data items.
+     *
      * @param observer The object that will be notified when the data set changes.
      */
     public void registerDataSetObserver(DataSetObserver observer) {
@@ -303,6 +310,7 @@ class TimelineDelegate<T extends Identifiable> {
     /**
      * Unregister an observer that has previously been registered via
      * registerDataSetObserver(DataSetObserver).
+     *
      * @param observer The object to unregister.
      */
     public void unregisterDataSetObserver(DataSetObserver observer) {

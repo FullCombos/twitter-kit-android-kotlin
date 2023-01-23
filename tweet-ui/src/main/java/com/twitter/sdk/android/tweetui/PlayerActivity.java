@@ -44,7 +44,7 @@ public class PlayerActivity extends Activity {
             @Override
             public void onDismiss() {
                 PlayerActivity.this.finish();
-                overridePendingTransition(0, R.anim.tw__slide_out);
+                overridePendingTransition(0, R.anim.twitter_slide_out);
             }
 
             @Override
@@ -76,7 +76,7 @@ public class PlayerActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0, R.anim.tw__slide_out);
+        overridePendingTransition(0, R.anim.twitter_slide_out);
     }
 
     public static class PlayerItem implements Serializable {

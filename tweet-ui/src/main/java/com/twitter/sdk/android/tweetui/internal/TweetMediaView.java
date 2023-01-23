@@ -59,7 +59,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
     private final RectF rect = new RectF();
     private final int mediaDividerSize;
     private int imageCount;
-    final float [] radii = new float[8];
+    final float[] radii = new float[8];
     int mediaBgColor = Color.BLACK;
     int photoErrorResId;
     final DependencyProvider dependencyProvider;
@@ -78,10 +78,10 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
     TweetMediaView(Context context, AttributeSet attrs, DependencyProvider dependencyProvider) {
         super(context, attrs);
 
-        this.dependencyProvider =  dependencyProvider;
+        this.dependencyProvider = dependencyProvider;
         mediaDividerSize = getResources().getDimensionPixelSize
                 (R.dimen.tw__media_view_divider_size);
-        photoErrorResId = R.drawable.tw__ic_tweet_photo_error_dark;
+        photoErrorResId = R.drawable.twitter_ic_tweet_photo_error_dark;
     }
 
     public void setRoundedCornersRadii(int topLeft, int topRight, int bottomRight, int bottomLeft) {
@@ -180,7 +180,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
             final Intent intent = new Intent(getContext(), PlayerActivity.class);
             final boolean looping = TweetMediaUtils.isLooping(entity);
             final boolean showControls = TweetMediaUtils.showVideoControls(entity);
-            final String url = TweetMediaUtils.getSupportedVariant(entity).url;
+            final String url = TweetMediaUtils.getSupportedVariant(entity).getUrl();
             final PlayerActivity.PlayerItem item =
                     new PlayerActivity.PlayerItem(url, looping, showControls, null, null);
             intent.putExtra(PlayerActivity.PLAYER_ITEM, item);
@@ -204,7 +204,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
     public void launchPhotoGallery(int mediaEntityIndex) {
         final Intent intent = new Intent(getContext(), GalleryActivity.class);
         final GalleryActivity.GalleryItem item =
-                new GalleryActivity.GalleryItem(tweet.id, mediaEntityIndex, mediaEntities);
+                new GalleryActivity.GalleryItem(tweet.getId(), mediaEntityIndex, mediaEntities);
         intent.putExtra(GalleryActivity.GALLERY_ITEM, item);
         IntentUtils.safeStartActivity(getContext(), intent);
     }
@@ -335,7 +335,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
             final OverlayImageView imageView = getOrCreateImageView(index);
 
             final MediaEntity mediaEntity = mediaEntities.get(index);
-            setAltText(imageView, mediaEntity.altText);
+            setAltText(imageView, mediaEntity.getAltText());
             setMediaImage(imageView, getSizedImagePath(mediaEntity));
             setOverlayImage(imageView, TweetMediaUtils.isVideoType(mediaEntity));
         }
@@ -347,8 +347,8 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
         final OverlayImageView imageView = getOrCreateImageView(0);
 
         final ImageValue imageValue = VineCardUtils.getImageValue(card);
-        setAltText(imageView, imageValue.alt);
-        setMediaImage(imageView, imageValue.url);
+        setAltText(imageView, imageValue.getAlt());
+        setMediaImage(imageView, imageValue.getUrl());
         setOverlayImage(imageView, true);
     }
 
@@ -375,9 +375,9 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
 
     String getSizedImagePath(MediaEntity mediaEntity) {
         if (imageCount > 1) {
-           return mediaEntity.mediaUrlHttps + SIZED_IMAGE_SMALL;
+            return mediaEntity.getMediaUrlHttps() + SIZED_IMAGE_SMALL;
         }
-        return mediaEntity.mediaUrlHttps;   // defaults to :medium
+        return mediaEntity.getMediaUrlHttps();   // defaults to :medium
     }
 
     void setAltText(ImageView imageView, String description) {
@@ -391,7 +391,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
     void setOverlayImage(OverlayImageView imageView, boolean isVideo) {
         if (isVideo) {
             imageView.setOverlayDrawable(getContext().getResources()
-                    .getDrawable(R.drawable.tw__player_overlay));
+                    .getDrawable(R.drawable.twitter_player_overlay));
         } else {
             imageView.setOverlayDrawable(null);
         }

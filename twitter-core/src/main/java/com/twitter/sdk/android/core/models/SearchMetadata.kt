@@ -18,7 +18,7 @@ package com.twitter.sdk.android.core.models
 
 import com.google.gson.annotations.SerializedName
 
-internal class SearchMetadata(
+class SearchMetadata(
     maxId: Int,
     sinceId: Int,
     refreshUrl: String,

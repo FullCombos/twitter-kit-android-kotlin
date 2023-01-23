@@ -136,7 +136,7 @@ abstract class AbstractTweetView extends RelativeLayout {
         try {
             dependencyProvider.getTweetUi();
         } catch (IllegalStateException e) {
-            Twitter.getLogger().e(TAG, e.getMessage());
+            Twitter.getLogger().e(TAG, e.getMessage() == null ? "" : e.getMessage(), null);
             // TweetUi kit instance not available, halt view creation and disable
             setEnabled(false);
             return false;
@@ -226,7 +226,7 @@ abstract class AbstractTweetView extends RelativeLayout {
 
         // set permalink if tweet id and screen name are available
         if (TweetUtils.isTweetResolvable(tweet)) {
-            setPermalinkUri(tweet.user.screenName, getTweetId());
+            setPermalinkUri(tweet.user.getScreenName(), getTweetId());
         } else {
             permalinkUri = null;
         }
@@ -253,7 +253,7 @@ abstract class AbstractTweetView extends RelativeLayout {
     void launchPermalink() {
         final Intent intent = new Intent(Intent.ACTION_VIEW, getPermalinkUri());
         if (!IntentUtils.safeStartActivity(getContext(), intent)) {
-            Twitter.getLogger().e(TweetUi.LOGTAG, "Activity cannot be found to open permalink URI");
+            Twitter.getLogger().e(TweetUi.LOGTAG, "Activity cannot be found to open permalink URI", null);
         }
     }
 
@@ -262,7 +262,7 @@ abstract class AbstractTweetView extends RelativeLayout {
      */
     private void setName(Tweet displayTweet) {
         if (displayTweet != null && displayTweet.user != null) {
-            fullNameView.setText(Utils.stringOrEmpty(displayTweet.user.name));
+            fullNameView.setText(Utils.stringOrEmpty(displayTweet.user.getName()));
         } else {
             fullNameView.setText(EMPTY_STRING);
         }
@@ -274,7 +274,7 @@ abstract class AbstractTweetView extends RelativeLayout {
     private void setScreenName(Tweet displayTweet) {
         if (displayTweet != null && displayTweet.user != null) {
             screenNameView.setText(UserUtils.formatScreenName(
-                    Utils.stringOrEmpty(displayTweet.user.screenName)));
+                    Utils.stringOrEmpty(displayTweet.user.getScreenName())));
         } else {
             screenNameView.setText(EMPTY_STRING);
         }
@@ -338,20 +338,20 @@ abstract class AbstractTweetView extends RelativeLayout {
     }
 
     protected double getAspectRatio(MediaEntity photoEntity) {
-        if (photoEntity == null || photoEntity.sizes == null || photoEntity.sizes.medium == null ||
-                photoEntity.sizes.medium.w == 0 || photoEntity.sizes.medium.h == 0) {
+        if (photoEntity == null || photoEntity.getSizes() == null || photoEntity.getSizes().getMedium() == null ||
+                photoEntity.getSizes().getMedium().getW() == 0 || photoEntity.getSizes().getMedium().getH() == 0) {
             return DEFAULT_ASPECT_RATIO;
         }
 
-        return (double) photoEntity.sizes.medium.w / photoEntity.sizes.medium.h;
+        return (double) photoEntity.getSizes().getMedium().getW() / photoEntity.getSizes().getMedium().getH();
     }
 
     protected double getAspectRatio(ImageValue imageValue) {
-        if (imageValue == null || imageValue.width == 0 || imageValue.height == 0) {
+        if (imageValue == null || imageValue.getWidth() == 0 || imageValue.getHeight() == 0) {
             return DEFAULT_ASPECT_RATIO;
         }
 
-        return (double) imageValue.width / imageValue.height;
+        return (double) imageValue.getWidth() / imageValue.getHeight();
     }
 
     protected abstract double getAspectRatioForPhotoEntity(int photoCount);
@@ -390,14 +390,14 @@ abstract class AbstractTweetView extends RelativeLayout {
         String tweetText = null;
         if (formattedTweetText != null) tweetText = formattedTweetText.text;
 
-        final long createdAt = TweetDateUtils.apiTimeToLong(displayTweet.createdAt);
+        final long createdAt = TweetDateUtils.apiTimeToLong(displayTweet.getCreatedAt());
         String timestamp = null;
         if (createdAt != TweetDateUtils.INVALID_DATE) {
             timestamp = DateFormat.getDateInstance().format(new Date(createdAt));
         }
 
         setContentDescription(getResources().getString(R.string.tw__tweet_content_description,
-                Utils.stringOrEmpty(displayTweet.user.name), Utils.stringOrEmpty(tweetText),
+                Utils.stringOrEmpty(displayTweet.user.getName()), Utils.stringOrEmpty(tweetText),
                 Utils.stringOrEmpty(timestamp)));
     }
 
@@ -411,8 +411,7 @@ abstract class AbstractTweetView extends RelativeLayout {
                 } else {
                     final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     if (!IntentUtils.safeStartActivity(getContext(), intent)) {
-                        Twitter.getLogger().e(TweetUi.LOGTAG,
-                                "Activity cannot be found to open URL");
+                        Twitter.getLogger().e(TweetUi.LOGTAG, "Activity cannot be found to open URL", null);
                     }
                 }
             };

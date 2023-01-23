@@ -16,18 +16,13 @@
  */
 package com.example.app.tweetui
 
-import android.R
 import android.app.Activity
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.view.View
 import android.widget.AbsListView
-import android.widget.ListView
 import android.widget.Toast
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.app.BaseActivity
+import com.example.app.R
 import com.example.app.databinding.TweetuiSwipeTimelineBinding
-import com.example.app.databinding.TweetuiTimelineBinding
 import com.example.app.twittercore.TwitterCoreMainActivity
 import com.twitter.sdk.android.core.Callback
 import com.twitter.sdk.android.core.Result
@@ -67,15 +62,15 @@ class TimelineActivity : BaseActivity() {
             }
         }
 
+        val timeline = SearchTimeline.Builder().query("#twitter").build()
+        val adapter = TweetTimelineListAdapter.Builder(this@TimelineActivity)
+            .setTimeline(timeline)
+            .setViewStyle(com.twitter.sdk.android.tweetui.R.style.tw__TweetLightWithActionsStyle)
+            .setOnActionCallback(actionCallback)
+            .build()
+
         with(binding.list) {
             emptyView = binding.empty
-            val timeline: SearchTimeline = SearchTimeline.Builder().query("#twitter").build()
-            val adapter: TweetTimelineListAdapter = TweetTimelineListAdapter.Builder(this)
-                .setTimeline(timeline)
-                .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
-                .setOnActionCallback(actionCallback)
-                .build()
-
             setAdapter(adapter)
 
             // set custom scroll listener to enable swipe refresh layout only when at list top

@@ -24,7 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 
 final class Utils {
-    private Utils() {}
+    private Utils() {
+    }
 
     static Long numberOrDefault(String candidate, long defaultLong) {
         try {
@@ -53,16 +54,17 @@ final class Utils {
     /**
      * Orders tweets by the tweetIds order. If tweetIds contains duplicates, the result Tweet list
      * will duplicate Tweets accordingly.
+     *
      * @param tweetIds ordered list of Tweet ids
-     * @param tweets unordered list of Tweet results
+     * @param tweets   unordered list of Tweet results
      */
     static List<Tweet> orderTweets(List<Long> tweetIds, List<Tweet> tweets) {
         final HashMap<Long, Tweet> idToTweet = new HashMap<>();
         final ArrayList<Tweet> ordered = new ArrayList<>();
-        for (Tweet tweet: tweets) {
-            idToTweet.put(tweet.id, tweet);
+        for (Tweet tweet : tweets) {
+            idToTweet.put(tweet.getId(), tweet);
         }
-        for (Long id: tweetIds) {
+        for (Long id : tweetIds) {
             if (idToTweet.containsKey(id)) {
                 ordered.add(idToTweet.get(id));
             }

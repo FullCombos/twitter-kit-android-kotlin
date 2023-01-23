@@ -16,7 +16,7 @@
  */
 package com.twitter.sdk.android.core.internal
 
-internal class TwitterApiConstants private constructor() {
+class TwitterApiConstants private constructor() {
 
     class Errors private constructor() {
 

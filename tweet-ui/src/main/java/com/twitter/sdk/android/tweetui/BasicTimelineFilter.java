@@ -97,7 +97,7 @@ public class BasicTimelineFilter implements TimelineFilter {
 
     boolean shouldFilterTweet(Tweet tweet) {
         if (tweet.user != null &&
-                containsMatchingScreenName(tweet.user.screenName)) {
+                containsMatchingScreenName(tweet.user.getScreenName())) {
             return true;
         }
 
@@ -130,7 +130,7 @@ public class BasicTimelineFilter implements TimelineFilter {
 
     boolean containsMatchingHashtag(List<HashtagEntity> hashtags) {
         for (HashtagEntity entity : hashtags) {
-            if (hashTagConstraints.contains(entity.text)) {
+            if (hashTagConstraints.contains(entity.getText())) {
                 return true;
             }
         }
@@ -140,7 +140,7 @@ public class BasicTimelineFilter implements TimelineFilter {
 
     boolean containsMatchingSymbol(List<SymbolEntity> symbols) {
         for (SymbolEntity entity : symbols) {
-            if (hashTagConstraints.contains(entity.text)) {
+            if (hashTagConstraints.contains(entity.getText())) {
                 return true;
             }
         }
@@ -150,7 +150,7 @@ public class BasicTimelineFilter implements TimelineFilter {
 
     boolean containsMatchingUrl(List<UrlEntity> urls) {
         for (UrlEntity entity : urls) {
-            final String url = normalizeUrl(entity.expandedUrl);
+            final String url = normalizeUrl(entity.getExpandedUrl());
             if (urlConstraints.contains(url)) {
                 return true;
             }
@@ -161,7 +161,7 @@ public class BasicTimelineFilter implements TimelineFilter {
 
     boolean containsMatchingMention(List<MentionEntity> mentions) {
         for (MentionEntity entity : mentions) {
-            final String name = normalizeHandle(entity.screenName);
+            final String name = normalizeHandle(entity.getScreenName());
             if (handleConstraints.contains(name)) {
                 return true;
             }

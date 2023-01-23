@@ -64,7 +64,7 @@ public class QuoteTweetView extends AbstractTweetView {
                 getResources().getDimensionPixelSize(R.dimen.tw__media_view_radius);
         tweetMediaView.setRoundedCornersRadii(0, 0, mediaViewRadius, mediaViewRadius);
 
-        setBackgroundResource(R.drawable.tw__quote_tweet_border);
+        setBackgroundResource(R.drawable.twitter_quote_tweet_border);
         fullNameView.setTextColor(primaryTextColor);
         screenNameView.setTextColor(secondaryTextColor);
         contentView.setTextColor(primaryTextColor);

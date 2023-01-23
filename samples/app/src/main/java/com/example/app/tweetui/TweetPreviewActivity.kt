@@ -16,21 +16,15 @@
  */
 package com.example.app.tweetui
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.app.R
-import com.example.app.databinding.TweetuiFragmentTweetBinding
 import com.example.app.databinding.TweetuiFragmentTweetPreviewBinding
 import com.twitter.sdk.android.core.Callback
 import com.twitter.sdk.android.core.Result
@@ -47,7 +41,7 @@ class TweetPreviewActivity : TweetUiActivity() {
         supportActionBar?.setTitle(R.string.preview_tweet)
     }
 
-    override val layout: = R.layout.activity_frame
+    override val layout = R.layout.activity_frame
 
     override fun createFragment(): Fragment {
         return TweetPreviewFragment.newInstance()

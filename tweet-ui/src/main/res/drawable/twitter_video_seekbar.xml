@@ -16,12 +16,21 @@
   -->
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/tw__bg_media_badge"/>
+
     <item
-        android:left="@dimen/tw__badge_padding"
-        android:bottom="@dimen/tw__badge_padding"
-        android:right="@dimen/tw__badge_padding"
-        android:top="@dimen/tw__badge_padding">
-        <bitmap android:src="@drawable/tw__ic_gif_badge"/>
+        android:id="@android:id/background"
+        android:drawable="@drawable/twitter_ic_seekbar_bg"/>
+
+    <item android:id="@android:id/secondaryProgress">
+        <scale
+            android:drawable="@drawable/twitter_ic_seekbar_secondary_bg"
+            android:scaleWidth="100%"/>
     </item>
+
+    <item android:id="@android:id/progress">
+        <scale
+            android:drawable="@drawable/twitter_ic_seekbar_progress_bg"
+            android:scaleWidth="100%"/>
+    </item>
+
 </layer-list>

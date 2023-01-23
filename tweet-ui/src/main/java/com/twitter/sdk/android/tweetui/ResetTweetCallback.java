@@ -17,6 +17,8 @@
 
 package com.twitter.sdk.android.tweetui;
 
+import androidx.annotation.NonNull;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
@@ -32,7 +34,7 @@ class ResetTweetCallback extends Callback<Tweet> {
     final Callback<Tweet> cb;
 
     ResetTweetCallback(BaseTweetView baseTweetView, TweetRepository tweetRepository,
-                        Callback<Tweet> cb) {
+                       Callback<Tweet> cb) {
         this.baseTweetView = baseTweetView;
         this.tweetRepository = tweetRepository;
         this.cb = cb;
@@ -40,15 +42,15 @@ class ResetTweetCallback extends Callback<Tweet> {
 
     @Override
     public void success(Result<Tweet> result) {
-        tweetRepository.updateCache(result.data);
-        baseTweetView.setTweet(result.data);
+        tweetRepository.updateCache(result.getData());
+        baseTweetView.setTweet(result.getData());
         if (cb != null) {
             cb.success(result);
         }
     }
 
     @Override
-    public void failure(TwitterException exception) {
+    public void failure(@NonNull TwitterException exception) {
         if (cb != null) {
             cb.failure(exception);
         }

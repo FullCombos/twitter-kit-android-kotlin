@@ -23,6 +23,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.app.BaseActivity
+import com.example.app.R
 import com.example.app.databinding.TweetcomposerActivityMainBinding
 import com.twitter.sdk.android.core.TwitterCore
 import com.twitter.sdk.android.tweetcomposer.ComposerActivity
@@ -66,7 +67,7 @@ class TweetComposerMainActivity : BaseActivity() {
     }
 
     private fun launchComposer(uri: Uri?) {
-        val session = TwitterCore.getInstance().sessionManager.activeSession
+        val session = TwitterCore.getInstance().getSessionManager().getActiveSession()!!
         val intent: Intent = ComposerActivity.Builder(this)
             .session(session)
             .image(uri)

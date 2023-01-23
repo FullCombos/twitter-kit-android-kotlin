@@ -81,5 +81,4 @@ dependencies {
     implementation dependency.swipeRefreshLayout
 
     debugImplementation dependency.leakCanary
-    releaseImplementation dependency.leakCanaryNoOp
 }
