@@ -52,12 +52,12 @@ interface ListService {
         "/1.1/lists/statuses.json?tweet_mode=extended&include_cards=true&cards_platform=TwitterKit-13"
     )
     fun statuses(
-        @Query("list_id") listId: Long,
-        @Query("slug") slug: String,
-        @Query("owner_screen_name") ownerScreenName: String,
-        @Query("owner_id") ownerId: Long,
-        @Query("since_id") sinceId: Long,
-        @Query("max_id") maxId: Long,
+        @Query("list_id") listId: Long?,
+        @Query("slug") slug: String?,
+        @Query("owner_screen_name") ownerScreenName: String?,
+        @Query("owner_id") ownerId: Long?,
+        @Query("since_id") sinceId: Long?,
+        @Query("max_id") maxId: Long?,
         @Query("count") count: Int,
         @Query("include_entities") includeEntities: Boolean,
         @Query("include_rts") includeRetweets: Boolean

@@ -39,7 +39,7 @@ class XmlTweetActivity : TweetUiActivity() {
     /**
      * UI fragment showing XML Tweet views for automated ui testing
      */
-    private class XmlTweetFragment : Fragment() {
+    class XmlTweetFragment : Fragment() {
 
         override fun onCreateView(
             inflater: LayoutInflater,

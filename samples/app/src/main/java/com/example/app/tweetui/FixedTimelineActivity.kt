@@ -48,7 +48,7 @@ class FixedTimelineActivity : TweetUiActivity() {
     /**
      * Fragment showing a Timeline with a fixed list of Tweets.
      */
-    private class FixedTimelineFragment : ListFragment() {
+    class FixedTimelineFragment : ListFragment() {
 
         private val tweetIds = mutableListOf<Long>()
 

@@ -44,7 +44,7 @@ interface CollectionService {
     fun collection(
         @Query("id") id: String,
         @Query("count") count: Int,
-        @Query("max_position") maxPosition: Long,
-        @Query("min_position") minPosition: Long
+        @Query("max_position") maxPosition: Long?,
+        @Query("min_position") minPosition: Long?
     ): Call<TwitterCollection>
 }

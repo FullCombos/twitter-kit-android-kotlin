@@ -44,7 +44,7 @@ class UniqueTweetActivity : TweetUiActivity() {
     /**
      * Fragment showing unique Tweet view cases.
      */
-    private class UniqueTweetFragment : Fragment() {
+    class UniqueTweetFragment : Fragment() {
 
         private var _binding: TweetuiFragmentUniqueTweetBinding? = null
         private val binding get() = _binding!!

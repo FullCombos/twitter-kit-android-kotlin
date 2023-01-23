@@ -48,7 +48,7 @@ class TweetPojoActivity : TweetUiActivity() {
         return TweetPojoFragment.newInstance()
     }
 
-    private class TweetPojoFragment : ListFragment() {
+    class TweetPojoFragment : ListFragment() {
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -74,7 +74,7 @@ class TweetPojoActivity : TweetUiActivity() {
             return InputStreamReader(resources.openRawResource(R.raw.tweets)).use {
                 gson.fromJson(
                     it,
-                    object : TypeToken<ArrayList<Tweet?>?>() {}.type
+                    object : TypeToken<ArrayList<Tweet>>() {}.type
                 )
             }
         }

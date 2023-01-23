@@ -43,15 +43,11 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
 
     final TwitterCore twitterCore;
     final String collectionIdentifier;
-    final Integer maxItemsPerRequest;
+    final int maxItemsPerRequest;
 
-    CollectionTimeline(TwitterCore twitterCore, Long collectionId, Integer maxItemsPerRequest) {
+    CollectionTimeline(TwitterCore twitterCore, long collectionId, int maxItemsPerRequest) {
         // prefix the collection id with the collection prefix
-        if (collectionId == null) {
-            this.collectionIdentifier = null;
-        } else {
-            this.collectionIdentifier = COLLECTION_PREFIX + Long.toString(collectionId);
-        }
+        this.collectionIdentifier = COLLECTION_PREFIX + collectionId;
         this.twitterCore = twitterCore;
         this.maxItemsPerRequest = maxItemsPerRequest;
     }
@@ -89,7 +85,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
     /**
      * Wrapper callback which unpacks a TwitterCollection into a TimelineResult (cursor and items).
      */
-    class CollectionCallback extends Callback<TwitterCollection> {
+    static class CollectionCallback extends Callback<TwitterCollection> {
         final Callback<TimelineResult<Tweet>> cb;
 
         /**
@@ -173,8 +169,8 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
      */
     public static class Builder {
         private final TwitterCore twitterCore;
-        private Long collectionId;
-        private Integer maxItemsPerRequest = 30;
+        private long collectionId;
+        private int maxItemsPerRequest = 30;
 
         /**
          * Constructs a Builder.
@@ -193,7 +189,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
          *
          * @param collectionId The collection id such as 539487832448843776.
          */
-        public Builder id(Long collectionId) {
+        public Builder id(long collectionId) {
             this.collectionId = collectionId;
             return this;
         }
@@ -204,7 +200,7 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
          * @param maxItemsPerRequest The number of tweets to return per request, up to a maximum of
          *                           200.
          */
-        public Builder maxItemsPerRequest(Integer maxItemsPerRequest) {
+        public Builder maxItemsPerRequest(int maxItemsPerRequest) {
             this.maxItemsPerRequest = maxItemsPerRequest;
             return this;
         }
@@ -216,9 +212,6 @@ public class CollectionTimeline extends BaseTimeline implements Timeline<Tweet> 
          * @throws java.lang.IllegalStateException if query is not set (is null).
          */
         public CollectionTimeline build() {
-            if (collectionId == null) {
-                throw new IllegalStateException("collection id must not be null");
-            }
             return new CollectionTimeline(twitterCore, collectionId, maxItemsPerRequest);
         }
     }

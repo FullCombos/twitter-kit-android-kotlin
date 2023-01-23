@@ -67,7 +67,7 @@ class RtlTimelineActivity : TweetUiActivity() {
     /**
      * Fragment showing a Timeline with a list of Rtl Tweets.
      */
-    private class RtlTimelineFragment : ListFragment() {
+    class RtlTimelineFragment : ListFragment() {
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)

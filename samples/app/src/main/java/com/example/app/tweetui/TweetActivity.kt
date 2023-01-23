@@ -16,7 +16,6 @@
  */
 package com.example.app.tweetui
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -34,7 +33,6 @@ import com.twitter.sdk.android.core.models.Tweet
 import com.twitter.sdk.android.tweetui.CompactTweetView
 import com.twitter.sdk.android.tweetui.TweetUtils
 import com.twitter.sdk.android.tweetui.TweetView
-import java.util.*
 
 class TweetActivity : TweetUiActivity() {
 
@@ -49,7 +47,7 @@ class TweetActivity : TweetUiActivity() {
         return TweetsFragment.newInstance()
     }
 
-    private class TweetsFragment : Fragment() {
+    class TweetsFragment : Fragment() {
 
         private var _binding: TweetuiFragmentTweetBinding? = null
         private val binding get() = _binding!!

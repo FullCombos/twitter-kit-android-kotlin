@@ -24,6 +24,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -418,7 +419,9 @@ public abstract class BaseTweetView extends AbstractTweetView {
                     UserUtils.AvatarSize.REASONABLY_SMALL);
         }
 
-        imageLoader.load(url).placeholder(avatarMediaBg).into(avatarView);
+        if (!TextUtils.isEmpty(url)) {
+            imageLoader.load(url).placeholder(avatarMediaBg).into(avatarView);
+        }
     }
 
     /**
