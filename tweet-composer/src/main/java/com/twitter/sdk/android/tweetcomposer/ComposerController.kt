@@ -27,6 +27,7 @@ internal class ComposerController constructor(
     val composerView: ComposerView,
     val session: TwitterSession,
     val imageUri: Uri?,
+    val videoUri: Uri?,
     text: String?,
     hashtags: String?,
     val finisher: Finisher,
@@ -98,10 +99,12 @@ internal class ComposerController constructor(
         }
 
         override fun onTweetPost(text: String?) {
-            val intent = Intent(composerView.context, TweetUploadService::class.java)
-            intent.putExtra(TweetUploadService.EXTRA_USER_TOKEN, session.authToken)
-            intent.putExtra(TweetUploadService.EXTRA_TWEET_TEXT, text)
-            intent.putExtra(TweetUploadService.EXTRA_IMAGE_URI, imageUri)
+            val intent = Intent(composerView.context, TweetUploadService::class.java).apply {
+                putExtra(TweetUploadService.EXTRA_USER_TOKEN, session.authToken)
+                putExtra(TweetUploadService.EXTRA_TWEET_TEXT, text)
+                putExtra(TweetUploadService.EXTRA_IMAGE_URI, imageUri)
+                putExtra(TweetUploadService.EXTRA_VIDEO_URI, videoUri)
+            }
             composerView.context.startService(intent)
             finisher.finish()
         }

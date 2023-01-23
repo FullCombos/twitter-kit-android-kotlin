@@ -18,54 +18,32 @@ package com.twitter.sdk.android.core.models
 
 import com.google.gson.annotations.SerializedName
 
-class SearchMetadata(
-    maxId: Int,
-    sinceId: Int,
-    refreshUrl: String,
-    nextResults: String,
-    count: Int,
-    completedIn: Double,
-    sinceIdStr: String,
-    query: String,
-    maxIdStr: String
-) {
+data class SearchMetadata(
 
     @SerializedName("max_id")
-    val maxId: Long
+    val maxId: Long,
 
     @SerializedName("since_id")
-    val sinceId: Long
+    val sinceId: Long,
 
     @SerializedName("refresh_url")
-    val refreshUrl: String
+    val refreshUrl: String,
 
     @SerializedName("next_results")
-    val nextResults: String
+    val nextResults: String,
 
     @SerializedName("count")
-    val count: Long
+    val count: Long,
 
     @SerializedName("completed_in")
-    val completedIn: Double
+    val completedIn: Double,
 
     @SerializedName("since_id_str")
-    val sinceIdStr: String
+    val sinceIdStr: String,
 
     @SerializedName("query")
-    val query: String
+    val query: String,
 
     @SerializedName("max_id_str")
     val maxIdStr: String
-
-    init {
-        this.maxId = maxId.toLong()
-        this.sinceId = sinceId.toLong()
-        this.refreshUrl = refreshUrl
-        this.nextResults = nextResults
-        this.count = count.toLong()
-        this.completedIn = completedIn
-        this.sinceIdStr = sinceIdStr
-        this.query = query
-        this.maxIdStr = maxIdStr
-    }
-}
+)

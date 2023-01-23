@@ -23,7 +23,7 @@ import java.io.Serializable
  * Users can be anyone or anything. They tweet, follow, create lists, have a home_timeline, can be
  * mentioned, and can be looked up in bulk.
  */
-class User(
+data class User(
 
     /**
      * Indicates that the user has an account with "contributor mode" enabled, allowing for Tweets

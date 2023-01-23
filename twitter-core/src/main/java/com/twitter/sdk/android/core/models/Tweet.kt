@@ -48,35 +48,214 @@ class Tweet(
 
     entities: TweetEntities?,
     extendedEntities: TweetEntities?,
-    favoriteCount: Int?,
-    favorited: Boolean?,
-    filterLevel: String,
-    id: Long,
-    idStr: String,
-    inReplyToScreenName: String,
-    inReplyToStatusId: Long?,
-    inReplyToStatusIdStr: String,
-    inReplyToUserId: Long?,
-    inReplyToUserIdStr: String,
-    lang: String,
-    place: Place?,
-    possiblySensitive: Boolean?,
-    scopes: Any?,
-    quotedStatusId: Long,
-    quotedStatusIdStr: String,
-    quotedStatus: Tweet?,
-    retweetCount: Int,
-    retweeted: Boolean,
-    retweetedStatus: Tweet?,
-    source: String,
-    text: String,
+    /**
+     * Nullable. Indicates approximately how many times this Tweet has been "favorited" by Twitter
+     * users.
+     */
+    @SerializedName("favorite_count")
+    val favoriteCount: Int?,
+
+    /**
+     * Nullable. Perspectival. Indicates whether this Tweet has been favorited by the authenticating
+     * user.
+     */
+    @JvmField
+    @SerializedName("favorited")
+    val favorited: Boolean?,
+
+    /**
+     * Indicates the maximum value of the filter_level parameter which may be used and still stream
+     * this Tweet. So a value of medium will be streamed on none, low, and medium streams.
+     */
+    @SerializedName("filter_level")
+    val filterLevel: String,
+
+    /**
+     * The integer representation of the unique identifier for this Tweet. This number is greater
+     * than 53 bits and some programming languages may have difficulty/silent defects in
+     * interpreting it. Using a signed 64 bit integer for storing this identifier is safe. Use
+     * id_str for fetching the identifier to stay on the safe side. See Twitter IDs, JSON and
+     * Snowflake.
+     */
+    @SerializedName("id")
+    override val id: Long,
+
+    /**
+     * The string representation of the unique identifier for this Tweet. Implementations should use
+     * this rather than the large integer in id
+     */
+    @SerializedName("id_str")
+    val idStr: String,
+
+    /**
+     * Nullable. If the represented Tweet is a reply, this field will contain the screen name of
+     * the original Tweet's author.
+     */
+    @SerializedName("in_reply_to_screen_name")
+    val inReplyToScreenName: String?,
+
+    /**
+     * Nullable. If the represented Tweet is a reply, this field will contain the integer
+     * representation of the original Tweet's ID.
+     */
+    @SerializedName("in_reply_to_status_id")
+    val inReplyToStatusId: Long?,
+
+    /**
+     * Nullable. If the represented Tweet is a reply, this field will contain the string
+     * representation of the original Tweet's ID.
+     */
+    @SerializedName("in_reply_to_status_id_str")
+    val inReplyToStatusIdStr: String?,
+
+    /**
+     * Nullable. If the represented Tweet is a reply, this field will contain the integer
+     * representation of the original Tweet's author ID. This will not necessarily always be the
+     * user directly mentioned in the Tweet.
+     */
+    @SerializedName("in_reply_to_user_id")
+    val inReplyToUserId: Long?,
+
+    /**
+     * Nullable. If the represented Tweet is a reply, this field will contain the string
+     * representation of the original Tweet's author ID. This will not necessarily always be the
+     * user directly mentioned in the Tweet.
+     */
+    @SerializedName("in_reply_to_user_id_str")
+    val inReplyToUserIdStr: String?,
+
+    /**
+     * Nullable. When present, indicates a BCP 47 language identifier corresponding to the
+     * machine-detected language of the Tweet text, or "und" if no language could be detected.
+     */
+    @SerializedName("lang")
+    val lang: String?,
+
+    /**
+     * Nullable. When present, indicates that the tweet is associated (but not necessarily
+     * originating from) a Place.
+     */
+    @SerializedName("place")
+    val place: Place?,
+
+    /**
+     * Nullable. This field only surfaces when a tweet contains a link. The meaning of the field
+     * doesn't pertain to the tweet content itself, but instead it is an indicator that the URL
+     * contained in the tweet may contain content or media identified as sensitive content.
+     */
+    @SerializedName("possibly_sensitive")
+    val possiblySensitive: Boolean?,
+
+    /**
+     * A set of key-value pairs indicating the intended contextual delivery of the containing Tweet.
+     * Currently used by Twitter's Promoted Products.
+     */
+    @SerializedName("scopes")
+    val scopes: Any?,
+
+    /**
+     * This field only surfaces when the Tweet is a quote Tweet. This field contains the
+     * integer value Tweet ID of the quoted Tweet.
+     */
+    @SerializedName("quoted_status_id")
+    val quotedStatusId: Long,
+
+    /**
+     * This field only surfaces when the Tweet is a quote Tweet. This is the string representation
+     * Tweet ID of the quoted Tweet.
+     */
+    @SerializedName("quoted_status_id_str")
+    val quotedStatusIdStr: String,
+
+    /**
+     * This field only surfaces when the Tweet is a quote Tweet. This attribute contains the
+     * Tweet object of the original Tweet that was quoted.
+     */
+    @JvmField
+    @SerializedName("quoted_status")
+    val quotedStatus: Tweet?,
+
+    /**
+     * Number of times this Tweet has been retweeted. This field is no longer capped at 99 and will
+     * not turn into a String for "100+"
+     */
+    @SerializedName("retweet_count")
+    val retweetCount: Int,
+
+    /**
+     * Perspectival. Indicates whether this Tweet has been retweeted by the authenticating user.
+     */
+    @SerializedName("retweeted")
+    val retweeted: Boolean,
+
+    /**
+     * Users can amplify the broadcast of tweets authored by other users by retweeting. Retweets can
+     * be distinguished from typical Tweets by the existence of a retweeted_status attribute. This
+     * attribute contains a representation of the original Tweet that was retweeted. Note that
+     * retweets of retweets do not show representations of the intermediary retweet, but only the
+     * original tweet. (Users can also unretweet a retweet they created by deleting their retweet.)
+     */
+    @JvmField
+    @SerializedName("retweeted_status")
+    val retweetedStatus: Tweet?,
+
+    /**
+     * Utility used to post the Tweet, as an HTML-formatted string. Tweets from the Twitter website
+     * have a source value of web.
+     */
+    @SerializedName("source")
+    val source: String,
+
+    /**
+     * The actual UTF-8 text of the status update. See twitter-text for details on what is currently
+     * considered valid characters.
+     */
+    @JvmField
+    @SerializedName(value = "text", alternate = ["full_text"])
+    val text: String,
+
     displayTextRange: List<Int>,
-    truncated: Boolean,
-    user: User?,
-    withheldCopyright: Boolean,
+    /**
+     * Indicates whether the value of the text parameter was truncated, for example, as a result of
+     * a retweet exceeding the 140 character Tweet length. Truncated text will end in ellipsis, like
+     * this ... Since Twitter now rejects long Tweets vs truncating them, the large majority of
+     * Tweets will have this set to false.
+     * Note that while native retweets may have their toplevel text property shortened, the original
+     * text will be available under the retweeted_status object and the truncated parameter will be
+     * set to the value of the original status (in most cases, false).
+     */
+    @SerializedName("truncated")
+    val truncated: Boolean,
+
+    /**
+     * The user who posted this Tweet. Perspectival attributes embedded within this object are
+     * unreliable. See Why are embedded objects stale or inaccurate?.
+     */
+    @JvmField
+    @SerializedName("user")
+    val user: User?,
+
+    /**
+     * When present and set to "true", it indicates that this piece of content has been withheld due
+     * to a DMCA complaint.
+     */
+    @SerializedName("withheld_copyright")
+    val withheldCopyright: Boolean,
+
     withheldInCountries: List<String>,
-    withheldScope: String,
-    card: Card?
+
+    /**
+     * When present, indicates whether the content being withheld is the "status" or a "user."
+     */
+    @SerializedName("withheld_scope")
+    val withheldScope: String,
+
+    /**
+     * Nullable. Card data used to attach rich photos, videos and media experience to Tweets.
+     */
+    @JvmField
+    @SerializedName("card")
+    val card: Card?
 
 ) : Identifiable {
 
@@ -94,171 +273,6 @@ class Tweet(
     @SerializedName("extended_entities")
     val extendedEntities: TweetEntities?
 
-    /**
-     * Nullable. Indicates approximately how many times this Tweet has been "favorited" by Twitter
-     * users.
-     */
-    @SerializedName("favorite_count")
-    val favoriteCount: Int?
-
-    /**
-     * Nullable. Perspectival. Indicates whether this Tweet has been favorited by the authenticating
-     * user.
-     */
-    @JvmField
-    @SerializedName("favorited")
-    val favorited: Boolean?
-
-    /**
-     * Indicates the maximum value of the filter_level parameter which may be used and still stream
-     * this Tweet. So a value of medium will be streamed on none, low, and medium streams.
-     */
-    @SerializedName("filter_level")
-    val filterLevel: String
-
-    /**
-     * The integer representation of the unique identifier for this Tweet. This number is greater
-     * than 53 bits and some programming languages may have difficulty/silent defects in
-     * interpreting it. Using a signed 64 bit integer for storing this identifier is safe. Use
-     * id_str for fetching the identifier to stay on the safe side. See Twitter IDs, JSON and
-     * Snowflake.
-     */
-    @SerializedName("id")
-    override val id: Long
-
-    /**
-     * The string representation of the unique identifier for this Tweet. Implementations should use
-     * this rather than the large integer in id
-     */
-    @SerializedName("id_str")
-    val idStr: String
-
-    /**
-     * Nullable. If the represented Tweet is a reply, this field will contain the screen name of
-     * the original Tweet's author.
-     */
-    @SerializedName("in_reply_to_screen_name")
-    val inReplyToScreenName: String?
-
-    /**
-     * Nullable. If the represented Tweet is a reply, this field will contain the integer
-     * representation of the original Tweet's ID.
-     */
-    @SerializedName("in_reply_to_status_id")
-    val inReplyToStatusId: Long?
-
-    /**
-     * Nullable. If the represented Tweet is a reply, this field will contain the string
-     * representation of the original Tweet's ID.
-     */
-    @SerializedName("in_reply_to_status_id_str")
-    val inReplyToStatusIdStr: String?
-
-    /**
-     * Nullable. If the represented Tweet is a reply, this field will contain the integer
-     * representation of the original Tweet's author ID. This will not necessarily always be the
-     * user directly mentioned in the Tweet.
-     */
-    @SerializedName("in_reply_to_user_id")
-    val inReplyToUserId: Long?
-
-    /**
-     * Nullable. If the represented Tweet is a reply, this field will contain the string
-     * representation of the original Tweet's author ID. This will not necessarily always be the
-     * user directly mentioned in the Tweet.
-     */
-    @SerializedName("in_reply_to_user_id_str")
-    val inReplyToUserIdStr: String?
-
-    /**
-     * Nullable. When present, indicates a BCP 47 language identifier corresponding to the
-     * machine-detected language of the Tweet text, or "und" if no language could be detected.
-     */
-    @SerializedName("lang")
-    val lang: String?
-
-    /**
-     * Nullable. When present, indicates that the tweet is associated (but not necessarily
-     * originating from) a Place.
-     */
-    @SerializedName("place")
-    val place: Place?
-
-    /**
-     * Nullable. This field only surfaces when a tweet contains a link. The meaning of the field
-     * doesn't pertain to the tweet content itself, but instead it is an indicator that the URL
-     * contained in the tweet may contain content or media identified as sensitive content.
-     */
-    @SerializedName("possibly_sensitive")
-    val possiblySensitive: Boolean?
-
-    /**
-     * A set of key-value pairs indicating the intended contextual delivery of the containing Tweet.
-     * Currently used by Twitter's Promoted Products.
-     */
-    @SerializedName("scopes")
-    val scopes: Any?
-
-    /**
-     * This field only surfaces when the Tweet is a quote Tweet. This field contains the
-     * integer value Tweet ID of the quoted Tweet.
-     */
-    @SerializedName("quoted_status_id")
-    val quotedStatusId: Long
-
-    /**
-     * This field only surfaces when the Tweet is a quote Tweet. This is the string representation
-     * Tweet ID of the quoted Tweet.
-     */
-    @SerializedName("quoted_status_id_str")
-    val quotedStatusIdStr: String
-
-    /**
-     * This field only surfaces when the Tweet is a quote Tweet. This attribute contains the
-     * Tweet object of the original Tweet that was quoted.
-     */
-    @JvmField
-    @SerializedName("quoted_status")
-    val quotedStatus: Tweet?
-
-    /**
-     * Number of times this Tweet has been retweeted. This field is no longer capped at 99 and will
-     * not turn into a String for "100+"
-     */
-    @SerializedName("retweet_count")
-    val retweetCount: Int
-
-    /**
-     * Perspectival. Indicates whether this Tweet has been retweeted by the authenticating user.
-     */
-    @SerializedName("retweeted")
-    val retweeted: Boolean
-
-    /**
-     * Users can amplify the broadcast of tweets authored by other users by retweeting. Retweets can
-     * be distinguished from typical Tweets by the existence of a retweeted_status attribute. This
-     * attribute contains a representation of the original Tweet that was retweeted. Note that
-     * retweets of retweets do not show representations of the intermediary retweet, but only the
-     * original tweet. (Users can also unretweet a retweet they created by deleting their retweet.)
-     */
-    @JvmField
-    @SerializedName("retweeted_status")
-    val retweetedStatus: Tweet?
-
-    /**
-     * Utility used to post the Tweet, as an HTML-formatted string. Tweets from the Twitter website
-     * have a source value of web.
-     */
-    @SerializedName("source")
-    val source: String
-
-    /**
-     * The actual UTF-8 text of the status update. See twitter-text for details on what is currently
-     * considered valid characters.
-     */
-    @JvmField
-    @SerializedName(value = "text", alternate = ["full_text"])
-    val text: String
 
     /**
      * An array of two unicode code point indices, identifying the inclusive start and exclusive end
@@ -267,32 +281,6 @@ class Tweet(
     @SerializedName("display_text_range")
     val displayTextRange: List<Int>
 
-    /**
-     * Indicates whether the value of the text parameter was truncated, for example, as a result of
-     * a retweet exceeding the 140 character Tweet length. Truncated text will end in ellipsis, like
-     * this ... Since Twitter now rejects long Tweets vs truncating them, the large majority of
-     * Tweets will have this set to false.
-     * Note that while native retweets may have their toplevel text property shortened, the original
-     * text will be available under the retweeted_status object and the truncated parameter will be
-     * set to the value of the original status (in most cases, false).
-     */
-    @SerializedName("truncated")
-    val truncated: Boolean
-
-    /**
-     * The user who posted this Tweet. Perspectival attributes embedded within this object are
-     * unreliable. See Why are embedded objects stale or inaccurate?.
-     */
-    @JvmField
-    @SerializedName("user")
-    val user: User?
-
-    /**
-     * When present and set to "true", it indicates that this piece of content has been withheld due
-     * to a DMCA complaint.
-     */
-    @SerializedName("withheld_copyright")
-    val withheldCopyright: Boolean
 
     /**
      * When present, indicates a list of uppercase two-letter country codes this content is withheld
@@ -303,51 +291,11 @@ class Tweet(
     @SerializedName("withheld_in_countries")
     val withheldInCountries: List<String>
 
-    /**
-     * When present, indicates whether the content being withheld is the "status" or a "user."
-     */
-    @SerializedName("withheld_scope")
-    val withheldScope: String
-
-    /**
-     * Nullable. Card data used to attach rich photos, videos and media experience to Tweets.
-     */
-    @JvmField
-    @SerializedName("card")
-    val card: Card?
-
     init {
         this.entities = entities ?: TweetEntities.EMPTY
         this.extendedEntities = extendedEntities ?: TweetEntities.EMPTY
-        this.favoriteCount = favoriteCount
-        this.favorited = favorited
-        this.filterLevel = filterLevel
-        this.id = id
-        this.idStr = idStr
-        this.inReplyToScreenName = inReplyToScreenName
-        this.inReplyToStatusId = inReplyToStatusId
-        this.inReplyToStatusIdStr = inReplyToStatusIdStr
-        this.inReplyToUserId = inReplyToUserId
-        this.inReplyToUserIdStr = inReplyToUserIdStr
-        this.lang = lang
-        this.place = place
-        this.possiblySensitive = possiblySensitive
-        this.scopes = scopes
-        this.quotedStatusId = quotedStatusId
-        this.quotedStatusIdStr = quotedStatusIdStr
-        this.quotedStatus = quotedStatus
-        this.retweetCount = retweetCount
-        this.retweeted = retweeted
-        this.retweetedStatus = retweetedStatus
-        this.source = source
-        this.text = text
         this.displayTextRange = ModelUtils.getSafeList(displayTextRange)
-        this.truncated = truncated
-        this.user = user
-        this.withheldCopyright = withheldCopyright
         this.withheldInCountries = ModelUtils.getSafeList(withheldInCountries)
-        this.withheldScope = withheldScope
-        this.card = card
     }
 
     override fun equals(other: Any?): Boolean {

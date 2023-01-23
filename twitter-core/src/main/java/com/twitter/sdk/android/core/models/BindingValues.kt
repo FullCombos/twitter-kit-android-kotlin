@@ -23,11 +23,7 @@ import java.util.*
  */
 class BindingValues(bindingValues: Map<String, Any?> = emptyMap()) {
 
-    private val bindingValues: Map<String, Any?>
-
-    init {
-        this.bindingValues = Collections.unmodifiableMap(bindingValues)
-    }
+    private val bindingValues: Map<String, Any?> = Collections.unmodifiableMap(bindingValues)
 
     /**
      * Returns `true` if specified key exists.

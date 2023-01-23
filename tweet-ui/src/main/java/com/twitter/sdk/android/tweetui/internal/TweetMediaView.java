@@ -410,6 +410,7 @@ public class TweetMediaView extends ViewGroup implements View.OnClickListener {
         imageLoader.load(imagePath)
                 .fit()
                 .centerCrop()
+                .placeholder(photoErrorResId)
                 .error(photoErrorResId)
                 .into(imageView, new LoadImageCallbackImpl(imageView));
     }

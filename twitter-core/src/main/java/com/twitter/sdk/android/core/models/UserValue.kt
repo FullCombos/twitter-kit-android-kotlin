@@ -18,7 +18,7 @@ package com.twitter.sdk.android.core.models
 
 import com.google.gson.annotations.SerializedName
 
-internal class UserValue(
+internal data class UserValue(
 
     @SerializedName("id_str")
     val idStr: String

@@ -21,14 +21,6 @@ class ImageLoader : TwitterImageLoader {
         requestCreator = picasso.load(url)
     }
 
-    override fun fit() = apply {
-        requestCreator?.fit()
-    }
-
-    override fun centerCrop() = apply {
-        requestCreator?.centerCrop()
-    }
-
     override fun placeholder(placeholder: Drawable?) = apply {
         placeholder ?: return@apply
         requestCreator?.placeholder(placeholder)

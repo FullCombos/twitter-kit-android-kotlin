@@ -43,7 +43,7 @@ internal class ComposerView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     // styled drawables for images
-    private var mediaBg: ColorDrawable? = null
+    private var mediaBg: ColorDrawable
 
     private var callback: ComposerController.ComposerCallbacks? = null
 
@@ -115,7 +115,10 @@ internal class ComposerView @JvmOverloads constructor(
             UserUtils.AvatarSize.REASONABLY_SMALL
         )
         // Passing null url will not trigger any request, but will set the placeholder bg
-        imageLoader?.load(url)?.placeholder(mediaBg)?.into(binding.twitterAuthorAvatar)
+        imageLoader?.load(url)
+            ?.placeholder(mediaBg)
+            ?.error(mediaBg)
+            ?.into(binding.twitterAuthorAvatar)
     }
 
     fun getTweetText(): String {
@@ -141,7 +144,10 @@ internal class ComposerView @JvmOverloads constructor(
     fun setImageView(imageUri: Uri?) {
         imageUri ?: return
         binding.twitterImageView.visibility = VISIBLE
-        imageLoader?.load(imageUri)?.into(binding.twitterImageView)
+        imageLoader?.load(imageUri)
+            ?.placeholder(mediaBg)
+            ?.error(mediaBg)
+            ?.into(binding.twitterImageView)
     }
 
     fun setImageView(image: Bitmap?) {

@@ -18,8 +18,8 @@ package com.twitter.sdk.android.core.models
 
 import com.google.gson.annotations.SerializedName
 
-class ApiErrors {
+data class ApiErrors(
 
     @SerializedName("errors")
     val errors: List<ApiError> = ModelUtils.getSafeList(null)
-}
+)

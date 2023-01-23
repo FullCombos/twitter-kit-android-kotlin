@@ -12,6 +12,5 @@ And:
 
 TODO:
 
-1. Use `JobIntentService` for `TweetUploadService`
-2. Convert java to kotlin for `tweet-ui`
-3. Migrate deprecated implementations to `registerForActivityResult`
+1. Convert java to kotlin for `tweet-ui`
+2. Migrate deprecated implementations to `registerForActivityResult`

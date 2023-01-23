@@ -28,5 +28,7 @@ class HashtagEntity(
     @SerializedName("text") val text: String,
 
     start: Int,
+
     end: Int
+
 ) : Entity(start, end)

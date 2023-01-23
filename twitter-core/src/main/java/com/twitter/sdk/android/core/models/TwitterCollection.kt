@@ -22,7 +22,7 @@ import com.google.gson.annotations.SerializedName
  * TwitterCollection is a new type of timeline you control: you create the collection, give it a
  * name, and select which Tweets to add, either by hand or programmatically using the REST API.
  */
-class TwitterCollection(
+data class TwitterCollection(
 
     @SerializedName("objects")
     val contents: Content?,
@@ -59,7 +59,7 @@ class TwitterCollection(
      * Metadata lists references to decomposed objects and contextual information (such as cursors)
      * needed to navigate the boundaries of the collection in subsequent requests.
      */
-    class Metadata(
+    data class Metadata(
 
         /**
          * The collection object identifier (e.g. "custom-393773270547177472")
@@ -80,7 +80,7 @@ class TwitterCollection(
         /**
          * Position information for navigation.
          */
-        class Position(
+        data class Position(
             /**
              * The inclusive maximum position value of the results (positions will be less than or
              * equal to this value).
@@ -100,13 +100,13 @@ class TwitterCollection(
     /**
      * Represents an item in a Timeline with a object references.
      */
-    class TimelineItem(
+    data class TimelineItem(
         /**
          * Represents a reference to a Tweet.
          */
         @SerializedName("tweet") val tweetItem: TweetItem
     ) {
-        class TweetItem(
+        data class TweetItem(
             /**
              * A Tweet id.
              */

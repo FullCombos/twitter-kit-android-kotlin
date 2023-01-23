@@ -68,6 +68,7 @@ android {
 dependencies {
     api project(':twitter-core')
 
-    implementation dependency.tweetText
+    implementation dependency.coroutines
     implementation dependency.coreKt
+    implementation dependency.tweetText
 }

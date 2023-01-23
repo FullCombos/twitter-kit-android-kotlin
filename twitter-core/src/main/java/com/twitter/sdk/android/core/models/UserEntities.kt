@@ -22,7 +22,7 @@ import com.google.gson.annotations.SerializedName
  * Entities for User Objects describe URLs that appear in the user defined profile URL and
  * description fields.
  */
-class UserEntities(
+data class UserEntities(
 
     @SerializedName("url")
     val url: UrlEntities,

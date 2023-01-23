@@ -21,17 +21,14 @@ import com.google.gson.annotations.SerializedName
 /**
  * Collection of relevant Tweets matching a specified query.
  */
-class Search(tweets: List<Tweet>, searchMetadata: SearchMetadata) {
-
-    @JvmField
-    @SerializedName("statuses")
-    val tweets: List<Tweet>
+class Search(
+    tweets: List<Tweet>,
 
     @SerializedName("search_metadata")
     val searchMetadata: SearchMetadata
+) {
 
-    init {
-        this.tweets = ModelUtils.getSafeList(tweets)
-        this.searchMetadata = searchMetadata
-    }
+    @JvmField
+    @SerializedName("statuses")
+    val tweets: List<Tweet> = ModelUtils.getSafeList(tweets)
 }

@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * Represents an image which has been uploaded to Twitter.
  */
-class Image(
+data class Image(
 
     @SerializedName("w")
     val w: Int,

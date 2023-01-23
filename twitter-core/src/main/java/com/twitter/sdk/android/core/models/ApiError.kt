@@ -22,10 +22,10 @@ import com.google.gson.annotations.SerializedName
  * Represents error returned from the Twitter API. For complete list of error codes, see
  * https://dev.twitter.com/overview/api/response-codes
  */
-class ApiError(
+data class ApiError(
 
     @SerializedName("message")
-    val message: String,
+    val message: String?,
 
     @SerializedName("code")
     val code: Int

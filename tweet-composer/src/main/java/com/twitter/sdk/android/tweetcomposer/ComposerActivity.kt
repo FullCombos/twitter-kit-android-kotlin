@@ -30,6 +30,7 @@ class ComposerActivity : Activity() {
     companion object {
         private const val EXTRA_USER_TOKEN = "EXTRA_USER_TOKEN"
         private const val EXTRA_IMAGE_URI = "EXTRA_IMAGE_URI"
+        private const val EXTRA_VIDEO_URI = "EXTRA_VIDEO_URI"
         private const val EXTRA_THEME = "EXTRA_THEME"
         private const val EXTRA_TEXT = "EXTRA_TEXT"
         private const val EXTRA_HASHTAGS = "EXTRA_HASHTAGS"
@@ -45,6 +46,7 @@ class ComposerActivity : Activity() {
             token!!, TwitterSession.UNKNOWN_USER_ID, TwitterSession.UNKNOWN_USER_NAME
         )
         val imageUri = intent.getParcelableExtra<Uri>(EXTRA_IMAGE_URI)
+        val videoUri = intent.getParcelableExtra<Uri>(EXTRA_VIDEO_URI)
         val text = intent.getStringExtra(EXTRA_TEXT)
         val hashtags = intent.getStringExtra(EXTRA_HASHTAGS)
         val themeResId = intent.getIntExtra(EXTRA_THEME, R.style.ComposerLight)
@@ -53,7 +55,7 @@ class ComposerActivity : Activity() {
 
         val composerView = findViewById<ComposerView>(R.id.twitter_composer_view)
         composerController = ComposerController(
-            composerView, session, imageUri, text, hashtags, FinisherImpl()
+            composerView, session, imageUri, videoUri, text, hashtags, FinisherImpl()
         )
     }
 
@@ -81,6 +83,7 @@ class ComposerActivity : Activity() {
         private var token: TwitterAuthToken? = null
         private var themeResId = R.style.ComposerLight
         private var imageUri: Uri? = null
+        private var videoUri: Uri? = null
         private var text: String? = null
         private var hashtags: String? = null
 
@@ -88,24 +91,25 @@ class ComposerActivity : Activity() {
             this.context = context
         }
 
-        fun session(session: TwitterSession): Builder {
+        fun session(session: TwitterSession) = apply {
             val token = session.authToken
             // session passed via the parcelable auth token
             this.token = token
-            return this
         }
 
-        fun image(imageUri: Uri?): Builder {
+        fun image(imageUri: Uri?) = apply {
             this.imageUri = imageUri
-            return this
         }
 
-        fun text(text: String?): Builder {
+        fun video(videoUri: Uri?) = apply {
+            this.videoUri = videoUri
+        }
+
+        fun text(text: String?) = apply {
             this.text = text
-            return this
         }
 
-        fun hashtags(vararg hashtags: String): Builder {
+        fun hashtags(vararg hashtags: String) = apply {
             val sb = StringBuilder()
             for (hashtag in hashtags) {
                 if (Regex.VALID_HASHTAG.matcher(hashtag).find()) {
@@ -116,12 +120,10 @@ class ComposerActivity : Activity() {
                 }
             }
             this.hashtags = if (sb.isEmpty()) null else sb.toString()
-            return this
         }
 
-        fun darkTheme(): Builder {
+        fun darkTheme() = apply {
             themeResId = R.style.ComposerDark
-            return this
         }
 
         fun createIntent(): Intent {
@@ -129,6 +131,7 @@ class ComposerActivity : Activity() {
             return Intent(context, ComposerActivity::class.java).apply {
                 putExtra(EXTRA_USER_TOKEN, token)
                 putExtra(EXTRA_IMAGE_URI, imageUri)
+                putExtra(EXTRA_VIDEO_URI, videoUri)
                 putExtra(EXTRA_THEME, themeResId)
                 putExtra(EXTRA_TEXT, text)
                 putExtra(EXTRA_HASHTAGS, hashtags)

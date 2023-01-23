@@ -21,7 +21,19 @@ import com.google.gson.annotations.SerializedName
 /**
  * Represents coordinates of a Tweet's location.
  */
-class Coordinates(longitude: Double, latitude: Double, type: String) {
+class Coordinates(
+
+    longitude: Double,
+
+    latitude: Double,
+
+    /**
+     * The type of data encoded in the coordinates property. This will be "Point" for Tweet
+     * coordinates fields.
+     */
+    @SerializedName("type")
+    val type: String
+) {
 
     /**
      * The longitude and latitude of the Tweet's location, as an collection in the form of
@@ -30,19 +42,11 @@ class Coordinates(longitude: Double, latitude: Double, type: String) {
     @SerializedName("coordinates")
     val coordinates: List<Double>
 
-    /**
-     * The type of data encoded in the coordinates property. This will be "Point" for Tweet
-     * coordinates fields.
-     */
-    @SerializedName("type")
-    val type: String
-
     init {
         val coords = ArrayList<Double>(2)
         coords.add(INDEX_LONGITUDE, longitude)
         coords.add(INDEX_LATITUDE, latitude)
         coordinates = ModelUtils.getSafeList(coords)
-        this.type = type
     }
 
     val longitude: Double = coordinates[INDEX_LONGITUDE]

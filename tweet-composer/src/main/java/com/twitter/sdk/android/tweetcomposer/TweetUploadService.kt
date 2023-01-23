@@ -16,19 +16,26 @@
  */
 package com.twitter.sdk.android.tweetcomposer
 
-import android.app.IntentService
+import android.app.Service
 import android.content.Intent
 import android.net.Uri
+import android.os.IBinder
+import android.text.format.DateUtils
 import com.twitter.sdk.android.core.*
 import com.twitter.sdk.android.core.models.Media
 import com.twitter.sdk.android.core.models.Tweet
+import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.awaitResponse
 import java.io.File
+import java.io.RandomAccessFile
 
-class TweetUploadService  // testing purposes
-internal constructor(private var dependencyProvider: DependencyProvider) :
-    IntentService("TweetUploadService") {
+class TweetUploadService
+// testing purposes
+internal constructor(private var dependencyProvider: DependencyProvider) : Service(),
+    CoroutineScope {
 
     companion object {
         private const val UPLOAD_SUCCESS = "com.twitter.sdk.android.tweetcomposer.UPLOAD_SUCCESS"
@@ -41,16 +48,19 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
         const val EXTRA_USER_TOKEN = "EXTRA_USER_TOKEN"
         const val EXTRA_TWEET_TEXT = "EXTRA_TWEET_TEXT"
         const val EXTRA_IMAGE_URI = "EXTRA_IMAGE_URI"
+        const val EXTRA_VIDEO_URI = "EXTRA_VIDEO_URI"
         const val EXTRA_RETRY_INTENT = "EXTRA_RETRY_INTENT"
 
         const val TAG = "TweetUploadService"
     }
 
+    override val coroutineContext = Dispatchers.IO + SupervisorJob()
+
     private var intent: Intent? = null
 
-    @Deprecated("Deprecated in Java")
-    override fun onHandleIntent(intent: Intent?) {
-        val token = intent?.getParcelableExtra<TwitterAuthToken>(EXTRA_USER_TOKEN) ?: return
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        val token = intent?.getParcelableExtra<TwitterAuthToken>(EXTRA_USER_TOKEN)
+            ?: return super.onStartCommand(intent, flags, startId)
 
         this.intent = intent
         val twitterSession = TwitterSession(
@@ -60,16 +70,27 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
         )
         val tweetText = intent.getStringExtra(EXTRA_TWEET_TEXT)
         val imageUri = intent.getParcelableExtra<Uri>(EXTRA_IMAGE_URI)
+        val videoUri = intent.getParcelableExtra<Uri>(EXTRA_VIDEO_URI)
 
-        uploadTweet(twitterSession, tweetText, imageUri)
+        uploadTweet(twitterSession, tweetText, imageUri, videoUri)
+        return super.onStartCommand(intent, flags, startId)
     }
 
-    private fun uploadTweet(session: TwitterSession, text: String?, imageUri: Uri?) {
-        if (imageUri != null) {
-            uploadMedia(session, imageUri, object : Callback<Media>() {
+    private fun uploadTweet(
+        session: TwitterSession,
+        text: String?,
+        imageUri: Uri?,
+        videoUri: Uri?
+    ) {
+        val client = dependencyProvider.getTwitterApiClient(session)
+
+        if (videoUri != null) {
+            uploadTweetWithVideo(client, videoUri, text)
+        } else if (imageUri != null) {
+            uploadMediaWithImage(client, imageUri, object : Callback<Media>() {
 
                 override fun success(result: Result<Media>) {
-                    uploadTweetWithMedia(session, text, result.data.mediaIdString)
+                    uploadTweetWithMediaId(client, text, result.data.mediaIdString)
                 }
 
                 override fun failure(exception: TwitterException) {
@@ -77,12 +98,11 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
                 }
             })
         } else {
-            uploadTweetWithMedia(session, text, null)
+            uploadTweetWithMediaId(client, text, null)
         }
     }
 
-    private fun uploadTweetWithMedia(session: TwitterSession, text: String?, mediaId: String?) {
-        val client = dependencyProvider.getTwitterApiClient(session)
+    private fun uploadTweetWithMediaId(client: TwitterApiClient, text: String?, mediaId: String?) {
         client.getStatusesService()
             .update(text.orEmpty(), null, null, null, null, null, null, true, mediaId)
             .enqueue(object : Callback<Tweet>() {
@@ -98,8 +118,11 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
             })
     }
 
-    private fun uploadMedia(session: TwitterSession, imageUri: Uri, callback: Callback<Media>) {
-        val client = dependencyProvider.getTwitterApiClient(session)
+    private fun uploadMediaWithImage(
+        client: TwitterApiClient,
+        imageUri: Uri,
+        callback: Callback<Media>
+    ) {
         val path = FileUtils.getPath(this@TweetUploadService, imageUri)
         if (path == null) {
             fail(TwitterException("Uri file path resolved to null"))
@@ -111,7 +134,149 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
         client.getMediaService().upload(media, null, null).enqueue(callback)
     }
 
-    private fun fail(e: TwitterException?) {
+    // https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/uploading-media/chunked-media-upload
+    // example in python https://github.com/twitterdev/large-video-upload-python/blob/master/async-upload.py
+    private fun uploadTweetWithVideo(
+        client: TwitterApiClient,
+        videoUri: Uri,
+        text: String?
+    ) {
+        launch(Dispatchers.IO) {
+            try {
+                val file = RandomAccessFile(videoUri.toString(), "r")
+                uploadTweetWithVideoInit(client, file, videoUri, text)
+            } catch (e: Exception) {
+                fail(e)
+            }
+        }
+    }
+
+    private suspend fun uploadTweetWithVideoInit(
+        client: TwitterApiClient,
+        file: RandomAccessFile,
+        videoUri: Uri,
+        text: String?
+    ) {
+        val mimeType = FileUtils.getMimeType(File(videoUri.toString())).orEmpty()
+
+        withContext(Dispatchers.IO) {
+            val result =
+                client.getMediaService().init(mediaType = mimeType, totalBytes = file.length())
+                    .awaitResponse()
+
+            uploadTweetWithVideoAppend(
+                client,
+                file,
+                text,
+                result.body()?.mediaId,
+                mimeType
+            )
+        }
+    }
+
+    private suspend fun uploadTweetWithVideoAppend(
+        client: TwitterApiClient,
+        file: RandomAccessFile,
+        text: String?,
+        mediaId: Long?,
+        mimeType: String
+    ) {
+        if (mediaId == null) {
+            fail(IllegalArgumentException("media id can not be null"))
+            return
+        }
+
+        withContext(Dispatchers.IO) {
+
+            val mediaService = client.getMediaService()
+            val fileLength = file.length()
+            val maxSize = 5 * 1024 * 1024
+            var data = ByteArray(minOf(maxSize, fileLength.toInt()))
+            var segmentIndex = 0
+            var isComplete = true
+
+            file.use {
+                while (file.read(data) != -1) {
+                    val result = mediaService.append(
+                        mediaId = mediaId.toString().toRequestBody(),
+                        media = data.toRequestBody(mimeType.toMediaTypeOrNull()),
+                        segmentIndex = segmentIndex.toString().toRequestBody()
+                    ).awaitResponse()
+
+                    if (!result.isSuccessful) {
+                        isComplete = false
+                        break
+                    }
+
+                    val nextSize = minOf(maxSize, (fileLength - file.filePointer).toInt())
+                    if (nextSize > 0 && nextSize != data.size) {
+                        data = ByteArray(nextSize)
+                    }
+                    segmentIndex++
+                }
+            }
+
+            if (isComplete) {
+                uploadTweetWithVideoFinalize(client, text, mediaId)
+            } else {
+                fail(IllegalStateException("upload video failed"))
+            }
+        }
+    }
+
+    private suspend fun uploadTweetWithVideoFinalize(
+        client: TwitterApiClient,
+        text: String?,
+        mediaId: Long
+    ) {
+        withContext(Dispatchers.IO) {
+            val result = client.getMediaService().finalize(mediaId = mediaId).awaitResponse()
+            uploadTweetWithVideoStatus(client, text, result.body())
+        }
+    }
+
+    private suspend fun uploadTweetWithVideoStatus(
+        client: TwitterApiClient,
+        text: String?,
+        videoMedia: Media?
+    ) {
+        if (videoMedia == null) {
+            fail(IllegalStateException("request finalize api failed"))
+            return
+        }
+
+        val processingInfo = videoMedia.processingInfo
+        if (processingInfo == null || processingInfo.state == "succeeded") {
+            uploadTweetWithMediaId(client, text, videoMedia.mediaIdString)
+            return
+        }
+
+        if (processingInfo.state == "failed") {
+            fail(IllegalStateException("upload video failed"))
+            return
+        }
+
+        val error = processingInfo.error
+        if (error != null) {
+            fail(IllegalStateException(error.message.orEmpty()))
+            return
+        }
+
+        withContext(Dispatchers.IO) {
+            val checkAfterSecs = processingInfo.checkAfterSecs ?: 0
+            delay(checkAfterSecs * DateUtils.SECOND_IN_MILLIS)
+
+            val result =
+                client.getMediaService().checkStatus(mediaId = videoMedia.mediaId).awaitResponse()
+            if (result.isSuccessful) {
+                uploadTweetWithVideoStatus(client, text, result.body())
+            } else {
+                fail(IllegalStateException("request check status api failed"))
+            }
+        }
+    }
+
+    private fun fail(e: Exception?) {
         sendFailureBroadcast(intent)
         Twitter.getLogger().e(TAG, "Post Tweet failed", e)
         stopSelf()
@@ -129,6 +294,15 @@ internal constructor(private var dependencyProvider: DependencyProvider) :
         intent.putExtra(EXTRA_RETRY_INTENT, original)
         intent.setPackage(applicationContext.packageName)
         sendBroadcast(intent)
+    }
+
+    override fun onDestroy() {
+        cancel()
+        super.onDestroy()
+    }
+
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
     }
 
     /*

@@ -29,39 +29,30 @@ class Configuration(
      */
     @SerializedName("dm_text_character_limit")
     val dmTextCharacterLimit: Int,
+
     nonUsernamePaths: List<String>,
-    photoSizeLimit: Long,
-    photoSizes: Sizes,
-    shortUrlLengthHttps: Int
-) {
-    /**
-     * Slugs which are not user names
-     */
-    @SerializedName("non_username_paths")
-    val nonUsernamePaths: List<String>
 
     /**
      * Maximum size in bytes for the media file.
      */
     @SerializedName("photo_size_limit")
-    val photoSizeLimit: Long
+    val photoSizeLimit: Long,
 
     /**
      * Maximum resolution for the media files.
      */
     @SerializedName("photo_sizes")
-    val photoSizes: Sizes
+    val photoSizes: Sizes,
 
     /**
      * Current t.co URL length
      */
     @SerializedName("short_url_length_https")
     val shortUrlLengthHttps: Int
-
-    init {
-        this.nonUsernamePaths = ModelUtils.getSafeList(nonUsernamePaths)
-        this.photoSizeLimit = photoSizeLimit
-        this.photoSizes = photoSizes
-        this.shortUrlLengthHttps = shortUrlLengthHttps
-    }
+) {
+    /**
+     * Slugs which are not user names
+     */
+    @SerializedName("non_username_paths")
+    val nonUsernamePaths: List<String> = ModelUtils.getSafeList(nonUsernamePaths)
 }

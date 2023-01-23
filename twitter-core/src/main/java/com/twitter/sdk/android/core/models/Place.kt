@@ -23,14 +23,54 @@ import com.google.gson.annotations.SerializedName
  */
 class Place(
     attributes: Map<String, String>,
-    boundingBox: BoundingBox,
-    country: String,
-    countryCode: String,
-    fullName: String,
-    id: String,
-    name: String,
-    placeType: String,
-    url: String
+
+    /**
+     * A bounding box of coordinates which encloses this place.
+     */
+    @SerializedName("bounding_box")
+    val boundingBox: BoundingBox,
+
+    /**
+     * Name of the country containing this place.
+     */
+    @SerializedName("country")
+    val country: String,
+
+    /**
+     * Shortened country code representing the country containing this place.
+     */
+    @SerializedName("country_code")
+    val countryCode: String,
+
+    /**
+     * Full human-readable representation of the place's name.
+     */
+    @SerializedName("full_name")
+    val fullName: String,
+
+    /**
+     * ID representing this place. Note that this is represented as a string, not an integer.
+     */
+    @SerializedName("id")
+    val id: String,
+
+    /**
+     * Short human-readable representation of the place's name.
+     */
+    @SerializedName("name")
+    val name: String,
+
+    /**
+     * The type of location represented by this place.
+     */
+    @SerializedName("place_type")
+    val placeType: String,
+
+    /**
+     * URL representing the location of additional place metadata for this place.
+     */
+    @SerializedName("url")
+    val url: String
 ) {
 
     /**
@@ -40,64 +80,8 @@ class Place(
     @SerializedName("attributes")
     val attributes: Map<String, String>
 
-    /**
-     * A bounding box of coordinates which encloses this place.
-     */
-    @SerializedName("bounding_box")
-    val boundingBox: BoundingBox
-
-    /**
-     * Name of the country containing this place.
-     */
-    @SerializedName("country")
-    val country: String
-
-    /**
-     * Shortened country code representing the country containing this place.
-     */
-    @SerializedName("country_code")
-    val countryCode: String
-
-    /**
-     * Full human-readable representation of the place's name.
-     */
-    @SerializedName("full_name")
-    val fullName: String
-
-    /**
-     * ID representing this place. Note that this is represented as a string, not an integer.
-     */
-    @SerializedName("id")
-    val id: String
-
-    /**
-     * Short human-readable representation of the place's name.
-     */
-    @SerializedName("name")
-    val name: String
-
-    /**
-     * The type of location represented by this place.
-     */
-    @SerializedName("place_type")
-    val placeType: String
-
-    /**
-     * URL representing the location of additional place metadata for this place.
-     */
-    @SerializedName("url")
-    val url: String
-
     init {
         this.attributes = ModelUtils.getSafeMap(attributes)
-        this.boundingBox = boundingBox
-        this.country = country
-        this.countryCode = countryCode
-        this.fullName = fullName
-        this.id = id
-        this.name = name
-        this.placeType = placeType
-        this.url = url
     }
 
     class BoundingBox(coordinates: List<List<List<Double>>>, type: String) {

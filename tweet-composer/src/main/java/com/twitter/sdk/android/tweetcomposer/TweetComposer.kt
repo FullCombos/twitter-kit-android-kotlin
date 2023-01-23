@@ -66,17 +66,15 @@ class TweetComposer internal constructor() {
         /**
          * Sets Text for Tweet Intent, no length validation is performed
          */
-        fun text(text: String?): Builder {
+        fun text(text: String?) = apply {
             this.text = text
-            return this
         }
 
         /**
          * Sets URL for Tweet Intent, no length validation is performed
          */
-        fun url(url: URL?): Builder {
+        fun url(url: URL?) = apply {
             this.url = url
-            return this
         }
 
         /**
@@ -84,9 +82,8 @@ class TweetComposer internal constructor() {
          * installed.
          * The Uri should be a file Uri to a local file (e.g. <pre>`Uri.fromFile(someExternalStorageFile)`</pre>))
          */
-        fun image(imageUri: Uri?): Builder {
+        fun image(imageUri: Uri?) = apply {
             this.imageUri = imageUri
-            return this
         }
 
         /**

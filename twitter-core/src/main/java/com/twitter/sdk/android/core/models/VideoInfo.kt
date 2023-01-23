@@ -22,9 +22,21 @@ import java.io.Serializable
 /**
  * Contains information about video.
  */
-class VideoInfo(aspectRatio: List<Int>, durationMillis: Long, variants: List<Variant>) :
+class VideoInfo(
+
+    aspectRatio: List<Int>,
+
+    /**
+     * The length of the video, in milliseconds.
+     */
+    @JvmField
+    @SerializedName("duration_millis")
+    val durationMillis: Long,
+
+    variants: List<Variant>
+) :
     Serializable {
-    
+
     /**
      * The aspect ratio of the video, as a simplified fraction of width and height in a 2-element
      * list. Typical values are [4, 3] or [16, 9].
@@ -32,12 +44,6 @@ class VideoInfo(aspectRatio: List<Int>, durationMillis: Long, variants: List<Var
     @SerializedName("aspect_ratio")
     val aspectRatio: List<Int>
 
-    /**
-     * The length of the video, in milliseconds.
-     */
-    @JvmField
-    @SerializedName("duration_millis")
-    val durationMillis: Long
 
     /**
      * Different encodings/streams of the video.
@@ -48,11 +54,10 @@ class VideoInfo(aspectRatio: List<Int>, durationMillis: Long, variants: List<Var
 
     init {
         this.aspectRatio = ModelUtils.getSafeList(aspectRatio)
-        this.durationMillis = durationMillis
         this.variants = ModelUtils.getSafeList(variants)
     }
 
-    class Variant(
+    data class Variant(
 
         @SerializedName("bitrate")
         val bitrate: Long,

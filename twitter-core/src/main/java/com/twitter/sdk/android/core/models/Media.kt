@@ -32,6 +32,15 @@ class Media(
     @SerializedName("size")
     val size: Long,
 
+    @SerializedName("expires_after_secs")
+    val expiresAfterSecs: Long,
+
+    @SerializedName("video")
+    val video: Video?,
+
     @SerializedName("image")
-    val image: Image
+    val image: Image?,
+
+    @SerializedName("processing_info")
+    val processingInfo: ProcessingInfo?
 )

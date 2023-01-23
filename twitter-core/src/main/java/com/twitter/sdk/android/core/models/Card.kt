@@ -18,7 +18,7 @@ package com.twitter.sdk.android.core.models
 
 import com.google.gson.annotations.SerializedName
 
-class Card(
+data class Card(
 
     @SerializedName("binding_values")
     val bindingValues: BindingValues,

@@ -419,7 +419,7 @@ public abstract class BaseTweetView extends AbstractTweetView {
         }
 
         if (!TextUtils.isEmpty(url)) {
-            imageLoader.load(url).placeholder(avatarMediaBg).into(avatarView, null);
+            imageLoader.load(url).placeholder(avatarMediaBg).error(avatarMediaBg).into(avatarView, null);
         }
     }
 
