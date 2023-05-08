@@ -15,3 +15,4 @@ TODO:
 
 1. Convert java to kotlin for `tweet-ui`
 2. Migrate deprecated implementations to `registerForActivityResult`
+3. Migrate Twitter APIs from v1 to v2
