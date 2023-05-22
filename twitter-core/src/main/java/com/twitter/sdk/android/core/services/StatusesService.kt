@@ -17,6 +17,8 @@
 package com.twitter.sdk.android.core.services
 
 import com.twitter.sdk.android.core.models.Tweet
+import com.twitter.sdk.android.core.models.TweetContent
+import com.twitter.sdk.android.core.models.TweetResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -340,6 +342,13 @@ interface StatusesService {
         @Field("trim_user") trimUser: Boolean,
         @Field("media_ids") mediaIds: String?
     ): Call<Tweet>
+
+    /*
+     https://developer.twitter.com/en/docs/twitter-api/migrate/data-formats/standard-v1-1-to-v2
+     https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+     */
+    @POST("/2/tweets")
+    fun updateV2(@Body tweet: TweetContent): Call<TweetResponse>
 
     /**
      * Retweets a Tweet. Returns the original Tweet with retweet details embedded.

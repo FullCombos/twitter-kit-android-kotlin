@@ -10,9 +10,9 @@ And:
 6. Add video upload function
 7. Remove `picasso` dependency
 8. Use `Coroutine` instead of `ExecutorService`
+9. Migrate Twitter APIs from v1(Deprecated) to v2
 
 TODO:
 
 1. Convert java to kotlin for `tweet-ui`
 2. Migrate deprecated implementations to `registerForActivityResult`
-3. Migrate Twitter APIs from v1 to v2

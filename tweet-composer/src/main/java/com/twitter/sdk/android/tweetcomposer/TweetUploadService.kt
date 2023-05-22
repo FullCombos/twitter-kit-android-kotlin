@@ -21,13 +21,28 @@ import android.content.Intent
 import android.net.Uri
 import android.os.IBinder
 import android.text.format.DateUtils
-import com.twitter.sdk.android.core.*
+import com.twitter.sdk.android.core.Callback
+import com.twitter.sdk.android.core.Result
+import com.twitter.sdk.android.core.Twitter
+import com.twitter.sdk.android.core.TwitterApiClient
+import com.twitter.sdk.android.core.TwitterAuthToken
+import com.twitter.sdk.android.core.TwitterCore
+import com.twitter.sdk.android.core.TwitterException
+import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.models.Media
-import com.twitter.sdk.android.core.models.Tweet
-import kotlinx.coroutines.*
+import com.twitter.sdk.android.core.models.TweetContent
+import com.twitter.sdk.android.core.models.TweetResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.internal.toLongOrDefault
 import retrofit2.awaitResponse
 import java.io.File
 import java.io.RandomAccessFile
@@ -103,12 +118,13 @@ internal constructor(private var dependencyProvider: DependencyProvider) : Servi
     }
 
     private fun uploadTweetWithMediaId(client: TwitterApiClient, text: String?, mediaId: String?) {
+        val tweet = TweetContent(text, mediaId)
         client.getStatusesService()
-            .update(text.orEmpty(), null, null, null, null, null, null, true, mediaId)
-            .enqueue(object : Callback<Tweet>() {
+            .updateV2(tweet)
+            .enqueue(object : Callback<TweetResponse>() {
 
-                override fun success(result: Result<Tweet>) {
-                    sendSuccessBroadcast(result.data.id)
+                override fun success(result: Result<TweetResponse>) {
+                    sendSuccessBroadcast(result.data.id.toLongOrDefault(-1L))
                     stopSelf()
                 }
 
