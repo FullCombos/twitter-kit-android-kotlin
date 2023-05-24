@@ -19,7 +19,12 @@ package com.twitter.sdk.android.tweetcomposer
 import android.content.Intent
 import android.net.Uri
 import com.twitter.Validator
-import com.twitter.sdk.android.core.*
+import com.twitter.sdk.android.core.Callback
+import com.twitter.sdk.android.core.Result
+import com.twitter.sdk.android.core.TwitterApiClient
+import com.twitter.sdk.android.core.TwitterCore
+import com.twitter.sdk.android.core.TwitterException
+import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.models.User
 import com.twitter.sdk.android.tweetcomposer.ComposerActivity.Finisher
 
@@ -38,7 +43,12 @@ internal class ComposerController constructor(
         composerView.setCallbacks(ComposerCallbacksImpl())
         composerView.setTweetText(generateText(text, hashtags))
         setProfilePhoto()
-        setImageView(imageUri)
+
+        if (imageUri != null) {
+            composerView.setImageView(imageUri)
+        } else if (videoUri != null) {
+            composerView.setVideoView(videoUri)
+        }
     }
 
     private fun generateText(text: String?, hashtags: String?): String {
@@ -69,12 +79,6 @@ internal class ComposerController constructor(
                     composerView.setProfilePhotoView(null)
                 }
             })
-    }
-
-    private fun setImageView(imageUri: Uri?) {
-        if (imageUri != null) {
-            composerView.setImageView(imageUri)
-        }
     }
 
     interface ComposerCallbacks {

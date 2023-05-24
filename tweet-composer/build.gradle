@@ -69,6 +69,7 @@ dependencies {
     api project(':twitter-core')
 
     implementation dependency.coroutines
-    implementation dependency.coreKt
+    implementation dependency.appCompat
+    implementation dependency.lifecycleKt
     implementation dependency.tweetText
 }

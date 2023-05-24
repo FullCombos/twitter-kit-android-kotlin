@@ -11,6 +11,7 @@ And:
 7. Remove `picasso` dependency
 8. Use `Coroutine` instead of `ExecutorService`
 9. Migrate Twitter APIs from v1(Deprecated) to v2
+10. Add video preview into `ComposerView`
 
 TODO:
 

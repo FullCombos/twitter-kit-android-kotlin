@@ -24,17 +24,18 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.internal.UserUtils
 import com.twitter.sdk.android.core.models.User
 import com.twitter.sdk.android.tweetcomposer.databinding.TwitterComposerViewBinding
 import com.twitter.sdk.android.tweetcomposer.internal.util.ObservableScrollView
-import java.util.*
+import java.util.Locale
 
 internal class ComposerView @JvmOverloads constructor(
     context: Context,
@@ -93,9 +94,9 @@ internal class ComposerView @JvmOverloads constructor(
 
                 override fun onScrollChanged(scrollY: Int) {
                     if (scrollY > 0) {
-                        binding.twitterComposerProfileDivider.visibility = View.VISIBLE
+                        binding.twitterComposerProfileDivider.isVisible = true
                     } else {
-                        binding.twitterComposerProfileDivider.visibility = View.INVISIBLE
+                        binding.twitterComposerProfileDivider.isInvisible = true
                     }
                 }
             }
@@ -143,16 +144,31 @@ internal class ComposerView @JvmOverloads constructor(
 
     fun setImageView(imageUri: Uri?) {
         imageUri ?: return
-        binding.twitterImageView.visibility = VISIBLE
+
+        binding.twitterImageView.isVisible = true
         imageLoader?.load(imageUri)
             ?.placeholder(mediaBg)
             ?.error(mediaBg)
             ?.into(binding.twitterImageView)
+        binding.twitterVideoView.isVisible = false
     }
 
     fun setImageView(image: Bitmap?) {
         image ?: return
-        binding.twitterImageView.visibility = VISIBLE
+
+        binding.twitterImageView.isVisible = true
         binding.twitterImageView.setImageBitmap(image)
+        binding.twitterVideoView.isVisible = false
+    }
+
+    fun setVideoView(video: Uri?) {
+        video ?: return
+
+        with(binding.twitterVideoView) {
+            isVisible = true
+            setVideoURI(video)
+            start()
+        }
+        binding.twitterImageView.isVisible = false
     }
 }
