@@ -24,7 +24,7 @@ class TwitterApi @JvmOverloads constructor(val baseHostUrl: String = BASE_HOST_U
 
     companion object {
 
-        private const val BASE_HOST = "api.twitter.com"
+        private const val BASE_HOST = "api.x.com"
         const val BASE_HOST_URL = "https://$BASE_HOST"
 
         /**
