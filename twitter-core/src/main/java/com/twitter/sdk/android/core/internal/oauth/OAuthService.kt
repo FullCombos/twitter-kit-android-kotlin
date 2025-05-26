@@ -42,7 +42,7 @@ abstract class OAuthService(
                     .build()
                 chain.proceed(request)
             })
-            .certificatePinner(OkHttpClientHelper.certificatePinner)
+            //.certificatePinner(OkHttpClientHelper.certificatePinner)
             .build()
 
         retrofit = Retrofit.Builder()

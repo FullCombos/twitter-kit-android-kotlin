@@ -60,7 +60,7 @@ internal class OkHttpClientHelper private constructor() {
             guestSessionProvider: GuestSessionProvider
         ): OkHttpClient.Builder {
             return builder
-                .certificatePinner(certificatePinner)
+                //.certificatePinner(certificatePinner)
                 .authenticator(GuestAuthenticator(guestSessionProvider))
                 .addInterceptor(GuestAuthInterceptor(guestSessionProvider))
                 .addNetworkInterceptor(GuestAuthNetworkInterceptor())
@@ -72,7 +72,7 @@ internal class OkHttpClientHelper private constructor() {
             authConfig: TwitterAuthConfig
         ): OkHttpClient.Builder {
             return builder
-                .certificatePinner(certificatePinner)
+                //.certificatePinner(certificatePinner)
                 .addInterceptor(OAuth1aInterceptor(session, authConfig))
         }
 
