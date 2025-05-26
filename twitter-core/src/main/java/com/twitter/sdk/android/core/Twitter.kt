@@ -39,7 +39,8 @@ class Twitter private constructor(config: TwitterConfig) {
             val key = CommonUtils.getStringResourceValue(context, CONSUMER_KEY, "")
             val secret =
                 CommonUtils.getStringResourceValue(context, CONSUMER_SECRET, "")
-            TwitterAuthConfig(key, secret)
+            val callbackUrl = CommonUtils.getStringResourceValue(context, CALLBACK_URL, DEFAULT_CALLBACK_URL)
+            TwitterAuthConfig(key, secret, callbackUrl = callbackUrl)
         } else {
             config.twitterAuthConfig
         }
@@ -77,6 +78,8 @@ class Twitter private constructor(config: TwitterConfig) {
 
         private const val CONSUMER_KEY = "com.twitter.sdk.android.CONSUMER_KEY"
         private const val CONSUMER_SECRET = "com.twitter.sdk.android.CONSUMER_SECRET"
+        private const val CALLBACK_URL = "com.twitter.sdk.android.CALLBACK_URL"
+        private const val DEFAULT_CALLBACK_URL = "twittersdk://callback"
         private const val NOT_INITIALIZED_MESSAGE =
             "Must initialize Twitter before using getInstance()"
         private val DEFAULT_LOGGER = DefaultLogger()

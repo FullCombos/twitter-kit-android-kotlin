@@ -47,7 +47,6 @@ internal class OAuth1aService(twitterCore: TwitterCore, api: TwitterApi) :
 
     companion object {
         private const val RESOURCE_OAUTH = "oauth"
-        private const val CALLBACK_URL = "twittersdk://callback"
         private const val PARAM_SCREEN_NAME = "screen_name"
         private const val PARAM_USER_ID = "user_id"
 
@@ -100,7 +99,7 @@ internal class OAuth1aService(twitterCore: TwitterCore, api: TwitterApi) :
      * @return the callback url
      */
     fun buildCallbackUrl(authConfig: TwitterAuthConfig?): String {
-        return Uri.parse(CALLBACK_URL).buildUpon()
+        return Uri.parse(authConfig?.callbackUrl).buildUpon()
             .appendQueryParameter("version", twitterCore.getVersion())
             .appendQueryParameter("app", authConfig?.consumerKey)
             .build()

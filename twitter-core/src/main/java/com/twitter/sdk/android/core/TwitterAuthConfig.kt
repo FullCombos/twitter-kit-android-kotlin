@@ -38,7 +38,11 @@ class TwitterAuthConfig(
      * be returned in [android.app.Activity.onActivityResult]
      * when the activity exits.
      */
-    val requestCode: Int = DEFAULT_AUTH_REQUEST_CODE
+    val requestCode: Int = DEFAULT_AUTH_REQUEST_CODE,
+    /**
+     * @return the callback url
+     */
+    val callbackUrl: String
 
 ) : Parcelable {
 
