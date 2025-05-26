@@ -20,11 +20,14 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
+import android.widget.ProgressBar
+import com.twitter.sdk.android.core.R
 import com.twitter.sdk.android.core.TwitterAuthException
 import com.twitter.sdk.android.core.TwitterCore
-import com.twitter.sdk.android.core.databinding.TwitterActivityOauthBinding
 import com.twitter.sdk.android.core.internal.TwitterApi
 import com.twitter.sdk.android.core.internal.oauth.OAuth1aService
+import androidx.core.view.isVisible
 
 /**
  * Activity for performing OAuth flow when Single Sign On is not available. This activity should not
@@ -41,19 +44,19 @@ class OAuthActivity : Activity(), OAuthController.Listener {
     }
 
     private lateinit var oAuthController: OAuthController
-    private lateinit var binding: TwitterActivityOauthBinding
+
+    private val twitterSpinner: ProgressBar by lazy { findViewById(R.id.twitter_spinner) }
+    private val twitterWebView: WebView by lazy { findViewById(R.id.twitter_web_view) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = TwitterActivityOauthBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.twitter_activity_oauth)
 
         val showProgress = savedInstanceState?.getBoolean(STATE_PROGRESS, false) ?: true
-        binding.twitterSpinner.visibility = if (showProgress) View.VISIBLE else View.GONE
+        twitterSpinner.visibility = if (showProgress) View.VISIBLE else View.GONE
         oAuthController = OAuthController(
-            binding.twitterSpinner,
-            binding.twitterWebView,
+            twitterSpinner,
+            twitterWebView,
             intent.getParcelableExtra(EXTRA_AUTH_CONFIG),
             OAuth1aService(TwitterCore.getInstance(), TwitterApi()),
             this
@@ -62,7 +65,7 @@ class OAuthActivity : Activity(), OAuthController.Listener {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        if (binding.twitterSpinner.visibility == View.VISIBLE) {
+        if (twitterWebView.isVisible) {
             outState.putBoolean(STATE_PROGRESS, true)
         }
         super.onSaveInstanceState(outState)

@@ -58,10 +58,12 @@ android {
         sourceCompatibility rootProject.sourceCompatibilityVersion
         targetCompatibility rootProject.targetCompatibilityVersion
     }
-
+/*
     buildFeatures {
         viewBinding true
     }
+
+ */
 }
 
 dependencies {
